@@ -1,0 +1,65 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  background-color: black;
+
+  height: 80px;
+
+  padding: 0 20px;
+  .header__logo {
+    width: 300px;
+    height: 100%;
+
+    background-image: url(../assets/logo_white.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .header__input {
+    flex: 0.7;
+    height: 35px;
+    padding: 0 30px;
+
+    font-size: 20px;
+
+    background-image: url(https://image.flaticon.com/icons/svg/25/25313.svg);
+    background-size: 20px;
+    background-position: 5px;
+    background-repeat: no-repeat;
+  }
+  .header__login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .login__icon {
+      width: 40px;
+    }
+  }
+  .header__menu {
+    position: relative;
+    display: inline-block;
+    .menu__icon {
+      filter: invert(100%);
+      width: 40px;
+    }
+    .menu__content {
+      display: none;
+      position: absolute;
+      background-color: #000000;
+      padding: 15px 5px;
+      z-index: 1;
+      .content__list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        justify-items: center;
+      }
+    }
+  }
+  .header__menu:hover .menu__content {
+    display: block;
+  }
+}

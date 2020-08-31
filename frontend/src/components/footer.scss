@@ -1,0 +1,28 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: black;
+  color: white;
+  .footer__cookies,
+  .footer__legal,
+  .footer__privacy {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+  }
+
+  .footer__cookies:hover {
+    text-decoration: underline;
+  }
+  .footer__legal:hover {
+    text-decoration: underline;
+  }
+  .footer__privacy:hover {
+    text-decoration: underline;
+  }
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
