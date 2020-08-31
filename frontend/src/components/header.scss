@@ -39,7 +39,27 @@
     }
   }
   .header__menu {
-    filter: invert(100%);
-    width: 40px;
+    position: relative;
+    display: inline-block;
+    .menu__icon {
+      filter: invert(100%);
+      width: 40px;
+    }
+    .menu__content {
+      display: none;
+      position: absolute;
+      background-color: #000000;
+      padding: 15px 5px;
+      z-index: 1;
+      .content__list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        justify-items: center;
+      }
+    }
+  }
+  .header__menu:hover .menu__content {
+    display: block;
   }
 }

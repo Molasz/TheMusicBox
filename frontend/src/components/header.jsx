@@ -11,11 +11,23 @@ function header({ isLogged }) {
       <input className='header__input'></input>
 
       {isLogged ? (
-        <img
-          src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png'
-          alt='manu icon'
-          className='header__menu'
-        />
+        <div className='header__menu'>
+          <img
+            src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png'
+            alt='manu icon'
+            className='menu__icon'
+          />
+          <div className='menu__content'>
+            <div className='content__list'>
+              <Link to='/profile' className='list__item'>
+                Profile
+              </Link>
+              <Link to='/profile' className='list__item'>
+                Settings
+              </Link>
+            </div>
+          </div>
+        </div>
       ) : (
         <Link to='/login' className='header__login'>
           <img
