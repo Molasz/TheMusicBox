@@ -10,6 +10,16 @@
   .footer__privacy {
     padding: 10px;
   }
+
+  .footer__cookies:hover {
+    text-decoration: underline;
+  }
+  .footer__legal:hover {
+    text-decoration: underline;
+  }
+  .footer__privacy:hover {
+    text-decoration: underline;
+  }
   position: absolute;
   bottom: 0;
   width: 100%;
