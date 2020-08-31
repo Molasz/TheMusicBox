@@ -6,6 +6,8 @@ import { BrowserRouter } from 'react-router-dom';
 import Header from './components/header';
 import Footer from './components/footer';
 
+import './index.scss';
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
