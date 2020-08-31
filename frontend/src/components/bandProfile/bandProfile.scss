@@ -1,18 +1,35 @@
-.bandProfile__header {
-  display: flex;
-  align-content: space-around;
+.bandProfile__container {
+  padding: 25px;
+  color: white;
 
-  margin: 5px 20px;
-  .header__logo {
-    width: 20%;
-    margin: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px 10px;
+  grid-template-areas:
+    'Logo Banner Banner Banner'
+    'Bio Fotos Discografia Discografia'
+    'XXSS Fotos Discografia Discografia';
+
+  .container__logo {
+    grid-area: Logo;
+    max-width: 250px;
+    max-height: 250px;
+    .logo__img {
+      width: 100%;
+    }
   }
-  .header__banner {
-    width: 75%;
-    padding: 15px;
+
+  .container__banner {
+    grid-area: Banner;
+    max-width: 735px;
+    max-height: 235px;
 
     background-image: url(https://pbs.twimg.com/profile_banners/851494228815482880/1539011178/1500x500);
-    background-size: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    padding: 15px;
 
     display: flex;
     flex-direction: column;
@@ -29,11 +46,27 @@
     .banner__text {
       text-align: center;
       width: 100px;
+      margin: 0;
 
-      display: inline-block;
       padding: 10px;
-      border-radius: 35%;
+      border-radius: 10%;
       background-color: red;
     }
+  }
+
+  .container__discography {
+    grid-area: Discografia;
+  }
+
+  .container__photos {
+    grid-area: Fotos;
+  }
+
+  .container__bio {
+    grid-area: Bio;
+  }
+
+  .container__social-media {
+    grid-area: XXSS;
   }
 }
