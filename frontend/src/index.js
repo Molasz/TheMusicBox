@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
-import Home from './components/home';
+import Home from './components/home/home';
 
 import './index.scss';
 
