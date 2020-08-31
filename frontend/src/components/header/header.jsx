@@ -31,7 +31,7 @@ function header({ isLogged }) {
       ) : (
         <Link to='/login' className='header__login'>
           <img
-            src={require('../assets/login.png')}
+            src={require('../../assets/login.png')}
             alt='login icon'
             className='login__icon'
           />
