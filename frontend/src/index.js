@@ -10,12 +10,14 @@ import BandProfile from './components/bandProfile/bandProfile';
 
 import './index.scss';
 
+import discography from './components/bandProfile/discography/discography';
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Header isLogged={true} />
       <Switch>
-        <Route path='/' exact component={Home} />
+        <Route path='/' exact component={discography} />
         <Route path='/band' exact component={BandProfile} />
       </Switch>
       <Footer />
