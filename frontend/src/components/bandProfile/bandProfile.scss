@@ -1,0 +1,39 @@
+.bandProfile__header {
+  display: flex;
+  align-content: space-around;
+
+  margin: 5px 20px;
+  .header__logo {
+    width: 20%;
+    margin: 0 20px;
+  }
+  .header__banner {
+    width: 75%;
+    padding: 15px;
+
+    background-image: url(https://pbs.twimg.com/profile_banners/851494228815482880/1539011178/1500x500);
+    background-size: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    .banner__button {
+      width: 75px;
+
+      padding: 10px;
+      border-radius: 30%;
+      background-color: lime;
+    }
+
+    .banner__text {
+      text-align: center;
+      width: 100px;
+
+      display: inline-block;
+      padding: 10px;
+      border-radius: 35%;
+      background-color: red;
+    }
+  }
+}
