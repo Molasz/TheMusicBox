@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function header({ isLogged }) {
   return (
     <header className='header'>
-      <Link className='header__logo' />
+      <Link className='header__logo' to='/' />
 
       <input className='header__input'></input>
 
