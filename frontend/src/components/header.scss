@@ -10,11 +10,16 @@
 
   padding: 0 20px;
   .header__logo {
-    margin: 0 -25px;
-    width: 25%;
+    width: 300px;
+    height: 100%;
+
+    background-image: url(../assets/logo_white.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
   }
   .header__input {
-    flex: 0.5;
+    flex: 0.7;
     height: 35px;
     padding: 0 30px;
 
@@ -25,7 +30,16 @@
     background-position: 5px;
     background-repeat: no-repeat;
   }
+  .header__login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .login__icon {
+      width: 40px;
+    }
+  }
   .header__menu {
+    filter: invert(100%);
     width: 40px;
   }
 }

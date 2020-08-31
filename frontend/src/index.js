@@ -11,7 +11,7 @@ import './index.scss';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Header />
+      <Header isLogged={false} />
       <h1>The Music Box!</h1>
       <Footer />
     </BrowserRouter>

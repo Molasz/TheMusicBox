@@ -1,20 +1,30 @@
 import React from 'react';
 import './header.scss';
 
-function header() {
+import { Link } from 'react-router-dom';
+
+function header({ isLogged }) {
   return (
     <header className='header'>
-      <img
-        src={require('../assets/logo_white.png')}
-        alt='header logo'
-        className='header__logo'
-      />
+      <Link className='header__logo' />
+
       <input className='header__input'></input>
-      <img
-        src={require('../assets/login.png')}
-        alt='login icon'
-        className='header__menu'
-      />
+
+      {isLogged ? (
+        <img
+          src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png'
+          alt='manu icon'
+          className='header__menu'
+        />
+      ) : (
+        <Link to='/login' className='header__login'>
+          <img
+            src={require('../assets/login.png')}
+            alt='login icon'
+            className='login__icon'
+          />
+        </Link>
+      )}
     </header>
   );
 }
