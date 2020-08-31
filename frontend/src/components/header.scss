@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  background-color: black;
+
+  height: 80px;
+
+  padding: 0 20px;
+  .header__logo {
+    margin: 0 -25px;
+    width: 25%;
+  }
+  .header__input {
+    flex: 0.5;
+    height: 35px;
+    padding: 0 30px;
+
+    font-size: 20px;
+
+    background-image: url(https://image.flaticon.com/icons/svg/25/25313.svg);
+    background-size: 20px;
+    background-position: 5px;
+    background-repeat: no-repeat;
+  }
+  .header__menu {
+    width: 40px;
+  }
+}
