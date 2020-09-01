@@ -7,30 +7,21 @@ const logo =
 
 function bandProfile() {
   return (
-    <section className='bandProfile__container'>
-      <div className='container__logo'>
-        <img src={logo} alt='Band logo' className='logo__img' />
+    <div className='band-profile__container'>
+      <div className='container__top'>
+        <img className='top__logo' src={logo} alt='Logo' />
+        <div className='top__banner'>
+          <button className='banner__button'></button>
+          <p className='banner_text'>14 Followers</p>
+        </div>
       </div>
-      <div className='container__banner'>
-        <button className='banner__button'> Follow </button>
-        <h3 className='banner__text'> 14 followers</h3>
+      <div className='container__bottom'>
+        <div className='bottom__bio'>BIO</div>
+        <div className='bottom__photos'>PHOTOS</div>
+        <div className='bottom__discography'>DISCOGRAPHY</div>
+        <div className='bottom__concerts'>Concerts</div>
       </div>
-      <div className='container__concerts'>
-        <h1>Concerts</h1>
-      </div>
-      <div className='container__discography'>
-        <Discography />
-      </div>
-      <div className='container__photos'>
-        <h1>Photos</h1>
-      </div>
-      <div className='container__bio'>
-        <h1>Bio</h1>
-      </div>
-      <div className='container__social-media'>
-        <h1>Socail Media</h1>
-      </div>
-    </section>
+    </div>
   );
 }
 
