@@ -22,14 +22,17 @@ const portada = [
 function discography() {
   return (
     <section className='discography'>
-      {portada.map((element, i) => {
-        return (
-          <div className='discography__item' key={i}>
-            <img src={element.img} alt='Cover' className='item__img' />
-            <p className='item__title'>{element.title}</p>
-          </div>
-        );
-      })}
+      <h1 className='discography__title'>Discography</h1>
+      <div className='discography__main'>
+        {portada.map((element, i) => {
+          return (
+            <div className='main__item' key={i}>
+              <img src={element.img} alt='Cover' className='item__img' />
+              <p className='item__title'>{element.title}</p>
+            </div>
+          );
+        })}
+      </div>
     </section>
   );
 }

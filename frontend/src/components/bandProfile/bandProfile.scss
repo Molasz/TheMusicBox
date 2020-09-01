@@ -1,72 +1,301 @@
-.bandProfile__container {
-  padding: 25px;
+.band-profile {
+  display: flex;
+  flex-direction: column;
+
   color: white;
+  padding: 20px 10%;
+  .band-profile__top {
+    display: flex;
+    flex-direction: row;
 
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 10px 10px;
-  grid-template-areas:
-    'Logo Banner Banner Banner'
-    'Bio Fotos Discografia Discografia'
-    'XXSS Fotos Discografia Discografia';
+    margin-bottom: 30px;
+    .top__logo {
+      width: 50%;
+    }
+    .top__banner {
+      display: none;
+      width: 50%;
 
-  .container__logo {
-    grid-area: Logo;
-    max-width: 250px;
-    max-height: 250px;
-    .logo__img {
-      width: 100%;
+      margin-left: 30px;
+    }
+    .top__info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      margin-left: 30px;
+
+      .info__name {
+        font-size: 80px;
+        margin: 0;
+      }
     }
   }
+  .band-profile__middle {
+    display: flex;
+    flex-direction: column;
+  }
+  .band-profile__bottom {
+    display: flex;
+    flex-direction: column;
+  }
+}
 
-  .container__banner {
-    grid-area: Banner;
-    max-width: 735px;
-    max-height: 235px;
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+}
 
-    background-image: url(https://pbs.twimg.com/profile_banners/851494228815482880/1539011178/1500x500);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .band-profile {
+    .band-profile__top {
+      .top__logo {
+        width: 20%;
+      }
+      .top__banner {
+        display: block;
+      }
+      .top__info {
+        display: flex;
+        flex-direction: column;
 
-    padding: 15px;
+        margin-left: 30px;
+        .info__name {
+          font-size: 80px;
+        }
+      }
+    }
+    .band-profile__middle {
+      flex-direction: row;
+
+      .middle__bio {
+        width: 20%;
+        margin-right: 30px;
+      }
+    }
+
+    .band-profile__bottom {
+      flex-direction: row;
+      .bottom__concerts {
+        width: 20%;
+        margin-right: 30px;
+      }
+    }
+  }
+}
+
+/*
+.band-profile__container {
+  display: flex;
+  flex-direction: column;
+
+  color: white;
+
+  padding: 20px;
+  .container__top {
+    border-bottom: 3px solid #f6544c;
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
-    .banner__button {
-      width: 75px;
 
-      padding: 10px;
-      border-radius: 30%;
-      background-color: lime;
+    padding-bottom: 10px;
+
+    .top__banner {
+      width: 90%;
+      height: 207px;
+
+      background-image: url(https://pbs.twimg.com/profile_banners/851494228815482880/1539011178/1500x500);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+
+      max-width: 770px;
+      margin: 0 auto;
+
+      padding: 15px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      .banner__button {
+        background-color: red;
+      }
+      .banner__text {
+        background-color: red;
+      }
     }
+    .top__logo {
+      position: absolute;
+      opacity: 0.95;
+      max-width: 190px;
 
-    .banner__text {
-      text-align: center;
-      width: 100px;
-      margin: 0;
+      margin-right: 20px;
 
-      padding: 10px;
-      border-radius: 10%;
-      background-color: red;
+      display: flex;
+      flex-direction: column;
+
+      .logo__img {
+        width: 100%;
+      }
+      .logo__name {
+        text-align: center;
+        background-color: black;
+        font-size: clamp(40px, 5vw, 50px);
+        margin: 0;
+      }
     }
   }
 
-  .container__discography {
-    grid-area: Discografia;
-  }
+  .container__bottom {
+    display: flex;
+    flex-direction: column;
 
-  .container__photos {
-    grid-area: Fotos;
-  }
+    margin-top: 10px;
+    .bottom__bio {
+      flex: 0.2;
 
-  .container__bio {
-    grid-area: Bio;
-  }
-
-  .container__social-media {
-    grid-area: XXSS;
+      .bio__city {
+        border-bottom: 3px solid #f6544c;
+        padding-bottom: 10px;
+        margin: 0;
+      }
+    }
+    .bottom__photos {
+      flex: 0.25;
+    }
+    .bottom__discography {
+      flex: 0.35;
+    }
+    .bottom__concerts {
+      flex: 0.2;
+    }
   }
 }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .band-profile__container {
+    display: flex;
+    flex-direction: column;
+
+    padding: 20px;
+    .container__top {
+      border-bottom: 3px solid #f6544c;
+
+      display: flex;
+      flex-direction: row-reverse;
+
+      min-width: 750px;
+
+      padding-bottom: 10px;
+
+      .top__logo {
+        position: static;
+        max-width: 190px;
+        flex: 0.2;
+        margin-right: 20px;
+
+        display: flex;
+        flex-direction: column;
+
+        .logo__img {
+          width: 100%;
+        }
+        .logo__name {
+          text-align: center;
+          font-size: clamp(40px, 5vw, 50px);
+          margin: 0;
+        }
+      }
+      .top__banner {
+        flex: 0.8;
+        background-image: url(https://pbs.twimg.com/profile_banners/851494228815482880/1539011178/1500x500);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+
+        max-width: 770px;
+        margin: 0 auto;
+
+        padding: 15px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        .banner__button {
+          background-color: red;
+        }
+        .banner__text {
+          background-color: red;
+        }
+      }
+    }
+
+    .container__bottom {
+      display: flex;
+      flex-direction: row;
+
+      margin-top: 10px;
+      .bottom__bio {
+        flex: 0.12;
+        padding-right: 50px;
+
+        .bio__city {
+          border-bottom: 3px solid #f6544c;
+          padding-bottom: 10px;
+          margin: 0;
+        }
+        .bio__info {
+          padding-bottom: 20px;
+          border-bottom: 3px solid #f6544c;
+        }
+      }
+      .bottom__photos {
+        flex: 0.25;
+      }
+      .bottom__discography {
+        flex: 0.35;
+      }
+      .bottom__concerts {
+        flex: 0.2;
+      }
+    }
+  }
+}
+
+<div className='band-profile__container'>
+      <div className='container__top'>
+        <div className='top__banner'>
+          <button className='banner__button'> Follow </button>
+          <p className='banner__text'>14 Followers</p>
+        </div>
+        <div className='top__logo'>
+          <img className='logo__img' src={logo} alt='Logo' />
+          <h3 className='logo__name'>CRIM</h3>
+        </div>
+      </div>
+      <div className='container__bottom'>
+        <div className='bottom__bio'>
+          <p className='bio__city'> CRIM Tarragona, Spain</p>
+          <p className='bio__info'>
+            
+          </p>
+        </div>
+        <div className='bottom__photos'>
+          <Photos />
+        </div>
+        <div className='bottom__discography'>
+          <Discography />
+        </div>
+        <div className='bottom__concerts'>
+          <Concerts />
+        </div>
+      </div>
+    </div>
+    */
