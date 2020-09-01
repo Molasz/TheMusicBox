@@ -10,7 +10,7 @@ const photosData = [
 
 function photos() {
   return (
-    <div className='photo'>
+    <section className='photo'>
       <h1 className='photo__title'>Photos and videos</h1>
       <div className='photo__main'>
         {photosData.map((element, i) => {
@@ -19,7 +19,7 @@ function photos() {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 }
 
