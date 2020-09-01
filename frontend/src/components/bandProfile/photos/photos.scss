@@ -1,0 +1,17 @@
+.photo {
+  .photo__title {
+  }
+  .photo__main {
+    display: flex;
+    flex-wrap: wrap;
+
+    .main__item {
+      margin: 20px;
+      width: 150px;
+      filter: grayscale(100%);
+    }
+    .main__item:hover {
+      filter: grayscale(0);
+    }
+  }
+}
