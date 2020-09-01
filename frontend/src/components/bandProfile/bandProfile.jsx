@@ -9,14 +9,26 @@ function bandProfile() {
   return (
     <div className='band-profile__container'>
       <div className='container__top'>
-        <img className='top__logo' src={logo} alt='Logo' />
+        <div className='top__logo'>
+          <img className='logo__img' src={logo} alt='Logo' />
+          <h3 className='logo__name'>CRIM</h3>
+        </div>
         <div className='top__banner'>
-          <button className='banner__button'></button>
-          <p className='banner_text'>14 Followers</p>
+          <button className='banner__button'> Follow </button>
+          <p className='banner__text'>14 Followers</p>
         </div>
       </div>
       <div className='container__bottom'>
-        <div className='bottom__bio'>BIO</div>
+        <div className='bottom__bio'>
+          <p className='bio__city'> CRIM Tarragona, Spain</p>
+          <p>
+            Banda de punk-rock de Tarragona formada durant el 2011, inspirats
+            per la cruesa i melodies de bandes com Social Distortion,
+            Leatherface, Cock Sparrer, Vanilla Muffins... Actualment presentant
+            el seu segon llarga durada "Blau Sang, Vermell Cel" sota el segells
+            BCore i Tesla Music.
+          </p>
+        </div>
         <div className='bottom__photos'>PHOTOS</div>
         <div className='bottom__discography'>DISCOGRAPHY</div>
         <div className='bottom__concerts'>Concerts</div>

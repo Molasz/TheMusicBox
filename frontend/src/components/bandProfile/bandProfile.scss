@@ -2,112 +2,83 @@
   display: flex;
   flex-direction: column;
 
-  .contanier__top {
+  color: white;
+
+  padding: 20px;
+  .container__top {
+    border-bottom: 3px solid #f6544c;
+
     display: flex;
     flex-direction: row;
+
+    min-width: 750px;
+
+    padding-bottom: 10px;
+
+    .top__logo {
+      max-width: 190px;
+      flex: 0.2;
+      margin-right: 20px;
+
+      display: flex;
+      flex-direction: column;
+
+      .logo__img {
+        width: 100%;
+      }
+      .logo__name {
+        text-align: center;
+        font-size: clamp(40px, 5vw, 50px);
+        margin: 0;
+      }
+    }
+    .top__banner {
+      flex: 0.8;
+      background-image: url(https://pbs.twimg.com/profile_banners/851494228815482880/1539011178/1500x500);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+
+      max-width: 770px;
+      margin: 0 auto;
+
+      padding: 15px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      .banner__button {
+        background-color: red;
+      }
+      .banner__text {
+        background-color: red;
+      }
+    }
   }
 
   .container__bottom {
     display: flex;
     flex-direction: row;
+
+    margin-top: 10px;
+    .bottom__bio {
+      flex: 0.2;
+
+      .bio__city {
+        border-bottom: 3px solid #f6544c;
+        padding-bottom: 10px;
+        margin: 0;
+      }
+    }
+    .bottom__photos {
+      flex: 0.25;
+    }
+    .bottom__discography {
+      flex: 0.35;
+    }
+    .bottom__concerts {
+      flex: 0.2;
+    }
   }
 }
-
-/*
-.bandProfile__container {
-  padding: 25px;
-  color: white;
-
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 10px 10px;
-  grid-template-areas:
-    'Logo Banner Banner Banner'
-    'Bio Fotos Discografia Discografia'
-    'XXSS Fotos Discografia Discografia';
-
-  .container__logo {
-    grid-area: Logo;
-    max-width: 250px;
-    max-height: 250px;
-    .logo__img {
-      width: 100%;
-    }
-  }
-
-  .container__banner {
-    grid-area: Banner;
-    max-width: 735px;
-    max-height: 235px;
-
-    background-image: url(https://pbs.twimg.com/profile_banners/851494228815482880/1539011178/1500x500);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-
-    padding: 15px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
-    .banner__button {
-      width: 75px;
-
-      padding: 10px;
-      border-radius: 30%;
-      background-color: lime;
-    }
-
-    .banner__text {
-      text-align: center;
-      width: 100px;
-      margin: 0;
-
-      padding: 10px;
-      border-radius: 10%;
-      background-color: red;
-    }
-  }
-
-  .container__discography {
-    grid-area: Discografia;
-  }
-
-  .container__photos {
-    grid-area: Fotos;
-  }
-
-  .container__bio {
-    grid-area: Bio;
-  }
-
-  .container__social-media {
-    grid-area: XXSS;
-  }
-}
-<section className='bandProfile__container'>
-      <div className='container__logo'>
-        <img src={logo} alt='Band logo' className='logo__img' />
-      </div>
-      <div className='container__banner'>
-        <button className='banner__button'> Follow </button>
-        <h3 className='banner__text'> 14 followers</h3>
-      </div>
-      <div className='container__concerts'>
-        <h1>Concerts</h1>
-      </div>
-      <div className='container__discography'>
-        <Discography />
-      </div>
-      <div className='container__photos'>
-        <h1>Photos</h1>
-      </div>
-      <div className='container__bio'>
-        <h1>Bio</h1>
-      </div>
-      <div className='container__social-media'>
-        <h1>Socail Media</h1>
-      </div>
-    </section>
-*/
