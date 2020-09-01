@@ -14,9 +14,7 @@ function photos() {
       <h1 className='photo__title'>Photos and videos</h1>
       <div className='photo__main'>
         {photosData.map((element, i) => {
-          return (
-            <img src={element} alt={('Image', i)} className='main__item' />
-          );
+          return <img src={element} alt={i} className='main__item' />;
         })}
       </div>
     </section>
