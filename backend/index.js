@@ -2,6 +2,7 @@ const express = require('express');
 const debug = require('debug')('app');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const Band = require('./src/models/bandModel');
 
@@ -12,6 +13,8 @@ mongoose.connect('mongodb://localhost/TheMusicBox');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.send('My server works!');
