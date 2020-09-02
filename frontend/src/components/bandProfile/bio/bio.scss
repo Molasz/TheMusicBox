@@ -1,0 +1,11 @@
+$color-detail: #f55110;
+.bio {
+  .bio__title {
+    padding-bottom: 10px;
+    border-bottom: 4px solid $color-detail;
+    font-size: 20px;
+  }
+  .bio__text {
+    line-height: 21px;
+  }
+}

@@ -17,7 +17,7 @@ render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <Header isLogged={true} />
+        <Header isLogged={false} />
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/band/:bandId' component={BandProfile} />

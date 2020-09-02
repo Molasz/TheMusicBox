@@ -9,6 +9,9 @@ import store from '../../redux/store';
 import Photos from './photos/photos';
 import Discography from './discography/discography';
 import Concerts from './concerts/concerts';
+import Bio from './bio/bio';
+
+import GradeIcon from '@material-ui/icons/Grade';
 
 function BandProfile(props) {
   useEffect(() => {
@@ -26,15 +29,23 @@ function BandProfile(props) {
           className='top__banner'
         />
         <div className='top__info'>
-          <p className='info__name'>{props.band.name}</p>
+          <strong className='info__name'>{props.band.name}</strong>
           <div className='info__follow'>
+            <GradeIcon />
             <button className='follow__button'>Follow</button>
             <p className='follow__number'> 14 Followers</p>
           </div>
         </div>
       </div>
       <div className='band-profile__middle'>
-        <div className='middle__bio'>{props.band.bio}</div>
+        <div className='middle__bio'>
+          <Bio
+            bio={props.band.bio}
+            city={props.band.city}
+            country={props.band.country}
+            name={props.band.name}
+          />
+        </div>
 
         <Discography data={props.band.discography} />
       </div>
