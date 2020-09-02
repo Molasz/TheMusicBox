@@ -10,10 +10,10 @@
 
   padding: 0 20px;
   .header__logo {
-    width: 300px;
+    width: 140px;
     height: 100%;
 
-    background-image: url(../../assets/logo_white.png);
+    background-image: url(../../assets/logo_white_little.png);
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -61,5 +61,14 @@
   }
   .header__menu:hover .menu__content {
     display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    .header__logo {
+      width: 300px;
+      background-image: url(../../assets/logo_white.png);
+    }
   }
 }
