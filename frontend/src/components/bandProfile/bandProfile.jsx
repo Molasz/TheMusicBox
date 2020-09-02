@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import './bandProfile.scss';
 
 import { getBand } from '../../redux/actions/bandActions';
+import store from '../../redux/store';
 
 import Photos from './photos/photos';
 import Discography from './discography/discography';
@@ -17,10 +18,10 @@ const bio =
 
 function BandProfile(props) {
   useEffect(() => {
-    getBand(props.match.params.bandId);
-  });
+    store.dispatch(getBand(props.match.params.bandId));
+  }, []);
 
-  return (
+  const result = props.band ? (
     <article className='band-profile'>
       <div className='band-profile__top'>
         <img src={logo} alt='Logo' className='top__logo' />
@@ -31,7 +32,7 @@ function BandProfile(props) {
           className='top__banner'
         />
         <div className='top__info'>
-          <p className='info__name'>CRIM</p>
+          <p className='info__name'>{props.band.name}</p>
           <div className='info__follow'>
             <button className='follow__button'>Follow</button>
             <p className='follow__number'> 14 Followers</p>
@@ -39,25 +40,27 @@ function BandProfile(props) {
         </div>
       </div>
       <div className='band-profile__middle'>
-        <div className='middle__bio'>{bio}</div>
+        <div className='middle__bio'>{props.band.bio}</div>
 
-        <Discography className='middle__discography' />
+        <Discography data={props.band.discography} />
       </div>
       <div className='band-profile__bottom'>
         <div className='bottom__concerts'>
-          <Concerts />
+          <Concerts data={props.band.concerts} />
         </div>
         <div className='bottom__photos'>
-          <Photos />
+          <Photos data={props.band.photos} />
         </div>
       </div>
     </article>
+  ) : (
+    <h3>Loading...</h3>
   );
+  return result;
 }
 
 function mapStateToProps(state) {
-  const { band } = state;
-  return { band };
+  return state.bandReducer;
 }
 
 function mapDispatchToProps(dispatch) {
