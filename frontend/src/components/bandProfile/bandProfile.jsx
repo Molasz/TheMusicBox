@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+
 import './bandProfile.scss';
+
+import { getBand } from '../../redux/actions/bandActions';
 
 import Photos from './photos/photos';
 import Discography from './discography/discography';
@@ -11,7 +15,11 @@ const logo =
 const bio =
   'Banda de punk-rock de Tarragona formada durant el 2011, inspirats per la cruesa i melodies de bandes com Social Distortion, Leatherface, Cock Sparrer, Vanilla Muffins... Actualment presentant el seu segon llarga durada "Blau Sang, Vermell Cel" sota el segells BCore i Tesla Music.';
 
-function bandProfile() {
+function BandProfile(props) {
+  useEffect(() => {
+    getBand(props.match.params.bandId);
+  });
+
   return (
     <article className='band-profile'>
       <div className='band-profile__top'>
@@ -47,4 +55,12 @@ function bandProfile() {
   );
 }
 
-export default bandProfile;
+function mapStateToProps(state) {
+  const { band } = state;
+  return { band };
+}
+
+function mapDispatchToProps(dispatch) {
+  return { getBand };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(BandProfile);
