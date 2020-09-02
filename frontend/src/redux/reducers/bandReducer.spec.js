@@ -14,6 +14,4 @@ describe('Band reducer', () => {
     };
     expect(reducer({}, action)).toEqual({ band: text });
   });
-
-  it('should throw error if fetch resolve with error', () => {});
 });
