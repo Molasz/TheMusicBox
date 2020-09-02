@@ -12,7 +12,13 @@ const bandModel = new Schema({
   discography: [
     {
       title: { type: String },
-      img: { type: String }
+      img: { type: String },
+      songs: [
+        {
+          title: { type: String },
+          time: { type: String }
+        }
+      ]
     }
   ],
   concerts: [
