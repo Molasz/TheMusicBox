@@ -14,15 +14,3 @@ export const getBand = (id) => async (dispatch) => {
     return dispatch(error(err));
   }
 };
-
-/*
-export function getBand(id) {
-  return (dispatch) => {
-    return fetch(`http://localhost:1312/band/${id}`)
-      .then((response) => dispatch(response))
-      .catch((err) => {
-        throw new Error(err);
-      });
-  };
-}
-*/
