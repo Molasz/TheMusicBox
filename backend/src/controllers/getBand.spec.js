@@ -3,7 +3,7 @@ const sinon = require('sinon');
 
 const getBand = require('./getBand');
 
-xdescribe('GetBand test', () => {
+describe('GetBand test', () => {
   afterEach(() => {
     sinon.restore();
   });
@@ -19,10 +19,21 @@ xdescribe('GetBand test', () => {
       findById: (id, callback) => {}
     };
 
-    const statusStub = sinon.stub(res, 'status');
+    const findByIdStub = sinon.stub(Band, 'findById');
+    //const findByIdMock = sinon.mock(Band.findById);
 
     getBand(req, res, Band);
 
-    expect(statusStub.calledWith(200)).to.be.true;
+    expect(findByIdStub.called).to.be.true;
+  });
+  it('should respond with status 200', () => {
+    const req = { params: 0 };
+    const res = { status: () => {} };
+
+    const statusStub = sinon.stub(res, 'status');
+
+    getBand(req, res);
+
+    expect(statusStub.calledWith(400)).to.be.true;
   });
 });

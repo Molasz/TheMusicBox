@@ -38,5 +38,12 @@
     "env": {
       "PORT": 1312
     }
+  },
+  "nyc": {
+    "all": true,
+    "exclude": [
+      "**/*.spec.js",
+      "coverage"
+    ]
   }
 }
