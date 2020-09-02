@@ -8,7 +8,7 @@ function concerts(props) {
       <div className='concerts__main'>
         {props.data.map((element, i) => {
           return (
-            <div className='main__item'>
+            <div className='main__item' key={i}>
               <p className='item__date'>{element.date}</p>
               <p className='item__city'>{element.city}</p>
             </div>

@@ -10,12 +10,6 @@ import Photos from './photos/photos';
 import Discography from './discography/discography';
 import Concerts from './concerts/concerts';
 
-const logo =
-  'https://partisano.cat/7705-superlarge_default/samarreta-crim-logo-groc.jpg';
-
-const bio =
-  'Banda de punk-rock de Tarragona formada durant el 2011, inspirats per la cruesa i melodies de bandes com Social Distortion, Leatherface, Cock Sparrer, Vanilla Muffins... Actualment presentant el seu segon llarga durada "Blau Sang, Vermell Cel" sota el segells BCore i Tesla Music.';
-
 function BandProfile(props) {
   useEffect(() => {
     store.dispatch(getBand(props.match.params.bandId));
@@ -24,7 +18,7 @@ function BandProfile(props) {
   const result = props.band ? (
     <article className='band-profile'>
       <div className='band-profile__top'>
-        <img src={logo} alt='Logo' className='top__logo' />
+        <img src={props.band.logo} alt='Logo' className='top__logo' />
 
         <img
           src='https://pbs.twimg.com/profile_banners/851494228815482880/1539011178/1500x500'

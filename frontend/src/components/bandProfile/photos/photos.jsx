@@ -7,7 +7,9 @@ function photos(props) {
       <h1 className='photo__title'>Photos and videos</h1>
       <div className='photo__main'>
         {props.data.map((element, i) => {
-          return <img src={element} alt={i} className='main__item' />;
+          return (
+            <img src={element} alt={`nº${i}`} key={i} className='main__item' />
+          );
         })}
       </div>
     </section>
