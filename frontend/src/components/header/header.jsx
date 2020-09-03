@@ -3,6 +3,9 @@ import './header.scss';
 
 import { Link } from 'react-router-dom';
 
+import MenuIcon from '@material-ui/icons/Menu';
+import LoginIcon from '@material-ui/icons/ExitToApp';
+
 function header({ isLogged }) {
   return (
     <header className='header'>
@@ -12,17 +15,13 @@ function header({ isLogged }) {
 
       {isLogged ? (
         <div className='header__menu'>
-          <img
-            src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png'
-            alt='manu icon'
-            className='menu__icon'
-          />
+          <MenuIcon className='menu__icon' />
           <div className='menu__content'>
             <div className='content__list'>
               <Link to='/profile' className='list__item'>
                 Profile
               </Link>
-              <Link to='/profile' className='list__item'>
+              <Link to='/profile/settings' className='list__item'>
                 Settings
               </Link>
             </div>
@@ -30,11 +29,7 @@ function header({ isLogged }) {
         </div>
       ) : (
         <Link to='/login' className='header__login'>
-          <img
-            src={require('../../assets/login.png')}
-            alt='login icon'
-            className='login__icon'
-          />
+          <LoginIcon className='login__icon' />
         </Link>
       )}
     </header>

@@ -9,6 +9,8 @@
   height: 80px;
 
   padding: 0 20px;
+
+  min-width: 500px;
   .header__logo {
     width: 140px;
     height: 100%;
@@ -19,7 +21,7 @@
     background-position: center;
   }
   .header__input {
-    flex: 0.7;
+    width: 40%;
     height: 35px;
     padding: 0 30px;
 
@@ -42,20 +44,24 @@
     position: relative;
     display: inline-block;
     .menu__icon {
-      filter: invert(100%);
-      width: 40px;
+      color: white;
+      font-size: 40px;
     }
     .menu__content {
       display: none;
       position: absolute;
       background-color: #000000;
-      padding: 15px 5px;
+      padding: 10px 3px;
       z-index: 1;
       .content__list {
         display: flex;
         flex-direction: column;
         justify-content: center;
         justify-items: center;
+
+        .list__item {
+          margin-bottom: 10px;
+        }
       }
     }
   }
