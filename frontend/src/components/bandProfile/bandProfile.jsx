@@ -9,12 +9,9 @@ import store from '../../redux/store';
 import Photos from './photos/photos';
 import Discography from './discography/discography';
 import Concerts from './concerts/concerts';
+import Bio from './bio/bio';
 
-const logo =
-  'https://partisano.cat/7705-superlarge_default/samarreta-crim-logo-groc.jpg';
-
-const bio =
-  'Banda de punk-rock de Tarragona formada durant el 2011, inspirats per la cruesa i melodies de bandes com Social Distortion, Leatherface, Cock Sparrer, Vanilla Muffins... Actualment presentant el seu segon llarga durada "Blau Sang, Vermell Cel" sota el segells BCore i Tesla Music.';
+import Star from '@material-ui/icons/Grade';
 
 function BandProfile(props) {
   useEffect(() => {
@@ -24,7 +21,7 @@ function BandProfile(props) {
   const result = props.band ? (
     <article className='band-profile'>
       <div className='band-profile__top'>
-        <img src={logo} alt='Logo' className='top__logo' />
+        <img src={props.band.logo} alt='Logo' className='top__logo' />
 
         <img
           src='https://pbs.twimg.com/profile_banners/851494228815482880/1539011178/1500x500'
@@ -32,25 +29,30 @@ function BandProfile(props) {
           className='top__banner'
         />
         <div className='top__info'>
-          <p className='info__name'>{props.band.name}</p>
+          <strong className='info__name'>{props.band.name}</strong>
           <div className='info__follow'>
-            <button className='follow__button'>Follow</button>
-            <p className='follow__number'> 14 Followers</p>
+            <div className='follow__container'>
+              <Star className='contanier__icon' />
+              <button className='container__button'>Follow</button>
+            </div>
+            <p className='follow__count'> 14 Followers</p>
           </div>
         </div>
       </div>
       <div className='band-profile__middle'>
-        <div className='middle__bio'>{props.band.bio}</div>
+        <Bio
+          bio={props.band.bio}
+          city={props.band.city}
+          country={props.band.country}
+          name={props.band.name}
+          socialNetwork={props.band.socialNetwork}
+        />
 
         <Discography data={props.band.discography} />
       </div>
       <div className='band-profile__bottom'>
-        <div className='bottom__concerts'>
-          <Concerts data={props.band.concerts} />
-        </div>
-        <div className='bottom__photos'>
-          <Photos data={props.band.photos} />
-        </div>
+        <Concerts data={props.band.concerts} />
+        <Photos data={props.band.photos} />
       </div>
     </article>
   ) : (

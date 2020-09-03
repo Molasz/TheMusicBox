@@ -1,4 +1,6 @@
+$color-detail: #f55110;
 .band-profile {
+  min-width: 500px;
   display: flex;
   flex-direction: column;
 
@@ -8,7 +10,9 @@
     display: flex;
     flex-direction: row;
 
-    margin-bottom: 30px;
+    padding-bottom: 13px;
+    border-bottom: 4px solid $color-detail;
+    margin-bottom: 0px;
     .top__logo {
       width: 50%;
     }
@@ -23,17 +27,34 @@
       flex-direction: column;
       justify-content: space-between;
 
+      width: 30%;
       margin-left: 30px;
 
       .info__name {
+        text-transform: uppercase;
         font-size: 80px;
         margin: 0;
+      }
+
+      .info__follow {
+        .follow__container {
+          display: flex;
+          align-items: center;
+
+          .contanier__icon {
+            font-size: 30px;
+            margin-right: 10px;
+          }
+        }
       }
     }
   }
   .band-profile__middle {
     display: flex;
     flex-direction: column;
+
+    padding-bottom: 20px;
+    border-bottom: 4px solid $color-detail;
   }
   .band-profile__bottom {
     display: flex;
@@ -67,19 +88,10 @@
     }
     .band-profile__middle {
       flex-direction: row;
-
-      .middle__bio {
-        width: 20%;
-        margin-right: 30px;
-      }
     }
 
     .band-profile__bottom {
       flex-direction: row;
-      .bottom__concerts {
-        width: 20%;
-        margin-right: 30px;
-      }
     }
   }
 }

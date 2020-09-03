@@ -1,5 +1,16 @@
+$color-detail: #f55110;
+
 .photo {
+  width: 100%;
   .photo__title {
+    display: flex;
+    align-items: center;
+
+    .title__icon {
+      font-size: 30px;
+      color: $color-detail;
+      margin-right: 10px;
+    }
   }
   .photo__main {
     display: flex;
@@ -7,11 +18,18 @@
 
     .main__item {
       margin: 20px;
-      width: 150px;
+      margin-left: 0;
+      width: 180px;
       filter: grayscale(100%);
     }
     .main__item:hover {
       filter: grayscale(0);
     }
+  }
+}
+
+@media (min-width: 992px) {
+  .photo {
+    width: 80%;
   }
 }

@@ -12,7 +12,14 @@ const bandModel = new Schema({
   discography: [
     {
       title: { type: String },
-      img: { type: String }
+      img: { type: String },
+      date: { type: String },
+      songs: [
+        {
+          title: { type: String },
+          time: { type: String }
+        }
+      ]
     }
   ],
   concerts: [
@@ -21,7 +28,12 @@ const bandModel = new Schema({
       city: { type: String }
     }
   ],
-  photos: [String]
+  photos: [String],
+  socialNetwork: {
+    twitter: { type: String },
+    facebook: { type: String },
+    instagram: { type: String }
+  }
 });
 
 module.exports = mongoose.model('bands', bandModel);
