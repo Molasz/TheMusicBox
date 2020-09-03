@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nyc --reporter=html  mocha --recursive **/*spec.js",
+    "test": "nyc --reporter=html  mocha --recursive src/**/*spec.js",
     "start": "DEBUG=app,app:* nodemon app.js",
     "eslint": "eslint . --fix"
   },
@@ -13,6 +13,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "chai": "^4.2.0",
+    "cors": "^2.8.5",
     "debug": "^4.1.1",
     "express": "^4.17.1",
     "mocha": "^8.1.3",
@@ -37,5 +38,12 @@
     "env": {
       "PORT": 1312
     }
+  },
+  "nyc": {
+    "all": true,
+    "exclude": [
+      "**/*.spec.js",
+      "coverage"
+    ]
   }
 }

@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+
 import './bandProfile.scss';
+
+import { getBand } from '../../redux/actions/bandActions';
+import store from '../../redux/store';
 
 import Photos from './photos/photos';
 import Discography from './discography/discography';
@@ -11,8 +16,12 @@ const logo =
 const bio =
   'Banda de punk-rock de Tarragona formada durant el 2011, inspirats per la cruesa i melodies de bandes com Social Distortion, Leatherface, Cock Sparrer, Vanilla Muffins... Actualment presentant el seu segon llarga durada "Blau Sang, Vermell Cel" sota el segells BCore i Tesla Music.';
 
-function bandProfile() {
-  return (
+function BandProfile(props) {
+  useEffect(() => {
+    store.dispatch(getBand(props.match.params.bandId));
+  }, []);
+
+  const result = props.band ? (
     <article className='band-profile'>
       <div className='band-profile__top'>
         <img src={logo} alt='Logo' className='top__logo' />
@@ -23,7 +32,7 @@ function bandProfile() {
           className='top__banner'
         />
         <div className='top__info'>
-          <p className='info__name'>CRIM</p>
+          <p className='info__name'>{props.band.name}</p>
           <div className='info__follow'>
             <button className='follow__button'>Follow</button>
             <p className='follow__number'> 14 Followers</p>
@@ -31,20 +40,30 @@ function bandProfile() {
         </div>
       </div>
       <div className='band-profile__middle'>
-        <div className='middle__bio'>{bio}</div>
+        <div className='middle__bio'>{props.band.bio}</div>
 
-        <Discography className='middle__discography' />
+        <Discography data={props.band.discography} />
       </div>
       <div className='band-profile__bottom'>
         <div className='bottom__concerts'>
-          <Concerts />
+          <Concerts data={props.band.concerts} />
         </div>
         <div className='bottom__photos'>
-          <Photos />
+          <Photos data={props.band.photos} />
         </div>
       </div>
     </article>
+  ) : (
+    <h3>Loading...</h3>
   );
+  return result;
 }
 
-export default bandProfile;
+function mapStateToProps(state) {
+  return state.bandReducer;
+}
+
+function mapDispatchToProps(dispatch) {
+  return { getBand };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(BandProfile);

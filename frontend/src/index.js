@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
@@ -8,18 +8,23 @@ import Footer from './components/footer/footer';
 import Home from './components/home/home';
 import BandProfile from './components/bandProfile/bandProfile';
 
+import store from './redux/store';
+import { Provider } from 'react-redux';
+
 import './index.scss';
 
-ReactDOM.render(
+render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Header isLogged={true} />
-      <Switch>
-        <Route path='/' exact component={Home} />
-        <Route path='/band' exact component={BandProfile} />
-      </Switch>
-      <Footer />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Header isLogged={true} />
+        <Switch>
+          <Route path='/' exact component={Home} />
+          <Route path='/band/:bandId' component={BandProfile} />
+        </Switch>
+        <Footer />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
