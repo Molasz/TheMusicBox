@@ -3,10 +3,15 @@ import './discography.scss';
 
 import Disc from './disc/disc';
 
+import DiscIcon from '@material-ui/icons/Album';
+
 function discography(props) {
   return (
     <section className='discography'>
-      <h1 className='discography__title'>Discography</h1>
+      <div className='discography__title'>
+        <DiscIcon className='title__icon' />
+        <h1>Discography</h1>
+      </div>
       <div className='discography__main'>
         {props.data.map((element, i) => {
           return <Disc data={element} key={i} />;

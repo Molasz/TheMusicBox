@@ -1,5 +1,17 @@
+$color-detail: #f55110;
+
 .concerts {
+  width: 100%;
+  margin-right: 30px;
   .concerts__title {
+    display: flex;
+    align-items: center;
+
+    .title__icon {
+      font-size: 30px;
+      color: $color-detail;
+      margin-right: 10px;
+    }
   }
   .concerts__main {
     display: flex;
@@ -16,5 +28,11 @@
         color: #f6544c;
       }
     }
+  }
+}
+
+@media (min-width: 992px) {
+  .concerts {
+    width: 20%;
   }
 }

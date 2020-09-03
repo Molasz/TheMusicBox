@@ -11,7 +11,7 @@ import Discography from './discography/discography';
 import Concerts from './concerts/concerts';
 import Bio from './bio/bio';
 
-import GradeIcon from '@material-ui/icons/Grade';
+import Star from '@material-ui/icons/Grade';
 
 function BandProfile(props) {
   useEffect(() => {
@@ -31,31 +31,27 @@ function BandProfile(props) {
         <div className='top__info'>
           <strong className='info__name'>{props.band.name}</strong>
           <div className='info__follow'>
-            <GradeIcon />
-            <button className='follow__button'>Follow</button>
-            <p className='follow__number'> 14 Followers</p>
+            <div className='follow__container'>
+              <Star className='contanier__icon' />
+              <button className='container__button'>Follow</button>
+            </div>
+            <p className='follow__count'> 14 Followers</p>
           </div>
         </div>
       </div>
       <div className='band-profile__middle'>
-        <div className='middle__bio'>
-          <Bio
-            bio={props.band.bio}
-            city={props.band.city}
-            country={props.band.country}
-            name={props.band.name}
-          />
-        </div>
+        <Bio
+          bio={props.band.bio}
+          city={props.band.city}
+          country={props.band.country}
+          name={props.band.name}
+        />
 
         <Discography data={props.band.discography} />
       </div>
       <div className='band-profile__bottom'>
-        <div className='bottom__concerts'>
-          <Concerts data={props.band.concerts} />
-        </div>
-        <div className='bottom__photos'>
-          <Photos data={props.band.photos} />
-        </div>
+        <Concerts data={props.band.concerts} />
+        <Photos data={props.band.photos} />
       </div>
     </article>
   ) : (

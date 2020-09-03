@@ -3,7 +3,7 @@ import './bio.scss';
 
 function bio({ city, country, bio, name }) {
   return (
-    <div className='bio'>
+    <section className='bio'>
       <p className='bio__title'>
         <strong className='title__name'>
           {name}
@@ -14,7 +14,7 @@ function bio({ city, country, bio, name }) {
         </span>
       </p>
       <p className='bio__text'>{bio}</p>
-    </div>
+    </section>
   );
 }
 

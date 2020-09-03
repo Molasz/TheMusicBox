@@ -1,10 +1,15 @@
 import React from 'react';
 import './concerts.scss';
 
+import MusicIcon from '@material-ui/icons/MusicNote';
+
 function concerts(props) {
   return (
     <section className='concerts'>
-      <h1 className='concerts__title'>Concerts</h1>
+      <div className='concerts__title'>
+        <MusicIcon className='title__icon' />
+        <h1 className='title__text'>Concerts</h1>
+      </div>
       <div className='concerts__main'>
         {props.data.map((element, i) => {
           return (

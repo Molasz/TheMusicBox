@@ -3,12 +3,14 @@
   flex-direction: column;
   align-items: center;
 
+  width: 200px;
+  margin-right: 20px;
+
   .item__img {
-    margin: 20px;
-    margin-bottom: 0;
-    width: 200px;
+    width: 100%;
   }
   .item__title {
+    text-align: center;
     color: white;
   }
 }
