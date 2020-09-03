@@ -13,6 +13,7 @@ const bandModel = new Schema({
     {
       title: { type: String },
       img: { type: String },
+      date: { type: String },
       songs: [
         {
           title: { type: String },
