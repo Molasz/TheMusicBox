@@ -27,7 +27,12 @@ const bandModel = new Schema({
       city: { type: String }
     }
   ],
-  photos: [String]
+  photos: [String],
+  socialNetwork: {
+    twitter: { type: String },
+    facebook: { type: String },
+    instagram: { type: String }
+  }
 });
 
 module.exports = mongoose.model('bands', bandModel);

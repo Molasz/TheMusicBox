@@ -45,6 +45,7 @@ function BandProfile(props) {
           city={props.band.city}
           country={props.band.country}
           name={props.band.name}
+          socialNetwork={props.band.socialNetwork}
         />
 
         <Discography data={props.band.discography} />
