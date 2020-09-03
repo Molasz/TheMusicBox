@@ -1,24 +1,35 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import './discography.scss';
 
 import Disc from './disc/disc';
+import Songs from './songs/songs';
 
 import DiscIcon from '@material-ui/icons/Album';
 
-function discography(props) {
+function Discography({ data, disc }) {
   return (
     <section className='discography'>
       <div className='discography__title'>
         <DiscIcon className='title__icon' />
         <h1>Discography</h1>
       </div>
-      <div className='discography__main'>
-        {props.data.map((element, i) => {
-          return <Disc data={element} key={i} />;
-        })}
-      </div>
+      {disc !== undefined ? (
+        <Songs info={data} index={disc} />
+      ) : (
+        <div className='discography__main'>
+          {data.map((element, i) => {
+            return <Disc data={element} index={i} key={i} />;
+          })}
+        </div>
+      )}
     </section>
   );
 }
 
-export default discography;
+function mapStateToProps(state) {
+  return state.bandReducer;
+}
+
+export default connect(mapStateToProps)(Discography);

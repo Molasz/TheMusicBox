@@ -21,13 +21,25 @@ function bio({ city, country, bio, name, socialNetwork }) {
         <p className='top__text'>{bio}</p>
       </div>
       <div className='bio__bottom'>
-        <a href={socialNetwork.twitter} target='_blank'>
+        <a
+          href={socialNetwork.twitter}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
           <TwitterIcon className='bottom-icon' />
         </a>
-        <a href={socialNetwork.facebook} target='_blank'>
+        <a
+          href={socialNetwork.facebook}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
           <FacebookIcon className='bottom-icon' />
         </a>
-        <a href={socialNetwork.instagram} target='_blank'>
+        <a
+          href={socialNetwork.instagram}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
           <InstagramIcon className='bottom-icon' />
         </a>
       </div>

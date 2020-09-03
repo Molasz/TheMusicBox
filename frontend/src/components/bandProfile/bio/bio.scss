@@ -20,7 +20,7 @@ $color-detail: #f55110;
     justify-content: center;
 
     padding-top: 20px;
-    border-top: 4px solid $color-detail;
+    border-top: 2px solid $color-detail;
     a {
       .bottom-icon {
         font-size: 30px;
@@ -35,5 +35,9 @@ $color-detail: #f55110;
 @media (min-width: 992px) {
   .bio {
     width: 20%;
+
+    .bio__bottom {
+      border: none;
+    }
   }
 }
