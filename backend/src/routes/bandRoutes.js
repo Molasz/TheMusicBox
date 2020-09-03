@@ -1,6 +1,6 @@
 const express = require('express');
 
-const getBand = require('../controllers/getBand');
+const getBand = require('../controllers/band/getBand');
 
 const bandRouter = express.Router();
 

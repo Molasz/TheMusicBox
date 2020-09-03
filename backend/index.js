@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const Band = require('./src/models/bandModel');
+const User = require('./src/models/userModel');
 
 const app = express();
 const { PORT: port } = process.env;
@@ -24,10 +25,8 @@ const bandRouter = require('./src/routes/bandRoutes')(Band);
 
 app.use('/band', bandRouter);
 
-/*
-const authRouter = require('./src/routes/heroRoutes')(User);
+const authRouter = require('./src/routes/authRoutes')(User);
 
 app.use('/auth', authRouter);
-*/
 
 app.listen(port, debug(`Server is running at port ${port}`));

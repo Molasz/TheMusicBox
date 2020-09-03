@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import Home from './components/home/home';
+import Login from './components/login/login';
 import BandProfile from './components/bandProfile/bandProfile';
 
 import store from './redux/store';
@@ -20,6 +21,7 @@ render(
         <Header isLogged={false} />
         <Switch>
           <Route path='/' exact component={Home} />
+          <Route path='/login' component={Login} />
           <Route path='/band/:bandId' component={BandProfile} />
         </Switch>
         <Footer />
