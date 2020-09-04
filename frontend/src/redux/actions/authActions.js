@@ -8,11 +8,24 @@ import { error } from './errorAction';
 //Async
 const sendLoginSuccess = createAction(types.SEND_LOGIN);
 export const sendLogin = (user, password) => async (dispatch) => {
-  debugger;
   try {
     const response = await fetch(`http://localhost:1312/auth/login`, {
       method: 'POST',
-      body: { user, password }
+      body: JSON.stringify({ user, password })
+    });
+    const result = await response.json();
+    return dispatch(sendLoginSuccess(result));
+  } catch (err) {
+    return dispatch(error(err));
+  }
+};
+
+const sendSignupSuccess = createAction(types.SEND_LOGIN);
+export const sendSignup = (user, password) => async (dispatch) => {
+  try {
+    const response = await fetch(`http://localhost:1312/auth/signup`, {
+      method: 'POST',
+      body: JSON.stringify({ user, password })
     });
     const result = await response.json();
     return dispatch(sendLoginSuccess(result));

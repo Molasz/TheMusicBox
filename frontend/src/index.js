@@ -7,6 +7,7 @@ import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import Home from './components/home/home';
 import Login from './components/login/login';
+import Signup from './components/signup/signup';
 import BandProfile from './components/bandProfile/bandProfile';
 
 import store from './redux/store';
@@ -22,6 +23,7 @@ render(
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/login' component={Login} />
+          <Route path='/signup' component={Signup} />
           <Route path='/band/:bandId' component={BandProfile} />
         </Switch>
         <Footer />
