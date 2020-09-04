@@ -12,7 +12,7 @@ const { PORT: port } = process.env;
 
 mongoose.connect('mongodb://localhost/TheMusicBox');
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(cors());
