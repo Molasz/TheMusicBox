@@ -5,6 +5,9 @@ import { Redirect } from 'react-router';
 import store from '../../redux/store';
 import { sendLogin } from '../../redux/actions/authActions';
 
+import LoginButton from './loginButton';
+import LogoutButton from './logoutButton';
+
 import './login.scss';
 
 function Login({ signin }) {
@@ -21,9 +24,8 @@ function Login({ signin }) {
       <input type='text' name='user' id='user' required />
       <input type='password' name='password' id='password' required />
 
-      <button type='button' onClick={(event) => onLogin(event)}>
-        Login
-      </button>
+      <LoginButton />
+      <LogoutButton />
     </section>
   );
 }

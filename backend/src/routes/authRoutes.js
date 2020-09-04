@@ -1,15 +1,9 @@
 const express = require('express');
-const passport = require('passport');
 
 const authRouter = express.Router();
 
 function routes(User) {
-  authRouter.route('/login').post((req, res) => {
-    passport.authenticate('local', {
-      successRedirect: res.send('ok'),
-      failureRedirect: res.send('mu mal')
-    });
-  });
+  authRouter.route('/login').post((req, res) => {});
 
   authRouter.route('/signup').post((req, res) => {
     User.find({ user: req.body.user }, (err, users) => {
