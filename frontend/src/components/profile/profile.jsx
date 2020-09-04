@@ -3,20 +3,21 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 import { DOMAIN } from '../../config/auth0';
 
+let accessToken = null;
+
 const Profile = () => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [userMetadata, setUserMetadata] = useState(null);
-
   useEffect(() => {
     const getUserMetadata = async () => {
       const domain = DOMAIN;
 
       try {
-        const accessToken = await getAccessTokenSilently({
+        accessToken = await getAccessTokenSilently({
           audience: `https://${domain}/api/v2/`,
           scope: 'read:current_user'
         });
-
+        console.log(accessToken);
         const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
 
         const metadataResponse = await fetch(userDetailsByIdUrl, {
@@ -28,14 +29,16 @@ const Profile = () => {
         const { user_metadata } = await metadataResponse.json();
 
         setUserMetadata(user_metadata);
-      } catch (e) {
-        console.log(e.message);
+      } catch (err) {
+        console.log(err.message);
       }
     };
 
     getUserMetadata();
   }, []);
-
+  if (isAuthenticated && sessionStorage.getItem('token') === null) {
+    sessionStorage.setItem('token', accessToken);
+  }
   return (
     isAuthenticated && (
       <div>
