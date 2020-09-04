@@ -1,27 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 
 import store from '../../redux/store';
 import { sendSignup } from '../../redux/actions/authActions';
 
 import './signup.scss';
 
-function Signup() {
+function Signup({ signup }) {
   function onSignup(event) {
     event.preventDefault();
-    if (
-      document.getElementById('password').value ===
-      document.getElementById('confirm-password').value
-    ) {
-      const user = document.getElementById('user').value;
-      const password = document.getElementById('password').value;
-      debugger;
+    const user = document.getElementById('user').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+    if (password === confirmPassword) {
       store.dispatch(sendSignup(user, password));
     } else {
-      alert('Passwords are not the same');
+      alert("Passwords aren't identical");
     }
   }
-  return (
+  return signup ? (
+    <Redirect to='/login' />
+  ) : (
     <section>
       <input type='text' name='user' id='user' required />
       <input
@@ -39,15 +39,19 @@ function Signup() {
         pattern='^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,12}$'
       />
 
-      <button type='button' onClick={(event) => onSignup(event)}>
+      <button type='submit' onClick={(event) => onSignup(event)}>
         Login
       </button>
     </section>
   );
 }
 
+function mapStateToProps(state) {
+  return state.authReducer;
+}
+
 function mapDispatchToProps(dispatch) {
   return { sendSignup };
 }
 
-export default connect(null, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

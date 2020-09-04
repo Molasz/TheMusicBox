@@ -68,4 +68,5 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return { getBand };
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(BandProfile);

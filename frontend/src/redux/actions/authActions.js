@@ -1,7 +1,9 @@
+import axios from 'axios';
 import { createAction } from 'redux-actions';
 
 import types from '../actionTypes';
 import { error } from './errorAction';
+import store from '../store';
 
 //Sync
 
@@ -9,26 +11,18 @@ import { error } from './errorAction';
 const sendLoginSuccess = createAction(types.SEND_LOGIN);
 export const sendLogin = (user, password) => async (dispatch) => {
   try {
-    const response = await fetch(`http://localhost:1312/auth/login`, {
-      method: 'POST',
-      body: JSON.stringify({ user, password })
-    });
-    const result = await response.json();
-    return dispatch(sendLoginSuccess(result));
+    await axios.post(`http://localhost:1312/auth/login`, { user, password });
+    return dispatch(sendLoginSuccess());
   } catch (err) {
     return dispatch(error(err));
   }
 };
 
-const sendSignupSuccess = createAction(types.SEND_LOGIN);
+const sendSignupSuccess = createAction(types.SEND_SIGNUP);
 export const sendSignup = (user, password) => async (dispatch) => {
   try {
-    const response = await fetch(`http://localhost:1312/auth/signup`, {
-      method: 'POST',
-      body: JSON.stringify({ user, password })
-    });
-    const result = await response.json();
-    return dispatch(sendLoginSuccess(result));
+    await axios.post(`http://localhost:1312/auth/signup`, { user, password });
+    dispatch(sendSignupSuccess());
   } catch (err) {
     return dispatch(error(err));
   }
