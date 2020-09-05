@@ -12,6 +12,7 @@ axios({
 const headers = {
   Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('USER_TOKEN'))}`
 };
+
 export function loadQuestions() {
   return axios.get('/api/categories', { headers }).then((categories) => {
     dispatcher.dispatch({

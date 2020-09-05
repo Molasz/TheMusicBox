@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { DOMAIN } from '../../config/auth0';
 import store from '../../redux/store';
-import { saveUser } from '../../redux/actions/authActions';
+import { saveUser, getUser } from '../../redux/actions/authActions';
 
 const Profile = () => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
@@ -31,6 +31,7 @@ const Profile = () => {
         if (accessToken) {
           sessionStorage.setItem('token', JSON.stringify(accessToken));
           store.dispatch(saveUser(user.sub));
+          store.dispatch(getUser(user));
         }
         setUserMetadata(user_metadata);
       } catch (err) {
@@ -59,7 +60,7 @@ const Profile = () => {
 };
 
 function mapDispatchToProps(dispatch) {
-  return { saveUser };
+  return { saveUser, getUser };
 }
 
 export default connect(
