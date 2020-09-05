@@ -9,6 +9,9 @@ export default handleActions(
     },
     [types.REMOVE_USER]: (state, action) => {
       return { ...state, userIdentifier: null };
+    },
+    [types.GET_USER]: (state, action) => {
+      return { ...state, user: action.payload };
     }
   },
   {}
