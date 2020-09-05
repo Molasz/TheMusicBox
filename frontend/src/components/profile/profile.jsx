@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
 import { DOMAIN } from '../../config/auth0';
+import { withAuthenticationRequired } from '@auth0/auth0-react';
 
 let accessToken = null;
 
 const Profile = () => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [userMetadata, setUserMetadata] = useState(null);
+
   useEffect(() => {
     const getUserMetadata = async () => {
       const domain = DOMAIN;
@@ -36,9 +38,9 @@ const Profile = () => {
 
     getUserMetadata();
   }, []);
-  if (isAuthenticated && sessionStorage.getItem('token') === null) {
-    sessionStorage.setItem('token', accessToken);
-  }
+
+  if (accessToken) sessionStorage.setItem('token', JSON.stringify(accessToken));
+
   return (
     isAuthenticated && (
       <div>
@@ -56,4 +58,6 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default withAuthenticationRequired(Profile, {
+  onRedirecting: () => <div>Redirecting you to the login page...</div>
+});
