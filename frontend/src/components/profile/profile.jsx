@@ -4,6 +4,8 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { DOMAIN } from '../../config/auth0';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 
+import { connect } from 'react-redux';
+
 let accessToken = null;
 
 const Profile = () => {
@@ -58,6 +60,15 @@ const Profile = () => {
   );
 };
 
-export default withAuthenticationRequired(Profile, {
-  onRedirecting: () => <div>Redirecting you to the login page...</div>
-});
+function mapDispatchToProps(dispatch) {
+  //return { sendUserIdentifier };
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(
+  withAuthenticationRequired(Profile, {
+    onRedirecting: () => <div>Redirecting you to the login page...</div>
+  })
+);

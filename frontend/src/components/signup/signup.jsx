@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 
 import store from '../../redux/store';
-import { sendSignup } from '../../redux/actions/authActions';
 
 import './signup.scss';
 
@@ -14,7 +13,7 @@ function Signup({ signup }) {
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirm-password').value;
     if (password === confirmPassword) {
-      store.dispatch(sendSignup(user, password));
+      // store.dispatch(sendSignup(user, password));
     } else {
       alert("Passwords aren't identical");
     }
@@ -50,8 +49,4 @@ function mapStateToProps(state) {
   return state.authReducer;
 }
 
-function mapDispatchToProps(dispatch) {
-  return { sendSignup };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, null)(Signup);

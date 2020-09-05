@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 
 import store from '../../redux/store';
-import { sendLogin } from '../../redux/actions/authActions';
 
 import LoginButton from './loginButton';
 import LogoutButton from './logoutButton';
@@ -15,7 +14,7 @@ function Login({ signin }) {
     event.preventDefault();
     const user = document.getElementById('user').value;
     const password = document.getElementById('password').value;
-    store.dispatch(sendLogin(user, password));
+    // store.dispatch(sendLogin(user, password));
   }
   return signin ? (
     <Redirect to='/profile' />
@@ -34,8 +33,4 @@ function mapStateToProps(state) {
   return state.authReducer;
 }
 
-function mapDispatchToProps(dispatch) {
-  return { sendLogin };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, null)(Login);
