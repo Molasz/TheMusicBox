@@ -7,8 +7,6 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import Home from './components/home/home';
-import Login from './components/login/login';
-import Signup from './components/signup/signup';
 import Profile from './components/profile/profile';
 import BandProfile from './components/bandProfile/bandProfile';
 
@@ -24,18 +22,16 @@ render(
     <Auth0Provider
       domain={DOMAIN}
       clientId={CLIENTID}
-      redirectUri={window.location.origin}
+      redirectUri={`${window.location.origin}/profile`}
       audience={AUDIENCE}
       scope={SCOPE}
       useRefreshTokens={true}
     >
       <Provider store={store}>
         <BrowserRouter>
-          <Header isLogged={false} />
+          <Header />
           <Switch>
             <Route path='/' exact component={Home} />
-            <Route path='/login' component={Login} />
-            <Route path='/signup' component={Signup} />
             <Route path='/profile' component={Profile} />
             <Route path='/band/:bandId' component={BandProfile} />
           </Switch>

@@ -5,14 +5,15 @@ const LogoutButton = () => {
   const { logout } = useAuth0();
 
   return (
-    <button
+    <p
+      className='list__item'
       onClick={() => {
         logout({ returnTo: window.location.origin });
         sessionStorage.removeItem('token');
       }}
     >
       Log Out
-    </button>
+    </p>
   );
 };
 

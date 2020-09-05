@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-
-import { DOMAIN } from '../../config/auth0';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
-
 import { connect } from 'react-redux';
 
-let accessToken = null;
+import { DOMAIN } from '../../config/auth0';
+import store from '../../redux/store';
+import { saveUser } from '../../redux/actions/authActions';
 
 const Profile = () => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
@@ -14,15 +13,12 @@ const Profile = () => {
 
   useEffect(() => {
     const getUserMetadata = async () => {
-      const domain = DOMAIN;
-
       try {
-        accessToken = await getAccessTokenSilently({
-          audience: `https://${domain}/api/v2/`,
+        const accessToken = await getAccessTokenSilently({
+          audience: `https://${DOMAIN}/api/v2/`,
           scope: 'read:current_user'
         });
-        console.log(accessToken);
-        const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
+        const userDetailsByIdUrl = `https://${DOMAIN}/api/v2/users/${user.sub}`;
 
         const metadataResponse = await fetch(userDetailsByIdUrl, {
           headers: {
@@ -32,6 +28,10 @@ const Profile = () => {
 
         const { user_metadata } = await metadataResponse.json();
 
+        if (accessToken) {
+          sessionStorage.setItem('token', JSON.stringify(accessToken));
+          store.dispatch(saveUser(user.sub));
+        }
         setUserMetadata(user_metadata);
       } catch (err) {
         console.log(err.message);
@@ -40,8 +40,6 @@ const Profile = () => {
 
     getUserMetadata();
   }, []);
-
-  if (accessToken) sessionStorage.setItem('token', JSON.stringify(accessToken));
 
   return (
     isAuthenticated && (
@@ -61,7 +59,7 @@ const Profile = () => {
 };
 
 function mapDispatchToProps(dispatch) {
-  //return { sendUserIdentifier };
+  return { saveUser };
 }
 
 export default connect(
