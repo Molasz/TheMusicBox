@@ -15,7 +15,7 @@ describe('Callback test', () => {
 
     const statusStub = sinon.stub(res, 'status');
 
-    callback(res);
+    callback(res)();
 
     expect(statusStub.calledWith(200)).to.be.true;
   });
@@ -29,7 +29,7 @@ describe('Callback test', () => {
 
     const statusStub = sinon.stub(res, 'status');
 
-    callback(res, err);
+    callback(res)(err);
 
     expect(statusStub.calledWith(400)).to.be.true;
   });
