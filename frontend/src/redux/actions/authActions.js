@@ -16,7 +16,7 @@ export const getUser = (user) => async (dispatch) => {
       Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
     };
     const response = await axios.post(
-      `http://localhost:1312/auth/${user.sub}`,
+      `/auth/${user.sub}`,
       { nickname: user.nickname },
       { headers }
     );
