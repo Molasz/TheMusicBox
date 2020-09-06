@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
 import bandReducer from './bandReducer';
+import authReducer from './authReducer';
 
 const reducer = combineReducers({
-  bandReducer
+  bandReducer,
+  authReducer
 });
 
 export default reducer;

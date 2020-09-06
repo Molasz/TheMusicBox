@@ -20,7 +20,7 @@ describe('GetBand test', () => {
     };
 
     const findByIdStub = sinon.stub(Band, 'findById');
-    //const findByIdMock = sinon.mock(Band.findById);
+    // const findByIdMock = sinon.mock(Band.findById);
 
     getBand(req, res, Band);
 

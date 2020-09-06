@@ -1,4 +1,4 @@
-const callback = require('./callback');
+const callback = require('../callback');
 
 function getBand(req, res, Band) {
   const { id } = req.params;
