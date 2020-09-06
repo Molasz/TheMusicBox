@@ -7,7 +7,7 @@ describe('GetBand test', () => {
   afterEach(() => {
     sinon.restore();
   });
-  it('should respond with status 200', () => {
+  it('should findById is called', () => {
     const req = {
       params: { id: 1 }
     };
@@ -25,7 +25,7 @@ describe('GetBand test', () => {
 
     expect(findByIdStub.called).to.be.true;
   });
-  it('should respond with status 200', () => {
+  it('should respond with status 400', () => {
     const req = { params: 0 };
     const res = { status: () => {} };
 
