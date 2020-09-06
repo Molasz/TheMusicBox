@@ -35,7 +35,7 @@ exports[`Concerts snapshot Should match  1`] = `
       <p
         className="item__city"
       >
-        Mi house
+        My house
       </p>
     </div>
   </div>
