@@ -1,11 +1,14 @@
+// Function to test
 import { getBand } from './bandActions';
+
+//Mock dependecies
 import axios from 'axios';
 
 jest.dontMock('./bandActions');
 jest.mock('axios');
 
 describe('Band actions', () => {
-  it('should do something...', async () => {
+  it('should call axios with /band/:id', async () => {
     axios.get.mockReturnValue(
       new Promise((resolve) =>
         resolve({
@@ -16,10 +19,10 @@ describe('Band actions', () => {
       )
     );
     await getBand(5)(jest.fn());
-    expect(axios.get.mock.calls[0][0]).toEqual('http://localhost:1312/band/5');
+    expect(axios.get.mock.calls[0][0]).toEqual('/band/5');
   });
 
-  it('should do something...', async () => {
+  it('should call error action if axios throw error', async () => {
     const dispatch = jest.fn();
     axios.get.mockReturnValue(
       new Promise((resolve, reject) => reject(new Error()))

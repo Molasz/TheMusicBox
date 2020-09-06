@@ -6,7 +6,7 @@ import LoginIcon from '@material-ui/icons/ExitToApp';
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
 
-  return <LoginIcon onClick={() => loginWithRedirect()} />;
+  return <LoginIcon onClick={() => loginWithRedirect()} className='login' />;
 };
 
 export default LoginButton;

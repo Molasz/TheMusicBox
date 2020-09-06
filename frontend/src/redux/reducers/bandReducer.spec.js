@@ -14,4 +14,13 @@ describe('Band reducer', () => {
     };
     expect(reducer({}, action)).toEqual({ band: text });
   });
+
+  it('should handle showDisc', () => {
+    const text = 'we are here';
+    const action = {
+      type: types.SHOW_DISC,
+      payload: text
+    };
+    expect(reducer({}, action)).toEqual({ disc: text });
+  });
 });

@@ -3,7 +3,7 @@ import './concerts.scss';
 
 import MusicIcon from '@material-ui/icons/MusicNote';
 
-function concerts(props) {
+function concerts({ data }) {
   return (
     <section className='concerts'>
       <div className='concerts__title'>
@@ -11,7 +11,7 @@ function concerts(props) {
         <h1 className='title__text'>Concerts</h1>
       </div>
       <div className='concerts__main'>
-        {props.data.map((element, i) => {
+        {data.map((element, i) => {
           return (
             <div className='main__item' key={i}>
               <p className='item__date'>{element.date}</p>
