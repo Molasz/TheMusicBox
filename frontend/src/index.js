@@ -13,7 +13,7 @@ import BandProfile from './components/bandProfile/bandProfile';
 import store from './redux/store';
 import { Provider } from 'react-redux';
 
-import { CLIENTID, DOMAIN, AUDIENCE, SCOPE } from './config/auth0';
+import { DOMAIN, CLIENTID, AUDIENCE, SCOPE } from './config/auth0';
 
 import './index.scss';
 

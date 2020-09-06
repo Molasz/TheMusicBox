@@ -13,15 +13,15 @@ import Bio from './bio/bio';
 
 import Star from '@material-ui/icons/Grade';
 
-function BandProfile(props) {
+function BandProfile({ band, match }) {
   useEffect(() => {
-    store.dispatch(getBand(props.match.params.bandId));
+    store.dispatch(getBand(match.params.bandId));
   }, []);
 
-  const result = props.band ? (
+  const result = band ? (
     <article className='band-profile'>
       <div className='band-profile__top'>
-        <img src={props.band.logo} alt='Logo' className='top__logo' />
+        <img src={band.logo} alt='Logo' className='top__logo' />
 
         <img
           src='https://pbs.twimg.com/profile_banners/851494228815482880/1539011178/1500x500'
@@ -29,7 +29,7 @@ function BandProfile(props) {
           className='top__banner'
         />
         <div className='top__info'>
-          <strong className='info__name'>{props.band.name}</strong>
+          <strong className='info__name'>{band.name}</strong>
           <div className='info__follow'>
             <div className='follow__container'>
               <Star className='contanier__icon' />
@@ -41,18 +41,18 @@ function BandProfile(props) {
       </div>
       <div className='band-profile__middle'>
         <Bio
-          bio={props.band.bio}
-          city={props.band.city}
-          country={props.band.country}
-          name={props.band.name}
-          socialNetwork={props.band.socialNetwork}
+          bio={band.bio}
+          city={band.city}
+          country={band.country}
+          name={band.name}
+          socialNetwork={band.socialNetwork}
         />
 
-        <Discography data={props.band.discography} />
+        <Discography data={band.discography} />
       </div>
       <div className='band-profile__bottom'>
-        <Concerts data={props.band.concerts} />
-        <Photos data={props.band.photos} />
+        <Concerts data={band.concerts} />
+        <Photos data={band.photos} />
       </div>
     </article>
   ) : (
