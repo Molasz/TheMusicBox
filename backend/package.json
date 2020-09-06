@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nyc --reporter=html  mocha --recursive src/**/*spec.js",
+    "test": "nyc --reporter=html  mocha --recursive src/**/*spec.js --watch",
     "start": "DEBUG=app,app:* nodemon app.js",
     "eslint": "eslint . --fix"
   },
