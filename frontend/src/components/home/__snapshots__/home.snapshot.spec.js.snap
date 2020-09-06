@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home snapshot Should match 1`] = `
+<div
+  className="home"
+>
+  <img
+    alt="home background"
+    className="home__img"
+    src="https://live.staticflickr.com/8523/8675150036_8fd47b4425_b.jpg"
+  />
+  <h1
+    className="home__title"
+  >
+    Welcome
+  </h1>
+</div>
+`;
