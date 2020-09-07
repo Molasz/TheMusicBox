@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import store from '../../redux/store';
+import { searchBand } from '../../redux/actions/bandActions';
 
 import LoginButton from './loginButton';
 import LogoutButton from './logoutButton';
@@ -13,7 +14,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 function Header({ userIdentifier }) {
   function onSearch(event) {
-    if (event.keyCode === 13) alert(event.target.value);
+    if (event.keyCode === 13)
+      store.dispatch(searchBand(event.target.value.toLowerCase()));
   }
 
   return (

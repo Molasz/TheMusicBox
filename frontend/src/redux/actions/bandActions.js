@@ -18,10 +18,11 @@ export const getBand = (id) => async (dispatch) => {
   }
 };
 
-const searchBandSuccess = createAction(types.GET_BAND);
+const searchBandSuccess = createAction(types.SEARCH_BAND);
 export const searchBand = (text) => async (dispatch) => {
   try {
     const response = await axios.get(`/band/search/${text}`);
+    debugger;
     return dispatch(searchBandSuccess(response.data));
   } catch (err) {
     return dispatch(error(err));

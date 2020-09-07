@@ -9,6 +9,9 @@ export default handleActions(
     },
     [types.SHOW_DISC]: (state, action) => {
       return { ...state, disc: action.payload };
+    },
+    [types.SEARCH_BAND]: (state, action) => {
+      return { ...state, search: action.payload };
     }
   },
   {}

@@ -9,7 +9,7 @@ describe('Band reducer', () => {
   it('should handle getBand', () => {
     const text = 'we are here';
     const action = {
-      type: types.GET_BAND_SUCCESS,
+      type: types.GET_BAND,
       payload: text
     };
     expect(reducer({}, action)).toEqual({ band: text });
