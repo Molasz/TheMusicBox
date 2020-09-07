@@ -1,0 +1,13 @@
+.list {
+  width: 80%;
+  margin: 50px auto;
+
+  display: flex;
+  flex-direction: column;
+
+  color: white;
+  min-width: 500px;
+  .list__item {
+    display: flex;
+  }
+}

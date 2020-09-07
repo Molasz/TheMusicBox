@@ -8,11 +8,21 @@ import axios from 'axios';
 export const showDisc = createAction(types.SHOW_DISC);
 
 //Async
-const getBandSuccess = createAction(types.GET_BAND_SUCCESS);
+const getBandSuccess = createAction(types.GET_BAND);
 export const getBand = (id) => async (dispatch) => {
   try {
     const response = await axios.get(`/band/${id}`);
     return dispatch(getBandSuccess(response.data));
+  } catch (err) {
+    return dispatch(error(err));
+  }
+};
+
+const searchBandSuccess = createAction(types.SEARCH_BAND);
+export const searchBand = (text) => async (dispatch) => {
+  try {
+    const response = await axios.get(`/band/search/${text}`);
+    return dispatch(searchBandSuccess(response.data));
   } catch (err) {
     return dispatch(error(err));
   }

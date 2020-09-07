@@ -1,22 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import './header.scss';
 
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import store from '../../redux/store';
+import { searchBand } from '../../redux/actions/bandActions';
 
 import LoginButton from './loginButton';
 import LogoutButton from './logoutButton';
 
 import MenuIcon from '@material-ui/icons/Menu';
 
-function Header({ userIdentifier }) {
+function Header({ auth, band }) {
+  const [redirect, setRedirect] = useState(null);
+
+  useEffect(() => {
+    setRedirect(null);
+  });
+
+  function onSearch(event) {
+    if (event.keyCode === 13) {
+      store.dispatch(searchBand(event.target.value.toLowerCase()));
+      event.target.value = '';
+      setRedirect(<Redirect to='/search' />);
+    }
+  }
+
   return (
     <header className='header'>
+      {redirect}
       <Link className='header__logo' to='/' />
 
-      <input className='header__input'></input>
+      <input className='header__input' onKeyUp={onSearch}></input>
 
-      {userIdentifier ? (
+      {auth ? (
         <div className='header__menu'>
           <MenuIcon className='menu__icon' />
           <div className='menu__content'>
@@ -35,8 +53,11 @@ function Header({ userIdentifier }) {
   );
 }
 
-function mapStateToProps(state) {
-  return state.authReducer;
+export function mapStateToProps(state) {
+  return {
+    auth: state.authReducer.userIdentifier,
+    band: state.bandReducer.search
+  };
 }
 
 export default connect(mapStateToProps, null)(Header);
