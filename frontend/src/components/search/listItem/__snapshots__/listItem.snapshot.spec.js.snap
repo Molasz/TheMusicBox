@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItem snapshot Should match 1`] = `
+Array [
+  <img
+    alt="logo"
+    className="item__logo"
+    src="logo.com"
+  />,
+  <div
+    className="item__info"
+  >
+    <div
+      className="info__text"
+    >
+      <p
+        className="text__name"
+      >
+        name
+      </p>
+       |
+      <p
+        className="text__city"
+      >
+        city
+      </p>
+      <p
+        className="text__country"
+      >
+        country
+      </p>
+    </div>
+    <p
+      className="info__bio"
+    >
+      blablabla
+    </p>
+    <a
+      className="info__link"
+      href="/band/0"
+      onClick={[Function]}
+    >
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root link__icon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"
+        />
+      </svg>
+    </a>
+  </div>,
+]
+`;

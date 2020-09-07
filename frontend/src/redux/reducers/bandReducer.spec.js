@@ -23,4 +23,13 @@ describe('Band reducer', () => {
     };
     expect(reducer({}, action)).toEqual({ disc: text });
   });
+
+  it('should handle searchBand', () => {
+    const text = 'we are here';
+    const action = {
+      type: types.SEARCH_BAND,
+      payload: text
+    };
+    expect(reducer({}, action)).toEqual({ search: text });
+  });
 });

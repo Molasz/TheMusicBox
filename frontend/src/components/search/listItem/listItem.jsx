@@ -5,7 +5,7 @@ import './listItem.scss';
 
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
-function Search({ data, index }) {
+function ListItem({ data, index }) {
   return (
     <>
       <img src={data.logo} alt='logo' className='item__logo' />
@@ -24,4 +24,4 @@ function Search({ data, index }) {
   );
 }
 
-export default Search;
+export default ListItem;

@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Header snapshot Should match with userIdentifier 1`] = `null`;
-
-exports[`Header snapshot Should match without userIdentifier 1`] = `null`;
