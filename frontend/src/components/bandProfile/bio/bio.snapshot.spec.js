@@ -15,7 +15,9 @@ describe('Bio snapshot', () => {
     facebook: 'facebook.com',
     instagram: 'instagram.com'
   };
-  const tree = renderer.create(<Bio props socialNetwork={socialNetwork} />);
+  const tree = renderer.create(
+    <Bio props={props} socialNetwork={socialNetwork} />
+  );
   it('Should match ', () => {
     expect(tree.toJSON()).toMatchSnapshot();
   });

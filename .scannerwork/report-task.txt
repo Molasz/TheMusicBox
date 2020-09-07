@@ -2,5 +2,5 @@ projectKey=themusicbox
 serverUrl=http://localhost:9000
 serverVersion=6.7.6.38781
 dashboardUrl=http://localhost:9000/dashboard/index/themusicbox
-ceTaskId=AXRpQe948Jg1zJSEre2F
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AXRpQe948Jg1zJSEre2F
+ceTaskId=AXRpc_B4SQKYZgM89Zt5
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXRpc_B4SQKYZgM89Zt5

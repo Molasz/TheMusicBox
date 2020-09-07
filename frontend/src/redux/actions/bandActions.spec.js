@@ -14,9 +14,7 @@ describe('Band actions', () => {
       axios.get.mockReturnValue(
         new Promise((resolve) =>
           resolve({
-            json: () => {
-              data: 5;
-            }
+            json: () => {}
           })
         )
       );
@@ -40,9 +38,7 @@ describe('Band actions', () => {
       axios.get.mockReturnValue(
         new Promise((resolve) =>
           resolve({
-            json: () => {
-              data: 5;
-            }
+            json: () => {}
           })
         )
       );
