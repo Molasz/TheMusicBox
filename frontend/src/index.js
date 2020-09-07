@@ -10,24 +10,24 @@ import Home from './components/home/home';
 import Profile from './components/profile/profile';
 import BandProfile from './components/bandProfile/bandProfile';
 
-import store from './redux/store';
 import { Provider } from 'react-redux';
+import store from './redux/store';
 
 import { DOMAIN, CLIENTID, AUDIENCE, SCOPE } from './config/auth0';
 
 import './index.scss';
 
 render(
-  <React.StrictMode>
-    <Auth0Provider
-      domain={DOMAIN}
-      clientId={CLIENTID}
-      redirectUri={`${window.location.origin}/profile`}
-      audience={AUDIENCE}
-      scope={SCOPE}
-      useRefreshTokens={true}
-    >
-      <Provider store={store}>
+  <Provider store={store}>
+    <React.StrictMode>
+      <Auth0Provider
+        domain={DOMAIN}
+        clientId={CLIENTID}
+        redirectUri={`${window.location.origin}/profile`}
+        audience={AUDIENCE}
+        scope={SCOPE}
+        useRefreshTokens={true}
+      >
         <BrowserRouter>
           <Header />
           <Switch>
@@ -37,9 +37,9 @@ render(
           </Switch>
           <Footer />
         </BrowserRouter>
-      </Provider>
-    </Auth0Provider>
-  </React.StrictMode>,
+      </Auth0Provider>
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 

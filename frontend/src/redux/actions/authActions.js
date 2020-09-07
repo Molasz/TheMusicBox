@@ -9,7 +9,7 @@ export const saveUser = createAction(types.SAVE_USER);
 export const removeUser = createAction(types.REMOVE_USER);
 
 // Async
-const getUserSuccess = createAction(types.GET_USER);
+export const getUserSuccess = createAction(types.GET_USER);
 export const getUser = (user) => async (dispatch) => {
   try {
     const headers = {
