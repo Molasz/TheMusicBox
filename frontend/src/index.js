@@ -8,6 +8,7 @@ import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import Home from './components/home/home';
 import Profile from './components/profile/profile';
+import Search from './components/search/search';
 import BandProfile from './components/bandProfile/bandProfile';
 
 import { Provider } from 'react-redux';
@@ -33,6 +34,7 @@ render(
           <Switch>
             <Route path='/' exact component={Home} />
             <Route path='/profile' component={Profile} />
+            <Route path='/search' component={Search} />
             <Route path='/band/:bandId' component={BandProfile} />
           </Switch>
           <Footer />
