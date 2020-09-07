@@ -21,7 +21,7 @@ describe('GetBand test', () => {
 
     const findByIdStub = sinon.stub(Band, 'findById');
 
-    getBand(req, res, Band);
+    getBand(Band)(req, res);
 
     expect(findByIdStub.called).to.be.true;
   });
@@ -31,7 +31,7 @@ describe('GetBand test', () => {
 
     const statusStub = sinon.stub(res, 'status');
 
-    getBand(req, res);
+    getBand()(req, res);
 
     expect(statusStub.calledWith(400)).to.be.true;
   });
