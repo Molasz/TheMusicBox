@@ -27,7 +27,7 @@ function Songs({ info, index }) {
           <div className='content__text'>
             <h3 className='text__title'>{info[index].title}</h3>
             <p className='text__info'>
-              {info[index].date} | {info.length} cançons
+              {info[index].date} | {info.length} songs
             </p>
           </div>
         </div>
