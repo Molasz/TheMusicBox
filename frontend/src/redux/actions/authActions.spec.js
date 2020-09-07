@@ -12,9 +12,7 @@ describe('Auth actions', () => {
     axios.post.mockReturnValue(
       new Promise((resolve) =>
         resolve({
-          json: () => {
-            data: 13;
-          }
+          json: () => {}
         })
       )
     );
