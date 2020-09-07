@@ -25,9 +25,3 @@ function Search({ data, index }) {
 }
 
 export default Search;
-
-/*
-<Link to={`/band/${data._id}`} className='item__name' key={index}>
-        {data.name} | {data.city} {data.country}
-      </Link>
-*/
