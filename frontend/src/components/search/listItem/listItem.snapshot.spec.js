@@ -12,6 +12,7 @@ describe('ListItem snapshot', () => {
     country: 'country',
     logo: 'logo.com',
     bio: 'blablabla',
+    tags: ['punk', 'rock', 'heavy'],
     _id: 0
   };
   const tree = renderer.create(
