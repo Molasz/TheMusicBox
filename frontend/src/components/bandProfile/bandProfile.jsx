@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import './bandProfile.scss';
 
-import { getBand } from '../../redux/actions/bandActions';
+import { getBand, follow } from '../../redux/actions/bandActions';
 import store from '../../redux/store';
 
 import Photos from './photos/photos';
@@ -13,10 +13,26 @@ import Bio from './bio/bio';
 
 import Star from '@material-ui/icons/Grade';
 
-function BandProfile({ band, match }) {
+let userIsFollowing = null;
+
+function BandProfile({ band, match, user }) {
+  const [isFollowing, setIsFollowing] = useState(false);
+
+  function onFollow(event) {
+    event.preventDefault();
+    setIsFollowing(!isFollowing);
+  }
+
   useEffect(() => {
-    store.dispatch(getBand(match.params.bandId));
-  }, []);
+    console.log('useEffect');
+    if (!band) store.dispatch(getBand(match.params.bandId));
+    if (user && band && !userIsFollowing) {
+      userIsFollowing = user.following.some((element) => element === band._id);
+      setIsFollowing(userIsFollowing);
+    }
+  });
+
+  const followIconClass = isFollowing ? 'orange' : 'white';
 
   const result = band ? (
     <article className='band-profile'>
@@ -28,7 +44,11 @@ function BandProfile({ band, match }) {
           <strong className='info__name'>{band.name}</strong>
           <div className='info__follow'>
             <div className='follow__container'>
-              <Star className='contanier__icon' />
+              <Star
+                className={`contanier__icon ${followIconClass}`}
+                id='follow'
+                onClick={onFollow}
+              />
               <p className='follow__count'> 14 Followers</p>
             </div>
           </div>
@@ -53,15 +73,12 @@ function BandProfile({ band, match }) {
   ) : (
     <h3>Loading...</h3>
   );
+
   return result;
 }
 
 function mapStateToProps(state) {
-  return state.bandReducer;
+  return { band: state.bandReducer.band, user: state.authReducer.user };
 }
 
-function mapDispatchToProps(dispatch) {
-  return { getBand };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(BandProfile);
+export default connect(mapStateToProps, null)(BandProfile);

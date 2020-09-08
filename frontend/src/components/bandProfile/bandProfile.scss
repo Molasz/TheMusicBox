@@ -45,6 +45,14 @@ $color-detail: #f55110;
             font-size: 30px;
             margin-right: 10px;
           }
+
+          .white {
+            color: white;
+          }
+
+          .orange {
+            color: $color-detail;
+          }
         }
       }
     }
