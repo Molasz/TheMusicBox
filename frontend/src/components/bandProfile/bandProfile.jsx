@@ -23,19 +23,14 @@ function BandProfile({ band, match }) {
       <div className='band-profile__top'>
         <img src={band.logo} alt='Logo' className='top__logo' />
 
-        <img
-          src='https://pbs.twimg.com/profile_banners/851494228815482880/1539011178/1500x500'
-          alt='Banner'
-          className='top__banner'
-        />
+        <img src={band.banner} alt='Banner' className='top__banner' />
         <div className='top__info'>
           <strong className='info__name'>{band.name}</strong>
           <div className='info__follow'>
             <div className='follow__container'>
               <Star className='contanier__icon' />
-              <button className='container__button'>Follow</button>
+              <p className='follow__count'> 14 Followers</p>
             </div>
-            <p className='follow__count'> 14 Followers</p>
           </div>
         </div>
       </div>

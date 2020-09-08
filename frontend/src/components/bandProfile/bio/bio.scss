@@ -10,6 +10,14 @@ $color-detail: #f55110;
       padding-bottom: 10px;
       border-bottom: 4px solid $color-detail;
       font-size: 20px;
+
+      .title__name {
+        text-transform: uppercase;
+      }
+      .title__city,
+      .title__country {
+        text-transform: capitalize;
+      }
     }
     .top__text {
       line-height: 21px;
