@@ -1,6 +1,4 @@
-const User = require('../models/userModel');
-
-function followersBand() {
+function followersBand(User) {
   return (req, res) => {
     const { id } = req.params;
     if (id) {
