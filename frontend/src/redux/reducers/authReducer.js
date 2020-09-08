@@ -15,6 +15,9 @@ export default handleActions(
     },
     [types.ADD_FOLLOW]: (state, action) => {
       return { ...state, user: action.payload };
+    },
+    [types.REMOVE_FOLLOW]: (state, action) => {
+      return { ...state, user: action.payload };
     }
   },
   {}

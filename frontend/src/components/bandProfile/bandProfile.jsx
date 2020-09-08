@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import './bandProfile.scss';
 
 import { getBand, follow } from '../../redux/actions/bandActions';
-import { addFollow } from '../../redux/actions/authActions';
+import { addFollow, removeFollow } from '../../redux/actions/authActions';
 
 import store from '../../redux/store';
 
@@ -24,9 +24,10 @@ function BandProfile({ match, band, followers, user }) {
   function onFollow(event) {
     event.preventDefault();
     if (user) {
+      if (!isFollowing) store.dispatch(addFollow(user._id, band._id));
+      else store.dispatch(removeFollow(user._id, band._id));
       setIsFollowing(!isFollowing);
-      if (isFollowing) store.dispatch(addFollow(user._id, band._id));
-    }
+    } else alert('Login to use this feature');
   }
 
   useEffect(() => {

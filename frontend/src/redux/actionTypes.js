@@ -9,5 +9,6 @@ export default {
   GET_USER: 'GET_USER', // Return user object
   SAVE_USER: 'SAVE_USER', // Return userIdentifier
   REMOVE_USER: 'REMOVE_USER', // Remove userIdentifier
-  ADD_FOLLOW: 'ADD_FOLLOW' //Add follow to user document
+  ADD_FOLLOW: 'ADD_FOLLOW', // Add follow to user document
+  REMOVE_FOLLOW: 'REMOVE_FOLLOW' // Remove follow to user document
 };
