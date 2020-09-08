@@ -23,7 +23,10 @@ function BandProfile({ match, band, followers, user }) {
 
   function onFollow(event) {
     event.preventDefault();
-    setIsFollowing(!isFollowing);
+    if (user) {
+      setIsFollowing(!isFollowing);
+      if (isFollowing) store.dispatch(addFollow(user._id, band._id));
+    }
   }
 
   useEffect(() => {
