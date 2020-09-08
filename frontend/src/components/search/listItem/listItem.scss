@@ -9,14 +9,15 @@ $color-detail: #f55110;
   flex-direction: column;
 
   border-bottom: 3px solid $color-detail;
-  .info__text {
+  .info__top {
     display: flex;
     align-items: center;
 
     margin-bottom: 10px;
-
+    font-size: 20px;
     .text__name {
       text-transform: uppercase;
+      margin: 0;
       margin-right: 5px;
     }
 
@@ -34,21 +35,33 @@ $color-detail: #f55110;
       }
     }
   }
-  .info__bio {
+
+  .info__middle {
     margin: 0;
-    margin-bottom: 10px;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    .middle__item {
+      text-transform: capitalize;
+    }
   }
 
-  .info__link {
-    margin-top: 5px;
-    align-self: flex-end;
+  .info__bottom {
+    display: flex;
 
-    .link__icon {
-      color: white;
+    .bottom__bio {
+      margin: 0;
+      margin-bottom: 10px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    .bottom__link {
+      margin-top: 5px;
+      align-self: flex-end;
+      justify-self: flex-end;
+
+      .link__icon {
+        color: white;
+      }
     }
   }
 }
