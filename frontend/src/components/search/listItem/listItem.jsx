@@ -10,15 +10,25 @@ function ListItem({ data, index }) {
     <>
       <img src={data.logo} alt='logo' className='item__logo' />
       <div className='item__info'>
-        <div className='info__text'>
+        <div className='info__top'>
           <p className='text__name'>{data.name}</p> |
           <p className='text__city'>{data.city}</p>
           <p className='text__country'>{data.country}</p>
         </div>
-        <p className='info__bio'>{data.bio}</p>
-        <Link to={`/band/${data._id}`} className='info__link'>
-          <AddCircleIcon className='link__icon' />
-        </Link>
+        <div className='info__middle'>
+          {data.tags.map((element, i) => (
+            <p className='middle__item' key={i}>
+              {element}
+              {i === data.tags.length ? ', ' : ''}
+            </p>
+          ))}
+        </div>
+        <div className='info__bottom'>
+          <p className='bottom__bio'>{data.bio}</p>
+          <Link to={`/band/${data._id}`} className='bottom__link'>
+            <AddCircleIcon className='link__icon' />
+          </Link>
+        </div>
       </div>
     </>
   );

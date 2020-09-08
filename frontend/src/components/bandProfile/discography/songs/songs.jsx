@@ -27,7 +27,7 @@ function Songs({ info, index }) {
           <div className='content__text'>
             <h3 className='text__title'>{info[index].title}</h3>
             <p className='text__info'>
-              {info[index].date} | {info.length} songs
+              {info[index].date} | {info[index].songs.length} songs
             </p>
           </div>
         </div>
@@ -35,8 +35,8 @@ function Songs({ info, index }) {
       <div className='songs__middle'>
         {info[index].songs.map((element, i) => {
           return (
-            <p className='middle__item' key={i}>
-              <span className='item__number'>{i}.</span>
+            <p className='middle__item' key={i + 1}>
+              <span className='item__number'>{i + 1}.</span>
               {element.title} | {element.time}
             </p>
           );

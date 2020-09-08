@@ -14,9 +14,9 @@ function bio({ city, country, bio, name, socialNetwork }) {
             {name}
             {' | '}
           </strong>
-          <span className='title__text'>
-            {city} {country}
-          </span>
+          <span className='title__city'>{city}</span>
+          {'   '}
+          <span className='title__country'>{country}</span>
         </p>
         <p className='top__text'>{bio}</p>
       </div>
