@@ -37,7 +37,6 @@ export const addFollow = (userId, bandId) => async (dispatch) => {
       { band: bandId },
       { headers }
     );
-    debugger;
     response.data.following.push(bandId);
     return dispatch(addFollowSuccess(response.data));
   } catch (err) {

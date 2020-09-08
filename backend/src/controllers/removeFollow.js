@@ -1,12 +1,12 @@
 const callback = require('./callback');
 
-function addFollow(User) {
+function removeFollow(User) {
   return (req, res) => {
     const { id } = req.params;
     if (id) {
       User.findByIdAndUpdate(
         id,
-        { $addToSet: { following: req.body.band } },
+        { $pull: { following: req.body.band } },
         callback(res)
       );
     } else {
@@ -15,4 +15,4 @@ function addFollow(User) {
   };
 }
 
-module.exports = addFollow;
+module.exports = removeFollow;
