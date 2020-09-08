@@ -4,7 +4,11 @@ function searchBand(Band) {
   return (req, res) => {
     const { text } = req.params;
     if (text) {
-      Band.find({ name: { $regex: text } }, callback(res));
+      Band.find(
+        { name: { $regex: text } },
+        'name city country tags bio logo',
+        callback(res)
+      );
     } else {
       res.status(400);
     }
