@@ -23,7 +23,7 @@ describe('GetUser test', () => {
 
     const statusStub = sinon.stub(res, 'status');
 
-    getUser(req, res, User);
+    getUser(User)(req, res);
 
     expect(statusStub.calledWith(200)).to.be.true;
   });
@@ -44,7 +44,7 @@ describe('GetUser test', () => {
 
     const createStub = sinon.stub(User, 'create');
 
-    getUser(req, res, User);
+    getUser(User)(req, res);
 
     expect(createStub.called).to.be.true;
   });
@@ -62,7 +62,7 @@ describe('GetUser test', () => {
 
     const statusStub = sinon.stub(res, 'status');
 
-    getUser(req, res, User);
+    getUser(User)(req, res);
 
     expect(statusStub.calledWith(404)).to.be.true;
   });
