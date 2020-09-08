@@ -27,3 +27,13 @@ export const searchBand = (text) => async (dispatch) => {
     return dispatch(error(err));
   }
 };
+
+const followSuccess = createAction(types.FOLLOW_BAND);
+export const follow = (userIdentifier) => async (dispatch) => {
+  try {
+    const response = await axios.get(`/band/follow/${userIdentifier}`);
+    return dispatch(followSuccess(response.data));
+  } catch (err) {
+    return dispatch(error(err));
+  }
+};

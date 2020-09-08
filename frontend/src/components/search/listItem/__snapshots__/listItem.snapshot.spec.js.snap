@@ -11,7 +11,7 @@ Array [
     className="item__info"
   >
     <div
-      className="info__text"
+      className="info__top"
     >
       <p
         className="text__name"
@@ -30,27 +30,53 @@ Array [
         country
       </p>
     </div>
-    <p
-      className="info__bio"
+    <div
+      className="info__middle"
     >
-      blablabla
-    </p>
-    <a
-      className="info__link"
-      href="/band/0"
-      onClick={[Function]}
-    >
-      <svg
-        aria-hidden={true}
-        className="MuiSvgIcon-root link__icon"
-        focusable="false"
-        viewBox="0 0 24 24"
+      <p
+        className="middle__item"
       >
-        <path
-          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"
-        />
-      </svg>
-    </a>
+        punk
+        
+      </p>
+      <p
+        className="middle__item"
+      >
+        rock
+        
+      </p>
+      <p
+        className="middle__item"
+      >
+        heavy
+        
+      </p>
+    </div>
+    <div
+      className="info__bottom"
+    >
+      <p
+        className="bottom__bio"
+      >
+        blablabla
+      </p>
+      <a
+        className="bottom__link"
+        href="/band/0"
+        onClick={[Function]}
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root link__icon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"
+          />
+        </svg>
+      </a>
+    </div>
   </div>,
 ]
 `;

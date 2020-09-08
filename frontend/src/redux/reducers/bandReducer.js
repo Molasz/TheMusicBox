@@ -12,6 +12,9 @@ export default handleActions(
     },
     [types.SEARCH_BAND]: (state, action) => {
       return { ...state, search: action.payload };
+    },
+    [types.FOLLOW_BAND]: (state, action) => {
+      return { ...state, bandFollowers: action.payload };
     }
   },
   {}

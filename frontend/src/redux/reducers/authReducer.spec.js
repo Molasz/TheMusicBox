@@ -30,4 +30,22 @@ describe('Auth reducer', () => {
     };
     expect(reducer({}, action)).toEqual({ user: text });
   });
+
+  it('should handle addFollower', () => {
+    const text = 'we are here';
+    const action = {
+      type: types.ADD_FOLLOW,
+      payload: text
+    };
+    expect(reducer({}, action)).toEqual({ user: text });
+  });
+
+  it('should handle removeFollow', () => {
+    const text = 'we are here';
+    const action = {
+      type: types.REMOVE_FOLLOW,
+      payload: text
+    };
+    expect(reducer({}, action)).toEqual({ user: text });
+  });
 });

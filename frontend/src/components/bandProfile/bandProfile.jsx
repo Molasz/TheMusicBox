@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import './bandProfile.scss';
 
-import { getBand } from '../../redux/actions/bandActions';
+import { getBand, follow } from '../../redux/actions/bandActions';
+import { addFollow, removeFollow } from '../../redux/actions/authActions';
+
 import store from '../../redux/store';
 
 import Photos from './photos/photos';
@@ -13,10 +15,34 @@ import Bio from './bio/bio';
 
 import Star from '@material-ui/icons/Grade';
 
-function BandProfile({ band, match }) {
+let userIsFollowing = null;
+let calls = false;
+
+function BandProfile({ match, band, followers, user }) {
+  const [isFollowing, setIsFollowing] = useState(false);
+
+  function onFollow(event) {
+    event.preventDefault();
+    if (user) {
+      if (!isFollowing) store.dispatch(addFollow(user._id, band._id));
+      else store.dispatch(removeFollow(user._id, band._id));
+      setIsFollowing(!isFollowing);
+    } else alert('Login to use this feature');
+  }
+
   useEffect(() => {
-    store.dispatch(getBand(match.params.bandId));
-  }, []);
+    if (!calls) {
+      store.dispatch(getBand(match.params.bandId));
+      store.dispatch(follow(match.params.bandId));
+      calls = true;
+    }
+    if (user && band && !userIsFollowing) {
+      userIsFollowing = user.following.some((element) => element === band._id);
+      setIsFollowing(userIsFollowing);
+    }
+  });
+
+  const followIconClass = isFollowing ? 'orange' : 'white';
 
   const result = band ? (
     <article className='band-profile'>
@@ -28,8 +54,12 @@ function BandProfile({ band, match }) {
           <strong className='info__name'>{band.name}</strong>
           <div className='info__follow'>
             <div className='follow__container'>
-              <Star className='contanier__icon' />
-              <p className='follow__count'> 14 Followers</p>
+              <Star
+                className={`contanier__icon ${followIconClass}`}
+                id='follow'
+                onClick={onFollow}
+              />
+              <p className='follow__count'> {followers} Followers</p>
             </div>
           </div>
         </div>
@@ -53,15 +83,16 @@ function BandProfile({ band, match }) {
   ) : (
     <h3>Loading...</h3>
   );
+
   return result;
 }
 
 function mapStateToProps(state) {
-  return state.bandReducer;
+  return {
+    band: state.bandReducer.band,
+    followers: state.bandReducer.bandFollowers,
+    user: state.authReducer.user
+  };
 }
 
-function mapDispatchToProps(dispatch) {
-  return { getBand };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(BandProfile);
+export default connect(mapStateToProps, null)(BandProfile);

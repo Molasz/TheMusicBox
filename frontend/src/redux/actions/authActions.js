@@ -25,3 +25,39 @@ export const getUser = (user) => async (dispatch) => {
     return dispatch(error(err));
   }
 };
+
+export const addFollowSuccess = createAction(types.ADD_FOLLOW);
+export const addFollow = (userId, bandId) => async (dispatch) => {
+  try {
+    const headers = {
+      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
+    };
+    const response = await axios.post(
+      `/auth/follow/${userId}`,
+      { band: bandId },
+      { headers }
+    );
+    response.data.following.push(bandId);
+    return dispatch(addFollowSuccess(response.data));
+  } catch (err) {
+    return dispatch(error(err));
+  }
+};
+
+export const removeFollowSuccess = createAction(types.REMOVE_FOLLOW);
+export const removeFollow = (userId, bandId) => async (dispatch) => {
+  try {
+    const headers = {
+      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
+    };
+    const response = await axios.post(
+      `/auth/followDelete/${userId}`,
+      { band: bandId },
+      { headers }
+    );
+    response.data.following.filter((item) => item !== bandId);
+    return dispatch(removeFollowSuccess(response.data));
+  } catch (err) {
+    return dispatch(error(err));
+  }
+};

@@ -16,10 +16,12 @@ exports[`Bio snapshot Should match  1`] = `
          | 
       </strong>
       <span
-        className="title__text"
-      >
+        className="title__city"
+      />
          
-      </span>
+      <span
+        className="title__country"
+      />
     </p>
     <p
       className="top__text"

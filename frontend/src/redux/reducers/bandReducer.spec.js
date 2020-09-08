@@ -32,4 +32,13 @@ describe('Band reducer', () => {
     };
     expect(reducer({}, action)).toEqual({ search: text });
   });
+
+  it('should handle followBand', () => {
+    const text = 'we are here';
+    const action = {
+      type: types.FOLLOW_BAND,
+      payload: text
+    };
+    expect(reducer({}, action)).toEqual({ bandFollowers: text });
+  });
 });
