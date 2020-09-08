@@ -25,13 +25,3 @@ export const getUser = (user) => async (dispatch) => {
     return dispatch(error(err));
   }
 };
-
-const followSuccess = createAction(types.SEARCH_BAND);
-export const follow = (userIdentifier) => async (dispatch) => {
-  try {
-    const response = await axios.get(`/band/followers/${userIdentifier}`);
-    return dispatch(followSuccess(response.data));
-  } catch (err) {
-    return dispatch(error(err));
-  }
-};

@@ -14,8 +14,9 @@ import Bio from './bio/bio';
 import Star from '@material-ui/icons/Grade';
 
 let userIsFollowing = null;
+let calls = false;
 
-function BandProfile({ band, match, user }) {
+function BandProfile({ match, band, followers, user }) {
   const [isFollowing, setIsFollowing] = useState(false);
 
   function onFollow(event) {
@@ -24,7 +25,11 @@ function BandProfile({ band, match, user }) {
   }
 
   useEffect(() => {
-    if (!band) store.dispatch(getBand(match.params.bandId));
+    if (!calls) {
+      store.dispatch(getBand(match.params.bandId));
+      store.dispatch(follow(match.params.bandId));
+      calls = true;
+    }
     if (user && band && !userIsFollowing) {
       userIsFollowing = user.following.some((element) => element === band._id);
       setIsFollowing(userIsFollowing);
@@ -48,7 +53,7 @@ function BandProfile({ band, match, user }) {
                 id='follow'
                 onClick={onFollow}
               />
-              <p className='follow__count'> 14 Followers</p>
+              <p className='follow__count'> {followers} Followers</p>
             </div>
           </div>
         </div>
@@ -77,7 +82,11 @@ function BandProfile({ band, match, user }) {
 }
 
 function mapStateToProps(state) {
-  return { band: state.bandReducer.band, user: state.authReducer.user };
+  return {
+    band: state.bandReducer.band,
+    followers: state.bandReducer.bandFollowers,
+    user: state.authReducer.user
+  };
 }
 
 export default connect(mapStateToProps, null)(BandProfile);
