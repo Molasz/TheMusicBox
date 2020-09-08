@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import './bandProfile.scss';
 
 import { getBand, follow } from '../../redux/actions/bandActions';
+import { addFollow } from '../../redux/actions/authActions';
+
 import store from '../../redux/store';
 
 import Photos from './photos/photos';

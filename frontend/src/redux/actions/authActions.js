@@ -25,3 +25,21 @@ export const getUser = (user) => async (dispatch) => {
     return dispatch(error(err));
   }
 };
+
+export const addFollowSuccess = createAction(types.ADD_FOLLOW);
+export const addFollow = (userId, bandId) => async (dispatch) => {
+  try {
+    const headers = {
+      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
+    };
+    const response = await axios.post(
+      `/auth/follow/${userId}`,
+      { band: bandId },
+      { headers }
+    );
+    response.follow.push(bandId);
+    return dispatch(addFollowSuccess(response.data));
+  } catch (err) {
+    return dispatch(error(err));
+  }
+};

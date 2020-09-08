@@ -12,6 +12,9 @@ export default handleActions(
     },
     [types.GET_USER]: (state, action) => {
       return { ...state, user: action.payload };
+    },
+    [types.ADD_FOLLOW]: (state, action) => {
+      return { ...state, user: action.payload };
     }
   },
   {}
