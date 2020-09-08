@@ -8,7 +8,7 @@
 
   height: 80px;
 
-  padding: 0 20px;
+  padding: 0 10px;
 
   min-width: 500px;
   .header__logo {
@@ -23,14 +23,29 @@
   .header__input {
     width: 40%;
     height: 35px;
-    padding: 0 30px;
+    position: relative;
 
-    font-size: 20px;
+    .input {
+      width: 100%;
+      height: 100%;
+      padding: 0 35px;
+      font-size: 20px;
+    }
 
-    background-image: url(https://image.flaticon.com/icons/svg/25/25313.svg);
-    background-size: 20px;
-    background-position: 5px;
-    background-repeat: no-repeat;
+    .icon__search {
+      position: absolute;
+      color: black;
+      margin-top: -40px;
+      font-size: 40px;
+    }
+    .icon__arrow {
+      position: absolute;
+      color: black;
+      margin-top: -50px;
+      margin-left: 500px;
+      transform: rotate(-90deg);
+      font-size: 40px;
+    }
   }
   .MuiSvgIcon-root {
     font-size: 40px;

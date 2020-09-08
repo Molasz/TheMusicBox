@@ -11,6 +11,8 @@ import LoginButton from './loginButton';
 import LogoutButton from './logoutButton';
 
 import MenuIcon from '@material-ui/icons/Menu';
+import SearchIcon from '@material-ui/icons/Search';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 function Header({ auth, band }) {
   const [redirect, setRedirect] = useState(null);
@@ -32,7 +34,11 @@ function Header({ auth, band }) {
       {redirect}
       <Link className='header__logo' to='/' />
 
-      <input className='header__input' onKeyUp={onSearch}></input>
+      <div className='header__input'>
+        <input className='input' onKeyUp={onSearch}></input>
+        <SearchIcon className='icon__search' />
+        <ArrowBackIosIcon className='icon__arrow' />
+      </div>
 
       {auth ? (
         <div className='header__menu'>
