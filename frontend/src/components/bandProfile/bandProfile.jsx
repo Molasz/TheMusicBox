@@ -24,7 +24,6 @@ function BandProfile({ band, match, user }) {
   }
 
   useEffect(() => {
-    console.log('useEffect');
     if (!band) store.dispatch(getBand(match.params.bandId));
     if (user && band && !userIsFollowing) {
       userIsFollowing = user.following.some((element) => element === band._id);
