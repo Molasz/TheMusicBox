@@ -106,3 +106,4 @@ dist
 #assets
 assets/
 config/
+.scannerwork/
