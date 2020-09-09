@@ -6,7 +6,12 @@ import { connect } from 'react-redux';
 import { DOMAIN } from '../../config/auth0';
 import { saveUser, getUser } from '../../redux/actions/authActions';
 
-const UserProfile = ({ dispatch }) => {
+import ProfileHeader from '../profileHeader/profileHeader';
+import Bio from '../bandProfile/bio/bio';
+
+import './userProfile.scss';
+
+const UserProfile = ({ mongoUser, dispatch }) => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [userMetadata, setUserMetadata] = useState(null);
 
@@ -41,24 +46,33 @@ const UserProfile = ({ dispatch }) => {
     getUserMetadata();
   }, []);
 
-  return (
-    isAuthenticated && (
-      <div>
-        <img src={user.picture} alt={user.name} />
-        <h2>{user.name}</h2>
-        <p>{user.email}</p>
-        <h3>User Metadata</h3>
-        {userMetadata ? (
-          <pre>{JSON.stringify(userMetadata, null, 2)}</pre>
-        ) : (
-          'No user metadata defined'
-        )}
+  return isAuthenticated && mongoUser ? (
+    <div className='userProfile'>
+      <div className='userProfile__top'>
+        <ProfileHeader
+          logo={user.picture}
+          banner='https://pyxis.nymag.com/v1/imgs/280/a09/831956806c59629838ae46bd3e08255aaa-12-concerts.rsocial.w1200.jpg'
+        />
       </div>
-    )
+      <div className='userProfile__bottom'>
+        <div className='bottom__left'>
+          <Bio bio={mongoUser.bio} name={mongoUser.user} />
+          <p className='left__new-band'>aqui tamo x2</p>
+        </div>
+        <div className='bottom right'></div>
+        <h1>funciono?</h1>
+      </div>
+    </div>
+  ) : (
+    <p>Loading...</p>
   );
 };
 
-export default connect()(
+function mapStateToProps(state) {
+  return { mongoUser: state.authReducer.user };
+}
+
+export default connect(mapStateToProps)(
   withAuthenticationRequired(UserProfile, {
     onRedirecting: () => <div>Redirecting you to the login page...</div>
   })
