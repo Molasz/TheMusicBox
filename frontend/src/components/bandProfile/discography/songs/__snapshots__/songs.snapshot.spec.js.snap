@@ -64,6 +64,8 @@ exports[`Search snapshot Should match without band data 1`] = `
   </div>
   <div
     className="songs__bottom"
-  />
+  >
+    
+  </div>
 </section>
 `;

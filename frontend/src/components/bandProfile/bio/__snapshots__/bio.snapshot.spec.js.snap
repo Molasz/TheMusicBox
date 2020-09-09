@@ -12,9 +12,7 @@ exports[`Bio snapshot Should match  1`] = `
     >
       <strong
         className="title__name"
-      >
-         | 
-      </strong>
+      />
       <span
         className="title__city"
       />
