@@ -43,8 +43,8 @@ function Songs({ info, index, dispatch }) {
       <div className='songs__bottom'>
         {info.map((element, i) => {
           if (i !== index) {
-            return <Disc data={element} index={i} />;
-          }
+            return <Disc data={element} key={i} />;
+          } else return '';
         })}
       </div>
     </section>

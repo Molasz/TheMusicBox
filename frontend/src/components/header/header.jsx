@@ -18,7 +18,7 @@ function Header({ auth, band, dispatch }) {
 
   useEffect(() => {
     setRedirect(null);
-  });
+  }, []);
 
   function onSearch(event) {
     if (event.keyCode === 13) {

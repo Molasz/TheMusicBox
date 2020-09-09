@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import './search.scss';
-
-import { showDisc } from '../../redux/actions/bandActions';
 
 import ListItem from './listItem/listItem';
 
