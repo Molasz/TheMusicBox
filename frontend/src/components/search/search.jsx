@@ -27,8 +27,9 @@ function Search({ band, dispatch }) {
   return <section className='list'>{list}</section>;
 }
 
-export function mapStateToProps(state) {
+function mapStateToProps(state) {
   return { band: state.bandReducer.search };
 }
 
 export default connect(mapStateToProps, null)(Search);
+export { Search };

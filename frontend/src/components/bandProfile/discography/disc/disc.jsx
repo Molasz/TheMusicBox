@@ -25,3 +25,4 @@ function Disc({ data, index, dispatch }) {
 }
 
 export default connect(null, null)(Disc);
+export { Disc };

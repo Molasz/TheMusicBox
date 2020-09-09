@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search snapshot Should match without band data 1`] = `
+<section
+  className="songs"
+>
+  <div
+    className="songs__top"
+  >
+    <img
+      alt="Album cover"
+      className="top__img"
+      src="img"
+    />
+    <div
+      className="top__content"
+    >
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root content__icon"
+        focusable="false"
+        onClick={[Function]}
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M21 11H6.83l3.58-3.59L9 6l-6 6 6 6 1.41-1.41L6.83 13H21z"
+        />
+      </svg>
+      <div
+        className="content__text"
+      >
+        <h3
+          className="text__title"
+        >
+          title
+        </h3>
+        <p
+          className="text__info"
+        >
+          date
+           | 
+          1
+           songs
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    className="songs__middle"
+  >
+    <p
+      className="middle__item"
+    >
+      <span
+        className="item__number"
+      >
+        1
+        .
+      </span>
+      title
+       | 
+      time
+    </p>
+  </div>
+  <div
+    className="songs__bottom"
+  />
+</section>
+`;

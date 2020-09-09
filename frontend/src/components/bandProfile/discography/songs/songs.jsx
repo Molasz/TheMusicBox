@@ -52,3 +52,4 @@ function Songs({ info, index, dispatch }) {
 }
 
 export default connect(null, null)(Songs);
+export { Songs };
