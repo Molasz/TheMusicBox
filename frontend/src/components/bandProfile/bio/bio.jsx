@@ -10,39 +10,39 @@ function bio({ city, country, bio, name, socialNetwork }) {
     <section className='bio'>
       <div className='bio__top'>
         <p className='top__title'>
-          <strong className='title__name'>
-            {name}
-            {' | '}
-          </strong>
+          <strong className='title__name'>{name}</strong>
+          {city && ' | '}
           <span className='title__city'>{city}</span>
           {'   '}
           <span className='title__country'>{country}</span>
         </p>
         <p className='top__text'>{bio}</p>
       </div>
-      <div className='bio__bottom'>
-        <a
-          href={socialNetwork.twitter}
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <TwitterIcon className='bottom-icon' />
-        </a>
-        <a
-          href={socialNetwork.facebook}
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <FacebookIcon className='bottom-icon' />
-        </a>
-        <a
-          href={socialNetwork.instagram}
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <InstagramIcon className='bottom-icon' />
-        </a>
-      </div>
+      {socialNetwork && (
+        <div className='bio__bottom'>
+          <a
+            href={socialNetwork.twitter}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <TwitterIcon className='bottom-icon' />
+          </a>
+          <a
+            href={socialNetwork.facebook}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <FacebookIcon className='bottom-icon' />
+          </a>
+          <a
+            href={socialNetwork.instagram}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <InstagramIcon className='bottom-icon' />
+          </a>
+        </div>
+      )}
     </section>
   );
 }

@@ -17,8 +17,18 @@ describe('GetUser test', () => {
       json: () => {}
     };
     const User = {
-      findOne: (id, callback) => callback(null, {}),
-      create: (id, callback) => {}
+      findOne: () => {
+        return {
+          populate: () => {
+            return {
+              exec: (callback) => {
+                callback(null, '');
+              }
+            };
+          }
+        };
+      },
+      create: () => {}
     };
 
     const statusStub = sinon.stub(res, 'status');
@@ -38,8 +48,18 @@ describe('GetUser test', () => {
       json: () => {}
     };
     const User = {
-      findOne: (id, callback) => callback(null, null),
-      create: (id, callback) => {}
+      findOne: () => {
+        return {
+          populate: () => {
+            return {
+              exec: (callback) => {
+                callback(null, null);
+              }
+            };
+          }
+        };
+      },
+      create: () => {}
     };
 
     const createStub = sinon.stub(User, 'create');
@@ -57,7 +77,17 @@ describe('GetUser test', () => {
       status: () => {}
     };
     const User = {
-      findOne: (id, callback) => callback('error', null)
+      findOne: () => {
+        return {
+          populate: () => {
+            return {
+              exec: (callback) => {
+                callback('err', null);
+              }
+            };
+          }
+        };
+      }
     };
 
     const statusStub = sinon.stub(res, 'status');

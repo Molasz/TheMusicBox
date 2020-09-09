@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import './bandProfile.scss';
 
-import { getBand, follow } from '../../redux/actions/bandActions';
+import { getBand, follow, showDisc } from '../../redux/actions/bandActions';
 import { addFollow, removeFollow } from '../../redux/actions/authActions';
 
 import ProfileHeader from '../profileHeader/profileHeader';
@@ -13,10 +13,10 @@ import Concerts from './concerts/concerts';
 import Bio from './bio/bio';
 
 let userIsFollowing = null;
-let calls = false;
 
 function BandProfile({ match, band, followers, user, dispatch }) {
   const [isFollowing, setIsFollowing] = useState(false);
+  const [calls, setCalls] = useState(false);
 
   function onFollow(event) {
     event.preventDefault();
@@ -29,15 +29,16 @@ function BandProfile({ match, band, followers, user, dispatch }) {
 
   useEffect(() => {
     if (!calls) {
+      dispatch(showDisc());
       dispatch(getBand(match.params.bandId));
       dispatch(follow(match.params.bandId));
-      calls = true;
+      setCalls(true);
     }
     if (user && band && !userIsFollowing) {
       userIsFollowing = user.following.some((element) => element === band._id);
       setIsFollowing(userIsFollowing);
     }
-  });
+  }, [band, calls, dispatch, match.params.bandId, user]);
 
   const followIconClass = isFollowing ? 'orange' : 'white';
 

@@ -9,7 +9,7 @@ export const saveUser = createAction(types.SAVE_USER);
 export const removeUser = createAction(types.REMOVE_USER);
 
 // Async
-export const getUserSuccess = createAction(types.GET_USER);
+const getUserSuccess = createAction(types.GET_USER);
 export const getUser = (user) => async (dispatch) => {
   try {
     const headers = {
@@ -26,7 +26,7 @@ export const getUser = (user) => async (dispatch) => {
   }
 };
 
-export const addFollowSuccess = createAction(types.ADD_FOLLOW);
+const addFollowSuccess = createAction(types.ADD_FOLLOW);
 export const addFollow = (userId, bandId) => async (dispatch) => {
   try {
     const headers = {
@@ -44,7 +44,7 @@ export const addFollow = (userId, bandId) => async (dispatch) => {
   }
 };
 
-export const removeFollowSuccess = createAction(types.REMOVE_FOLLOW);
+const removeFollowSuccess = createAction(types.REMOVE_FOLLOW);
 export const removeFollow = (userId, bandId) => async (dispatch) => {
   try {
     const headers = {

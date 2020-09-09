@@ -7,7 +7,7 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import Home from './components/home/home';
-import Profile from './components/profile/profile';
+import UserProfile from './components/userProfile/userProfile';
 import Search from './components/search/search';
 import BandProfile from './components/bandProfile/bandProfile';
 
@@ -33,7 +33,7 @@ render(
           <Header />
           <Switch>
             <Route path='/' exact component={Home} />
-            <Route path='/profile' component={Profile} />
+            <Route path='/profile' component={UserProfile} />
             <Route path='/search' component={Search} />
             <Route path='/band/:bandId' component={BandProfile} />
           </Switch>
