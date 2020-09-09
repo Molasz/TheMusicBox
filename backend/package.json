@@ -47,7 +47,8 @@
     "all": true,
     "exclude": [
       "**/*.spec.js",
-      "coverage"
+      "coverage",
+      "**/config"
     ]
   }
 }
