@@ -61,16 +61,3 @@ export const removeFollow = (userId, bandId) => async (dispatch) => {
     return dispatch(error(err));
   }
 };
-
-const getFollowingSuccess = createAction(types.GET_FOLLOWING);
-export const getFollowing = (userId) => async (dispatch) => {
-  try {
-    const headers = {
-      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
-    };
-    const response = await axios.get(`/auth/follow/${userId}`, { headers });
-    return dispatch(getFollowingSuccess(response.data));
-  } catch (err) {
-    return dispatch(error(err));
-  }
-};

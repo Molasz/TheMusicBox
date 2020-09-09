@@ -10,6 +10,5 @@ export default {
   SAVE_USER: 'SAVE_USER', // Return userIdentifier
   REMOVE_USER: 'REMOVE_USER', // Remove userIdentifier
   ADD_FOLLOW: 'ADD_FOLLOW', // Add follow to user document
-  REMOVE_FOLLOW: 'REMOVE_FOLLOW', // Remove follow to user document
-  GET_FOLLOWING: 'GET_FOLLOWING' // Return data from followed band
+  REMOVE_FOLLOW: 'REMOVE_FOLLOW' // Remove follow to user document
 };

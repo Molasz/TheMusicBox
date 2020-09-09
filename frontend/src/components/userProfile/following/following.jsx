@@ -4,16 +4,10 @@ import { Link } from 'react-router-dom';
 
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 
-import { getFollowing } from '../../../redux/actions/authActions';
-
 import './following.scss';
 
-const Following = ({ userId, userFollowing, dispatch }) => {
-  useEffect(() => {
-    if (!userFollowing) dispatch(getFollowing(userId));
-  });
-
-  const result = userFollowing?.map((element, i) => {
+const Following = ({ following }) => {
+  const result = following?.map((element, i) => {
     return (
       <div className='main__item' key={i}>
         <Link to={`/band/${element._id}`}>
@@ -42,11 +36,4 @@ const Following = ({ userId, userFollowing, dispatch }) => {
   );
 };
 
-function mapStateToProps(state) {
-  return {
-    userFollowing: state.authReducer.userFollowing
-  };
-}
-
-export default connect(mapStateToProps, null)(Following);
-export { Following };
+export default Following;
