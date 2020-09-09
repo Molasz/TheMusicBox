@@ -61,7 +61,7 @@ const UserProfile = ({ mongoUser, dispatch }) => {
           <p className='left__new-band'>aqui tamo x2</p>
         </div>
         <div className='bottom__right'>
-          <Following follows={mongoUser.following} />
+          <Following userId={mongoUser._id} />
         </div>
       </div>
     </div>

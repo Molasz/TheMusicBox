@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import './bandProfile.scss';
 
-import { getBand, follow } from '../../redux/actions/bandActions';
+import { getBand, follow, showDisc } from '../../redux/actions/bandActions';
 import { addFollow, removeFollow } from '../../redux/actions/authActions';
 
 import ProfileHeader from '../profileHeader/profileHeader';

@@ -18,6 +18,9 @@ export default handleActions(
     },
     [types.REMOVE_FOLLOW]: (state, action) => {
       return { ...state, user: action.payload };
+    },
+    [types.GET_FOLLOWING]: (state, action) => {
+      return { ...state, userFollowing: action.payload.following };
     }
   },
   {}

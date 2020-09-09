@@ -8,10 +8,6 @@ import { showDisc } from '../../redux/actions/bandActions';
 import ListItem from './listItem/listItem';
 
 function Search({ band, dispatch }) {
-  useEffect(() => {
-    dispatch(showDisc());
-  }, []);
-
   const list = band ? (
     band.map((element, i) => {
       return (
