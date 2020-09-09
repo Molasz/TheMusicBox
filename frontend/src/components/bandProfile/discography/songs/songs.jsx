@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { showDisc } from '../../../../redux/actions/bandActions';
 
 import './songs.scss';
 
@@ -8,7 +7,7 @@ import Disc from '../disc/disc';
 
 import BackIcon from '@material-ui/icons/KeyboardBackspace';
 
-import onBack from './onBack';
+import onShow from '../disc/onShow';
 
 function Songs({ info, index, dispatch }) {
   return (
@@ -18,7 +17,7 @@ function Songs({ info, index, dispatch }) {
         <div className='top__content'>
           <BackIcon
             className='content__icon'
-            onClick={(event) => onBack(event)}
+            onClick={(event) => onShow(event, undefined, dispatch)}
           />
           <div className='content__text'>
             <h3 className='text__title'>{info[index].title}</h3>
