@@ -8,11 +8,9 @@ import Disc from '../disc/disc';
 
 import BackIcon from '@material-ui/icons/KeyboardBackspace';
 
+import onBack from './onBack';
+
 function Songs({ info, index, dispatch }) {
-  function onBack(event) {
-    event.preventDefault();
-    dispatch(showDisc());
-  }
   return (
     <section className='songs'>
       <div className='songs__top'>
@@ -42,9 +40,8 @@ function Songs({ info, index, dispatch }) {
       </div>
       <div className='songs__bottom'>
         {info.map((element, i) => {
-          if (i !== index) {
-            return <Disc data={element} key={i} />;
-          } else return '';
+          if (i !== index) return <Disc data={element} key={i} />;
+          else return '';
         })}
       </div>
     </section>
