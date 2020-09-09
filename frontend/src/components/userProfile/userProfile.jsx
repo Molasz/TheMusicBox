@@ -8,6 +8,7 @@ import { saveUser, getUser } from '../../redux/actions/authActions';
 
 import ProfileHeader from '../profileHeader/profileHeader';
 import Bio from '../bandProfile/bio/bio';
+import Following from './following/following';
 
 import './userProfile.scss';
 
@@ -59,8 +60,9 @@ const UserProfile = ({ mongoUser, dispatch }) => {
           <Bio bio={mongoUser.bio} name={mongoUser.user} />
           <p className='left__new-band'>aqui tamo x2</p>
         </div>
-        <div className='bottom right'></div>
-        <h1>funciono?</h1>
+        <div className='bottom__right'>
+          <Following follows={mongoUser.following} />
+        </div>
       </div>
     </div>
   ) : (

@@ -1,0 +1,13 @@
+$color-detail: #f55110;
+
+.follow {
+  .follow__title {
+    display: flex;
+    align-items: center;
+
+    .title__icon {
+      color: $color-detail;
+      margin-right: 10px;
+    }
+  }
+}

@@ -6,7 +6,7 @@ const userModel = new Schema({
   userIdentifier: { type: String },
   user: { type: String },
   bio: { type: String },
-  following: [String]
+  following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'bands' }]
 });
 
 module.exports = mongoose.model('users', userModel);
