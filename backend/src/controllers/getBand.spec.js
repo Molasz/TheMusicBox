@@ -25,14 +25,4 @@ describe('GetBand test', () => {
 
     expect(findByIdStub.called).to.be.true;
   });
-  it('should respond with status 400', () => {
-    const req = { params: 0 };
-    const res = { status: () => {} };
-
-    const statusStub = sinon.stub(res, 'status');
-
-    getBand()(req, res);
-
-    expect(statusStub.calledWith(400)).to.be.true;
-  });
 });

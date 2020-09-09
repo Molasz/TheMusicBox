@@ -2,18 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { showDisc } from '../../../../redux/actions/bandActions';
 
-import store from '../../../../redux/store';
-
 import './songs.scss';
 
 import Disc from '../disc/disc';
 
 import BackIcon from '@material-ui/icons/KeyboardBackspace';
 
-function Songs({ info, index }) {
+function Songs({ info, index, dispatch }) {
   function onBack(event) {
     event.preventDefault();
-    store.dispatch(showDisc());
+    dispatch(showDisc());
   }
   return (
     <section className='songs'>
@@ -35,7 +33,7 @@ function Songs({ info, index }) {
       <div className='songs__middle'>
         {info[index].songs.map((element, i) => {
           return (
-            <p className='middle__item' key={i + 1}>
+            <p className='middle__item' key={i}>
               <span className='item__number'>{i + 1}.</span>
               {element.title} | {element.time}
             </p>
@@ -53,8 +51,5 @@ function Songs({ info, index }) {
   );
 }
 
-function mapDispatchToProps(dispatch) {
-  return { showDisc };
-}
-
-export default connect(null, mapDispatchToProps)(Songs);
+export default connect(null, null)(Songs);
+export { Songs };

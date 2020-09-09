@@ -24,21 +24,4 @@ describe('Search Band test', () => {
 
     expect(findStub.called).to.be.true;
   });
-  it('should respond with status 400', () => {
-    const Band = {
-      find: () => {}
-    };
-    const req = {
-      params: {}
-    };
-    const res = {
-      status: () => {}
-    };
-
-    const statusStub = sinon.stub(res, 'status');
-
-    searchBand(Band)(req, res);
-
-    expect(statusStub.calledWith(400)).to.be.true;
-  });
 });

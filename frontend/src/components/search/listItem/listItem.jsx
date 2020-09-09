@@ -5,7 +5,7 @@ import './listItem.scss';
 
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
-function ListItem({ data, index }) {
+function ListItem({ data }) {
   return (
     <>
       <img src={data.logo} alt='logo' className='item__logo' />

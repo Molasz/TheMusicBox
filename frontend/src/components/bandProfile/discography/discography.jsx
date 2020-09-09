@@ -33,3 +33,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(Discography);
+export { Discography };
