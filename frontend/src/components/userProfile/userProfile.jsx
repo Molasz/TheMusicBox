@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { DOMAIN } from '../../config/auth0';
 import { saveUser, getUser } from '../../redux/actions/authActions';
 
-const Profile = ({ dispatch }) => {
+const UserProfile = ({ dispatch }) => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [userMetadata, setUserMetadata] = useState(null);
 
@@ -58,11 +58,8 @@ const Profile = ({ dispatch }) => {
   );
 };
 
-export default connect(
-  null,
-  null
-)(
-  withAuthenticationRequired(Profile, {
+export default connect()(
+  withAuthenticationRequired(UserProfile, {
     onRedirecting: () => <div>Redirecting you to the login page...</div>
   })
 );
