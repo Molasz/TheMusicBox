@@ -33,7 +33,7 @@ function Songs({ info, index, dispatch }) {
       <div className='songs__middle'>
         {info[index].songs.map((element, i) => {
           return (
-            <p className='middle__item' key={i + 1}>
+            <p className='middle__item' key={i}>
               <span className='item__number'>{i + 1}.</span>
               {element.title} | {element.time}
             </p>

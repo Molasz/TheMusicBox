@@ -15,7 +15,7 @@ function Search({ band, dispatch }) {
   const list = band ? (
     band.map((element, i) => {
       return (
-        <div className='list__item' index={i}>
+        <div className='list__item' key={i}>
           <ListItem data={element} />
         </div>
       );

@@ -17,15 +17,4 @@ describe('Add follow test', () => {
 
     expect(findByIdAndUpdateStub.called).to.be.true;
   });
-
-  it('should respond with status 400', () => {
-    const req = { params: {} };
-    const res = { status: () => {} };
-
-    const statusStub = sinon.stub(res, 'status');
-
-    addFollow()(req, res);
-
-    expect(statusStub.called).to.be.true;
-  });
 });
