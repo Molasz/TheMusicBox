@@ -3,12 +3,10 @@ import './disc.scss';
 import { connect } from 'react-redux';
 import { showDisc } from '../../../../redux/actions/bandActions';
 
-import store from '../../../../redux/store';
-
-function Disc({ data, index }) {
+function Disc({ data, index, dispatch }) {
   function onShow(event, index) {
     event.preventDefault();
-    store.dispatch(showDisc(index));
+    dispatch(showDisc(index));
   }
 
   return (
@@ -26,8 +24,4 @@ function Disc({ data, index }) {
   );
 }
 
-function mapDispatchToProps(dispatch) {
-  return { showDisc };
-}
-
-export default connect(null, mapDispatchToProps)(Disc);
+export default connect(null, null)(Disc);

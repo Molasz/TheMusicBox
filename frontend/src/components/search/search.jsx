@@ -3,14 +3,13 @@ import { connect } from 'react-redux';
 
 import './search.scss';
 
-import store from '../../redux/store';
 import { showDisc } from '../../redux/actions/bandActions';
 
 import ListItem from './listItem/listItem';
 
-function Search({ band }) {
+function Search({ band, dispatch }) {
   useEffect(() => {
-    store.dispatch(showDisc());
+    dispatch(showDisc());
   }, []);
 
   const list = band ? (

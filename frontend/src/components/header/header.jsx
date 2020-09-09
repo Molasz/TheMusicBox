@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 import './header.scss';
 
-import store from '../../redux/store';
 import { searchBand } from '../../redux/actions/bandActions';
 
 import LoginButton from './loginButton';
@@ -14,7 +13,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
-function Header({ auth, band }) {
+function Header({ auth, band, dispatch }) {
   const [redirect, setRedirect] = useState(null);
 
   useEffect(() => {
@@ -23,7 +22,7 @@ function Header({ auth, band }) {
 
   function onSearch(event) {
     if (event.keyCode === 13) {
-      store.dispatch(searchBand(event.target.value.toLowerCase()));
+      dispatch(searchBand(event.target.value.toLowerCase()));
       event.target.value = '';
       setRedirect(<Redirect to='/search' />);
     }

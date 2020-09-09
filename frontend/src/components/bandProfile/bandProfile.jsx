@@ -6,34 +6,31 @@ import './bandProfile.scss';
 import { getBand, follow } from '../../redux/actions/bandActions';
 import { addFollow, removeFollow } from '../../redux/actions/authActions';
 
-import store from '../../redux/store';
-
+import ProfileHeader from '../profileHeader/profileHeader';
 import Photos from './photos/photos';
 import Discography from './discography/discography';
 import Concerts from './concerts/concerts';
 import Bio from './bio/bio';
 
-import Star from '@material-ui/icons/Grade';
-
 let userIsFollowing = null;
 let calls = false;
 
-function BandProfile({ match, band, followers, user }) {
+function BandProfile({ match, band, followers, user, dispatch }) {
   const [isFollowing, setIsFollowing] = useState(false);
 
   function onFollow(event) {
     event.preventDefault();
     if (user) {
-      if (!isFollowing) store.dispatch(addFollow(user._id, band._id));
-      else store.dispatch(removeFollow(user._id, band._id));
+      if (!isFollowing) dispatch(addFollow(user._id, band._id));
+      else dispatch(removeFollow(user._id, band._id));
       setIsFollowing(!isFollowing);
     } else alert('Login to use this feature');
   }
 
   useEffect(() => {
     if (!calls) {
-      store.dispatch(getBand(match.params.bandId));
-      store.dispatch(follow(match.params.bandId));
+      dispatch(getBand(match.params.bandId));
+      dispatch(follow(match.params.bandId));
       calls = true;
     }
     if (user && band && !userIsFollowing) {
@@ -47,22 +44,14 @@ function BandProfile({ match, band, followers, user }) {
   const result = band ? (
     <article className='band-profile'>
       <div className='band-profile__top'>
-        <img src={band.logo} alt='Logo' className='top__logo' />
-
-        <img src={band.banner} alt='Banner' className='top__banner' />
-        <div className='top__info'>
-          <strong className='info__name'>{band.name}</strong>
-          <div className='info__follow'>
-            <div className='follow__container'>
-              <Star
-                className={`contanier__icon ${followIconClass}`}
-                id='follow'
-                onClick={onFollow}
-              />
-              <p className='follow__count'> {followers} Followers</p>
-            </div>
-          </div>
-        </div>
+        <ProfileHeader
+          logo={band.logo}
+          banner={band.banner}
+          name={band.name}
+          onFollow={onFollow}
+          followers={followers}
+          followIconClass={followIconClass}
+        />
       </div>
       <div className='band-profile__middle'>
         <Bio

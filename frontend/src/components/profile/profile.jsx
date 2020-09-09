@@ -4,10 +4,9 @@ import { withAuthenticationRequired } from '@auth0/auth0-react';
 import { connect } from 'react-redux';
 
 import { DOMAIN } from '../../config/auth0';
-import store from '../../redux/store';
 import { saveUser, getUser } from '../../redux/actions/authActions';
 
-const Profile = () => {
+const Profile = ({ dispatch }) => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [userMetadata, setUserMetadata] = useState(null);
 
@@ -30,8 +29,8 @@ const Profile = () => {
 
         if (accessToken) {
           sessionStorage.setItem('token', JSON.stringify(accessToken));
-          store.dispatch(saveUser(user.sub));
-          store.dispatch(getUser(user));
+          dispatch(saveUser(user.sub));
+          dispatch(getUser(user));
         }
         setUserMetadata(user_metadata);
       } catch (err) {
@@ -59,13 +58,9 @@ const Profile = () => {
   );
 };
 
-function mapDispatchToProps(dispatch) {
-  return { saveUser, getUser };
-}
-
 export default connect(
   null,
-  mapDispatchToProps
+  null
 )(
   withAuthenticationRequired(Profile, {
     onRedirecting: () => <div>Redirecting you to the login page...</div>
