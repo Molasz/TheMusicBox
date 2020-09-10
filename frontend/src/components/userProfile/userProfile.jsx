@@ -33,8 +33,6 @@ const UserProfile = ({ mongoUser, edit, match, dispatch }) => {
     })();
   }, [dispatch, getAccessTokenSilently, user]);
 
-  const isEdit = edit ? 'edit' : '';
-
   return isAuthenticated && mongoUser && user ? (
     <div className={'userProfile'}>
       <div className='userProfile__top'>
@@ -43,12 +41,19 @@ const UserProfile = ({ mongoUser, edit, match, dispatch }) => {
           banner={mongoUser.banner}
           match={match}
           dispatch={dispatch}
-          isEdit={isEdit}
+          edit={edit}
+          name={mongoUser.user}
+          bio={mongoUser.bio}
         />
       </div>
       <div className='userProfile__bottom'>
         <div className='bottom__left'>
-          <Bio bio={mongoUser.bio} name={mongoUser.user} isEdit={isEdit} />
+          <Bio
+            bio={mongoUser.bio}
+            name={mongoUser.user}
+            edit={edit}
+            dispatch={dispatch}
+          />
           <p className='left__new-band'>aqui tamo x2</p>
         </div>
         <div className='bottom__right'>
@@ -63,8 +68,7 @@ const UserProfile = ({ mongoUser, edit, match, dispatch }) => {
 
 function mapStateToProps(state) {
   return {
-    mongoUser: state.authReducer.user,
-    edit: state.authReducer.editProfile
+    mongoUser: state.authReducer.user
   };
 }
 

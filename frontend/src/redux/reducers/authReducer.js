@@ -19,8 +19,14 @@ export default handleActions(
     [types.REMOVE_FOLLOW]: (state, action) => {
       return { ...state, user: action.payload };
     },
-    [types.EDIT_PROFILE]: (state, action) => {
-      return { ...state, editProfile: action.payload };
+    [types.EDIT_NAME]: (state, action) => {
+      return {
+        ...state,
+        editInfo: { ...state.editInfo, name: action.payload }
+      };
+    },
+    [types.EDIT_BIO]: (state, action) => {
+      return { ...state, editInfo: { ...state.editInfo, bio: action.payload } };
     }
   },
   {}

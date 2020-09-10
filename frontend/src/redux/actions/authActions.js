@@ -6,7 +6,8 @@ import { error } from './errorAction';
 
 // Sync
 export const saveUser = createAction(types.SAVE_USER);
-export const editProfile = createAction(types.EDIT_PROFILE);
+export const editName = createAction(types.EDIT_NAME);
+export const editBio = createAction(types.EDIT_BIO);
 
 // Async
 const getUserSuccess = createAction(types.GET_USER);

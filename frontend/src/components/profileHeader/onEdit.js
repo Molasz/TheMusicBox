@@ -1,9 +1,10 @@
-import { editProfile } from '../../redux/actions/authActions';
+import { editBio, editName } from '../../redux/actions/authActions';
 
-function onEdit(event, dispatch) {
+function onEdit(event, name, bio, dispatch) {
   event.preventDefault();
   event.target.style.color = 'ffffff';
-  dispatch(editProfile(true));
+  dispatch(editName(name));
+  dispatch(editBio(bio));
 }
 
 export default onEdit;

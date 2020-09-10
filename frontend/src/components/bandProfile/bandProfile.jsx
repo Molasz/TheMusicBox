@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import './bandProfile.scss';
 
+import PuffLoader from 'react-spinners/PuffLoader';
+
 import { getBand, follow, showDisc } from '../../redux/actions/bandActions';
 import { addFollow, removeFollow } from '../../redux/actions/authActions';
 
@@ -74,7 +76,7 @@ function BandProfile({ match, band, followers, user, dispatch }) {
       </div>
     </article>
   ) : (
-    <h3>Loading...</h3>
+    <PuffLoader color='#f55110' />
   );
 
   return result;

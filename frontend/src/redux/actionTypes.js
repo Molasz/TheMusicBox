@@ -11,5 +11,6 @@ export default {
   REMOVE_USER: 'REMOVE_USER', // Remove userIdentifier
   ADD_FOLLOW: 'ADD_FOLLOW', // Add follow to user document
   REMOVE_FOLLOW: 'REMOVE_FOLLOW', // Remove follow to user document
-  EDIT_PROFILE: 'EDIT_PROFILE' // Active edit options on profile
+  EDIT_NAME: 'EDIT_NAME', // Return edited name by user
+  EDIT_BIO: 'EDIT_BIO' // Return edited bio by user
 };
