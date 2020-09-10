@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import './bio.scss';
@@ -14,7 +14,10 @@ function Bio({ city, country, bio, name, socialNetwork, editInfo, dispatch }) {
     <section className='bio'>
       <div className='bio__top'>
         <p className='top__title'>
-          {editInfo ? (
+          {!(
+            Object.keys(editInfo).length === 0 &&
+            editInfo.constructor === Object
+          ) ? (
             <input
               className='title__name'
               value={editInfo.name}
@@ -29,7 +32,9 @@ function Bio({ city, country, bio, name, socialNetwork, editInfo, dispatch }) {
           {'   '}
           <span className='title__country'>{country}</span>
         </p>
-        {editInfo ? (
+        {!(
+          Object.keys(editInfo).length === 0 && editInfo.constructor === Object
+        ) ? (
           <textarea
             className='top__text'
             value={editInfo.bio}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import './profileHeader.scss';
 
@@ -8,13 +9,12 @@ import onSave from './onSave';
 import Star from '@material-ui/icons/Grade';
 import Gear from '@material-ui/icons/Settings';
 import Save from '@material-ui/icons/Save';
-import { connect } from 'react-redux';
 
 function ProfileHeader({
   logo,
   banner,
   name,
-  bio,
+  user,
   onFollow,
   followers,
   followIconClass,
@@ -23,6 +23,7 @@ function ProfileHeader({
   match,
   dispatch
 }) {
+  console.log('renderitzo el header');
   const infoFollow = (
     <div className='follow__container'>
       <Star
@@ -39,18 +40,21 @@ function ProfileHeader({
       <img src={logo} alt='Logo' className='top__logo' />
       <img src={banner} alt='Banner' className='top__banner' />
       <div className='top__info'>
-        <strong className='info__name'>{isBand && name}</strong>
+        <strong className='info__name'>{name}</strong>
         <div className='info__follow'>
           {match.path === '/profile' && (
             <Gear
               className='follow__gear'
-              onClick={(event) => onEdit(event, name, bio, dispatch)}
+              onClick={(event) => onEdit(event, user.user, user.bio, dispatch)}
             />
           )}
-          {editInfo && (
+          {!(
+            Object.keys(editInfo).length === 0 &&
+            editInfo.constructor === Object
+          ) && (
             <Save
               className='follow__save'
-              onClick={(event) => onSave(event, editInfo)}
+              onClick={(event) => onSave(event, user._id, editInfo, dispatch)}
             />
           )}
           {isBand && infoFollow}

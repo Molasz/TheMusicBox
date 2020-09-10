@@ -62,3 +62,19 @@ export const removeFollow = (userId, bandId) => async (dispatch) => {
     return dispatch(error(err));
   }
 };
+
+const sendEditInfoSuccess = createAction(types.SEND_EDIT_INFO);
+export const sendEditInfo = (userId, editInfo) => async (dispatch) => {
+  try {
+    const headers = {
+      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
+    };
+    const response = await axios.patch(`/auth/${userId}`, editInfo, {
+      headers
+    });
+    const temp = { ...response.data, ...editInfo };
+    return dispatch(sendEditInfoSuccess(temp));
+  } catch (err) {
+    return dispatch(error(err));
+  }
+};

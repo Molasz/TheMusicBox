@@ -42,8 +42,7 @@ const UserProfile = ({ mongoUser, edit, match, dispatch }) => {
           match={match}
           dispatch={dispatch}
           edit={edit}
-          name={mongoUser.user}
-          bio={mongoUser.bio}
+          user={mongoUser}
         />
       </div>
       <div className='userProfile__bottom'>

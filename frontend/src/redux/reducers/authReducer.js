@@ -27,6 +27,9 @@ export default handleActions(
     },
     [types.EDIT_BIO]: (state, action) => {
       return { ...state, editInfo: { ...state.editInfo, bio: action.payload } };
+    },
+    [types.SEND_EDIT_INFO]: (state, action) => {
+      return { ...state, user: action.payload };
     }
   },
   {}

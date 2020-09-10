@@ -35,7 +35,11 @@ function BandProfile({ match, band, followers, user, dispatch }) {
       dispatch(follow(match.params.bandId));
       setCalls(true);
     }
-    if (!checkFollowing && user && band) {
+    if (
+      !checkFollowing &&
+      !(Object.keys(user).length === 0 && user.constructor === Object) &&
+      !(Object.keys(band).length === 0 && band.constructor === Object)
+    ) {
       setIsFollowing(
         user.following.some((element) => element._id === band._id)
       );
@@ -45,7 +49,9 @@ function BandProfile({ match, band, followers, user, dispatch }) {
 
   const followIconClass = isFollowing ? 'orange' : 'white';
 
-  const result = band ? (
+  const result = !(
+    Object.keys(band).length === 0 && band.constructor === Object
+  ) ? (
     <article className='band-profile'>
       <div className='band-profile__top'>
         <ProfileHeader
