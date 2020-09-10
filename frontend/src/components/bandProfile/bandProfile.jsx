@@ -12,11 +12,10 @@ import Discography from './discography/discography';
 import Concerts from './concerts/concerts';
 import Bio from './bio/bio';
 
-let userIsFollowing = null;
-
 function BandProfile({ match, band, followers, user, dispatch }) {
-  const [isFollowing, setIsFollowing] = useState(false);
   const [calls, setCalls] = useState(false);
+  const [checkFollowing, setCheckFollowing] = useState(false);
+  const [isFollowing, setIsFollowing] = useState(null);
 
   function onFollow(event) {
     event.preventDefault();
@@ -34,9 +33,11 @@ function BandProfile({ match, band, followers, user, dispatch }) {
       dispatch(follow(match.params.bandId));
       setCalls(true);
     }
-    if (user && band && !userIsFollowing) {
-      userIsFollowing = user.following.some((element) => element === band._id);
-      setIsFollowing(userIsFollowing);
+    if (!checkFollowing && user && band) {
+      setIsFollowing(
+        user.following.some((element) => element._id === band._id)
+      );
+      setCheckFollowing(true);
     }
   }, [band, calls, dispatch, match.params.bandId, user]);
 
