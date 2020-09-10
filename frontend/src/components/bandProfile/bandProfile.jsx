@@ -39,7 +39,7 @@ function BandProfile({ match, band, followers, user, dispatch }) {
       );
       setCheckFollowing(true);
     }
-  }, [band, calls, dispatch, match.params.bandId, user]);
+  }, [band, calls, dispatch, match.params.bandId, user, checkFollowing]);
 
   const followIconClass = isFollowing ? 'orange' : 'white';
 
