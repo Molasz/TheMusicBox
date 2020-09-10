@@ -23,7 +23,6 @@ function ProfileHeader({
   match,
   dispatch
 }) {
-  console.log('renderitzo el header');
   const infoFollow = (
     <div className='follow__container'>
       <Star

@@ -1,14 +1,9 @@
-import {
-  sendEditInfo,
-  editName,
-  editBio
-} from '../../redux/actions/authActions';
+import { sendEditInfo, edit } from '../../redux/actions/authActions';
 
 function onSave(event, userId, data, dispatch) {
   event.preventDefault();
   dispatch(sendEditInfo(userId, data));
-  dispatch(editName());
-  dispatch(editBio());
+  dispatch(edit({}));
 }
 
 export default onSave;

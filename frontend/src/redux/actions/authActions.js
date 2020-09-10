@@ -8,6 +8,7 @@ import { error } from './errorAction';
 export const saveUser = createAction(types.SAVE_USER);
 export const editName = createAction(types.EDIT_NAME);
 export const editBio = createAction(types.EDIT_BIO);
+export const edit = createAction(types.EDIT);
 
 // Async
 const getUserSuccess = createAction(types.GET_USER);
