@@ -39,3 +39,13 @@ $color-detail: #f55110;
     }
   }
 }
+
+img.edit:hover {
+  box-sizing: border-box;
+  border: 3px solid $color-detail;
+}
+
+strong.edit:hover {
+  box-sizing: border-box;
+  border: 3px solid $color-detail;
+}

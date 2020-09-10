@@ -6,7 +6,7 @@ import { error } from './errorAction';
 
 // Sync
 export const saveUser = createAction(types.SAVE_USER);
-export const removeUser = createAction(types.REMOVE_USER);
+export const editProfile = createAction(types.EDIT_PROFILE);
 
 // Async
 const getUserSuccess = createAction(types.GET_USER);
@@ -17,7 +17,7 @@ export const getUser = (user) => async (dispatch) => {
     };
     const response = await axios.post(
       `/auth/${user.sub}`,
-      { nickname: user.nickname },
+      { nickname: user.nickname, photo: user.picture, email: user.email },
       { headers }
     );
     return dispatch(getUserSuccess(response.data));

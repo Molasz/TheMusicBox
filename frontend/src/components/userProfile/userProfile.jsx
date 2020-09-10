@@ -12,7 +12,7 @@ import Following from './following/following';
 
 import './userProfile.scss';
 
-const UserProfile = ({ mongoUser, dispatch }) => {
+const UserProfile = ({ mongoUser, edit, match, dispatch }) => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
@@ -33,17 +33,22 @@ const UserProfile = ({ mongoUser, dispatch }) => {
     })();
   }, [dispatch, getAccessTokenSilently, user]);
 
-  return isAuthenticated && mongoUser ? (
-    <div className='userProfile'>
+  const isEdit = edit ? 'edit' : '';
+
+  return isAuthenticated && mongoUser && user ? (
+    <div className={'userProfile'}>
       <div className='userProfile__top'>
         <ProfileHeader
-          logo={user.picture}
-          banner='https://pyxis.nymag.com/v1/imgs/280/a09/831956806c59629838ae46bd3e08255aaa-12-concerts.rsocial.w1200.jpg'
+          logo={mongoUser.photo}
+          banner={mongoUser.banner}
+          match={match}
+          dispatch={dispatch}
+          isEdit={isEdit}
         />
       </div>
       <div className='userProfile__bottom'>
         <div className='bottom__left'>
-          <Bio bio={mongoUser.bio} name={mongoUser.user} />
+          <Bio bio={mongoUser.bio} name={mongoUser.user} isEdit={isEdit} />
           <p className='left__new-band'>aqui tamo x2</p>
         </div>
         <div className='bottom__right'>
@@ -57,7 +62,10 @@ const UserProfile = ({ mongoUser, dispatch }) => {
 };
 
 function mapStateToProps(state) {
-  return { mongoUser: state.authReducer.user };
+  return {
+    mongoUser: state.authReducer.user,
+    edit: state.authReducer.editProfile
+  };
 }
 
 export default connect(mapStateToProps)(

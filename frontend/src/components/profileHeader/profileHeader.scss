@@ -24,6 +24,11 @@ $color-detail: #f55110;
   }
 
   .info__follow {
+    .follow__gear {
+      font-size: 30px;
+      color: $color-detail;
+    }
+
     .follow__container {
       display: flex;
       align-items: center;

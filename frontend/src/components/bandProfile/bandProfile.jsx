@@ -53,6 +53,8 @@ function BandProfile({ match, band, followers, user, dispatch }) {
           onFollow={onFollow}
           followers={followers}
           followIconClass={followIconClass}
+          isBand={true}
+          match={match}
         />
       </div>
       <div className='band-profile__middle'>

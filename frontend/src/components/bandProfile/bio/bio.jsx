@@ -5,12 +5,19 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 
-function bio({ city, country, bio, name, socialNetwork }) {
+import changeTargetTag from '../../userProfile/changeTargetTag';
+
+function bio({ city, country, bio, name, socialNetwork, isEdit }) {
   return (
     <section className='bio'>
       <div className='bio__top'>
         <p className='top__title'>
-          <strong className='title__name'>{name}</strong>
+          <strong
+            className={`title__name ${isEdit}`}
+            onClick={(event) => changeTargetTag(event, isEdit)}
+          >
+            {name}
+          </strong>
           {city && ' | '}
           <span className='title__city'>{city}</span>
           {'   '}
