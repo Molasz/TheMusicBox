@@ -19,7 +19,7 @@ function ListItem({ data }) {
           {data.tags.map((element, i) => (
             <p className='middle__item' key={i}>
               {element}
-              {i === data.tags.length ? ', ' : ''}
+              {i === data.tags.length - 1 ? ', ' : ''}
             </p>
           ))}
         </div>

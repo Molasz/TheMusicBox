@@ -8,11 +8,20 @@ Enzyme.configure({ adapter: new Adapter() });
 
 import { Songs } from './songs';
 
-import onBack from './onBack';
-jest.mock('./onBack');
+import onShow from '../disc/onShow';
+jest.mock('../disc/onShow');
+
+import Disc from '../disc/disc';
+jest.mock('../disc/disc');
 
 describe('Search snapshot', () => {
   const info = [
+    {
+      title: 'title',
+      songs: [{ time: 'time', title: 'title' }],
+      date: 'date',
+      img: 'img'
+    },
     {
       title: 'title',
       songs: [{ time: 'time', title: 'title' }],
@@ -26,11 +35,11 @@ describe('Search snapshot', () => {
     expect(tree.toJSON()).toMatchSnapshot();
   });
 
-  it('Should call onBack when click', () => {
+  it('Should call onShow when click', () => {
     const document = shallow(<Songs info={info} index={index} />);
     const button = document.find('.content__icon');
     button.simulate('click', { preventDefault: () => {} });
 
-    expect(onBack.call).truthy;
+    expect(onShow.call).truthy;
   });
 });
