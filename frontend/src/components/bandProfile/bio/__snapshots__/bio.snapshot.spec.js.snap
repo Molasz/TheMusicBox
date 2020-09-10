@@ -12,18 +12,27 @@ exports[`Bio snapshot Should match  1`] = `
     >
       <strong
         className="title__name"
-      />
+      >
+        Music group
+      </strong>
+       | 
       <span
         className="title__city"
-      />
+      >
+        Barcelona
+      </span>
          
       <span
         className="title__country"
-      />
+      >
+        Republica independiente de mi casa
+      </span>
     </p>
     <p
       className="top__text"
-    />
+    >
+      ...
+    </p>
   </div>
   <div
     className="bio__bottom"

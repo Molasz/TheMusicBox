@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search snapshot Should match with data 1`] = `
+<section
+  className="list"
+>
+  <div
+    className="list__item"
+  >
+    0
+  </div>
+  <div
+    className="list__item"
+  >
+    0
+  </div>
+</section>
+`;
+
+exports[`Search snapshot Should match without data 1`] = `
+<section
+  className="list"
+>
+  <h1>
+    Loading...
+  </h1>
+</section>
+`;

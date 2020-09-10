@@ -5,7 +5,7 @@ import './search.scss';
 
 import ListItem from './listItem/listItem';
 
-function Search({ band, dispatch }) {
+function Search({ band }) {
   const list = band ? (
     band.map((element, i) => {
       return (
