@@ -9,7 +9,8 @@ function getUser(User) {
         else if (user == null) {
           const userToCreate = {
             userIdentifier: req.params.id,
-            user: req.body.nickname
+            user: req.body.nickname,
+            bio: '...'
           };
           User.create(userToCreate, callback(res));
         } else {

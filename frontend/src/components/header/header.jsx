@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -6,6 +6,8 @@ import './header.scss';
 
 import LoginButton from './loginButton';
 import LogoutButton from './logoutButton';
+
+import onSearch from './onSearch';
 
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
