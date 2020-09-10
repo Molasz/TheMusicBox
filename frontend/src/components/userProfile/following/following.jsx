@@ -36,3 +36,4 @@ const Following = ({ following }) => {
 };
 
 export default Following;
+export { Following };

@@ -65,3 +65,4 @@ export default connect(mapStateToProps)(
     onRedirecting: () => <div>Redirecting you to the login page...</div>
   })
 );
+export { UserProfile };
