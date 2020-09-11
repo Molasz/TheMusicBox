@@ -15,7 +15,6 @@ import Bio from './bandBio/bandBio';
 
 function BandProfile({ match, band, followers, user, dispatch }) {
   const [calls, setCalls] = useState(false);
-
   useEffect(() => {
     if (!calls) {
       dispatch(showDisc());
@@ -48,7 +47,7 @@ function BandProfile({ match, band, followers, user, dispatch }) {
       </div>
       <div className='band-profile__bottom'>
         <Concerts data={band.concerts} />
-        <Photos data={band.photos} />
+        <Photos photos={band.photos} />
       </div>
     </article>
   ) : (

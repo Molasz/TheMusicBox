@@ -1,9 +1,14 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Bio from './bio';
+import { BandBio } from './bandBio';
 
-describe('Bio snapshot', () => {
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import { shallow } from 'enzyme';
+Enzyme.configure({ adapter: new Adapter() });
+
+describe('bandBio snapshot', () => {
   const city = 'Barcelona';
   const country = 'Republica independiente de mi casa';
   const bio = '...';
@@ -14,16 +19,26 @@ describe('Bio snapshot', () => {
     facebook: 'facebook.com',
     instagram: 'instagram.com'
   };
-  const tree = renderer.create(
-    <Bio
-      city={city}
-      country={country}
-      bio={bio}
-      name={name}
-      socialNetwork={socialNetwork}
-    />
-  );
   it('Should match ', () => {
+    const tree = renderer.create(
+      <BandBio
+        city={city}
+        country={country}
+        bio={bio}
+        name={name}
+        socialNetwork={socialNetwork}
+        editInfo={{}}
+      />
+    );
     expect(tree.toJSON()).toMatchSnapshot();
+  });
+
+  it('Should call loginWithRedirect when click', () => {
+    const editInfo = { user: 'user', bio: 'bio' };
+    const document = shallow(<BandBio editInfo={editInfo} />);
+    const button = document.find('.login');
+    button.simulate('click', { preventDefault: () => {} });
+
+    expect(loginMock.call).truthy;
   });
 });

@@ -9,73 +9,45 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 
-function Bio({ city, country, bio, name, socialNetwork, editInfo, dispatch }) {
+function BandBio({ city, country, bio, name, socialNetwork }) {
   return (
     <section className='bio'>
       <div className='bio__top'>
-        <p className='top__title'>
-          {!(
-            Object.keys(editInfo).length === 0 &&
-            editInfo.constructor === Object
-          ) ? (
-            <input
-              className='title__name'
-              value={editInfo.name}
-              onChange={(event) => dispatch(editName(event.target.value))}
-            />
-          ) : (
-            <strong className='title__name'>{name}</strong>
-          )}
-
-          {city && ' | '}
-          <span className='title__city'>{city}</span>
-          {'   '}
-          <span className='title__country'>{country}</span>
-        </p>
-        {!(
-          Object.keys(editInfo).length === 0 && editInfo.constructor === Object
-        ) ? (
-          <textarea
-            className='top__text'
-            value={editInfo.bio}
-            onChange={(event) => dispatch(editBio(event.target.value))}
-          />
-        ) : (
-          <p className='top__text'>{bio}</p>
-        )}
-      </div>
-      {socialNetwork && (
-        <div className='bio__bottom'>
-          <a
-            href={socialNetwork.twitter}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <TwitterIcon className='bottom-icon' />
-          </a>
-          <a
-            href={socialNetwork.facebook}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FacebookIcon className='bottom-icon' />
-          </a>
-          <a
-            href={socialNetwork.instagram}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <InstagramIcon className='bottom-icon' />
-          </a>
+        <strong className='top__name'>{name}</strong>
+        <div className='top__region'>
+          <p className='region__city'>{city}</p>
+          {' | '}
+          <p className='region__country'>{country}</p>
         </div>
-      )}
+      </div>
+      <div className='bio__middle'>
+        <p className='middle__bio'>{bio}</p>
+      </div>
+      <div className='bio__bottom'>
+        <a
+          href={socialNetwork.twitter}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          <TwitterIcon className='bottom-icon' />
+        </a>
+        <a
+          href={socialNetwork.facebook}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          <FacebookIcon className='bottom-icon' />
+        </a>
+        <a
+          href={socialNetwork.instagram}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          <InstagramIcon className='bottom-icon' />
+        </a>
+      </div>
     </section>
   );
 }
 
-function mapDispatchToProps(state) {
-  return { editInfo: state.authReducer.editInfo };
-}
-
-export default connect(mapDispatchToProps)(Bio);
-export { Bio };
+export default BandBio;

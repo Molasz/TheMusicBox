@@ -3,7 +3,7 @@ import './photos.scss';
 
 import PhotoIcon from '@material-ui/icons/PhotoLibrary';
 
-function photos({ data }) {
+function Photos({ photos }) {
   return (
     <section className='photo'>
       <div className='photo__title'>
@@ -11,7 +11,7 @@ function photos({ data }) {
         <h1 className='title__text'>Photos and videos</h1>
       </div>
       <div className='photo__main'>
-        {data.map((element, i) => {
+        {photos.map((element, i) => {
           return (
             <img src={element} alt={`nº${i}`} key={i} className='main__item' />
           );
@@ -21,4 +21,4 @@ function photos({ data }) {
   );
 }
 
-export default photos;
+export default Photos;
