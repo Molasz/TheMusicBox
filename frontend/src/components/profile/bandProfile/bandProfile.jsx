@@ -6,7 +6,6 @@ import './bandProfile.scss';
 import PuffLoader from 'react-spinners/PuffLoader';
 
 import { getBand, follow, showDisc } from '../../redux/actions/bandActions';
-import { addFollow, removeFollow } from '../../redux/actions/authActions';
 
 import ProfileHeader from '../profileHeader/profileHeader';
 import Photos from './photos/photos';
@@ -18,15 +17,6 @@ function BandProfile({ match, band, followers, user, dispatch }) {
   const [calls, setCalls] = useState(false);
   const [checkFollowing, setCheckFollowing] = useState(false);
   const [isFollowing, setIsFollowing] = useState(null);
-
-  function onFollow(event) {
-    event.preventDefault();
-    if (user) {
-      if (!isFollowing) dispatch(addFollow(user._id, band._id));
-      else dispatch(removeFollow(user._id, band._id));
-      setIsFollowing(!isFollowing);
-    } else alert('Login to use this feature');
-  }
 
   useEffect(() => {
     if (!calls) {
@@ -47,8 +37,6 @@ function BandProfile({ match, band, followers, user, dispatch }) {
     }
   }, [band, calls, dispatch, match.params.bandId, user, checkFollowing]);
 
-  const followIconClass = isFollowing ? 'orange' : 'white';
-
   const result = !(
     Object.keys(band).length === 0 && band.constructor === Object
   ) ? (
@@ -58,9 +46,6 @@ function BandProfile({ match, band, followers, user, dispatch }) {
           logo={band.logo}
           banner={band.banner}
           name={band.name}
-          onFollow={onFollow}
-          followers={followers}
-          followIconClass={followIconClass}
           isBand={true}
           match={match}
         />
@@ -91,7 +76,6 @@ function BandProfile({ match, band, followers, user, dispatch }) {
 function mapStateToProps(state) {
   return {
     band: state.bandReducer.band,
-    followers: state.bandReducer.bandFollowers,
     user: state.authReducer.user
   };
 }

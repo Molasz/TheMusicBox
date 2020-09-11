@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import './profileHeader.scss';
 
 import onEdit from './onEdit';
 import onSave from './onSave';
+import onFollow from './onFollow';
 
 import Star from '@material-ui/icons/Grade';
 import Gear from '@material-ui/icons/Settings';
@@ -15,14 +16,14 @@ function ProfileHeader({
   banner,
   name,
   user,
-  onFollow,
   followers,
-  followIconClass,
   isBand,
   editInfo,
   match,
   dispatch
 }) {
+  const [followIconClass, setFollowIconClass] = useState('');
+
   const infoFollow = (
     <div className='follow__container'>
       <Star
@@ -64,7 +65,10 @@ function ProfileHeader({
 }
 
 function mapStateToProps(state) {
-  return { editInfo: state.authReducer.editInfo };
+  return {
+    editInfo: state.authReducer.editInfo,
+    followers: state.bandReducer.bandFollowers
+  };
 }
 
 export default connect(mapStateToProps)(ProfileHeader);

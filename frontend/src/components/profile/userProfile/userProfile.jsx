@@ -10,6 +10,8 @@ import ProfileHeader from '../profileHeader/profileHeader';
 import Bio from '../bandProfile/bio/bio';
 import Following from './following/following';
 
+import PuffLoader from 'react-spinners/PuffLoader';
+
 import './userProfile.scss';
 
 const UserProfile = ({ mongoUser, edit, match, dispatch }) => {
@@ -61,7 +63,7 @@ const UserProfile = ({ mongoUser, edit, match, dispatch }) => {
       </div>
     </div>
   ) : (
-    <p>Loading...</p>
+    <PuffLoader color='#f55110' />
   );
 };
 
