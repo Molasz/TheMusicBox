@@ -7,29 +7,32 @@ exports[`bandBio snapshot Should match  1`] = `
   <div
     className="bio__top"
   >
-    <p
-      className="top__title"
+    <strong
+      className="top__name"
     >
-      <strong
-        className="title__name"
-      >
-        Music group
-      </strong>
-       | 
-      <span
-        className="title__city"
+      Music group
+    </strong>
+    <div
+      className="top__region"
+    >
+      <p
+        className="region__city"
       >
         Barcelona
-      </span>
-         
-      <span
-        className="title__country"
+      </p>
+       | 
+      <p
+        className="region__country"
       >
         Republica independiente de mi casa
-      </span>
-    </p>
+      </p>
+    </div>
+  </div>
+  <div
+    className="bio__middle"
+  >
     <p
-      className="top__text"
+      className="middle__bio"
     >
       ...
     </p>
