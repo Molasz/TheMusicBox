@@ -1,4 +1,4 @@
-import { addFollow, removeFollow } from '../../../../redux/actions/authActions';
+import { addFollow, removeFollow } from '../../../redux/actions/authActions';
 
 function onFollow(event, userId, bandId, dispatch) {
   event.preventDefault();

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import './bio.scss';
 
-import { editBio, editName } from '../../../redux/actions/authActions';
+import { editBio, editName } from '../../../../redux/actions/authActions';
 
 import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';

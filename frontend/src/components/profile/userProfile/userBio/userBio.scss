@@ -1,0 +1,51 @@
+$color-detail: #f55110;
+.bio {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  margin-right: 30px;
+  .bio__top {
+    .top__title {
+      padding-bottom: 10px;
+      border-bottom: 4px solid $color-detail;
+      font-size: 20px;
+
+      .title__name {
+        text-transform: uppercase;
+      }
+      .title__city,
+      .title__country {
+        text-transform: capitalize;
+      }
+    }
+    .top__text {
+      line-height: 21px;
+    }
+  }
+  .bio__bottom {
+    display: flex;
+    justify-content: center;
+
+    padding-top: 20px;
+    border-top: 2px solid $color-detail;
+    a {
+      .bottom-icon {
+        font-size: 30px;
+        color: $color-detail;
+
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .bio {
+    width: 20%;
+
+    .bio__bottom {
+      border: none;
+    }
+  }
+}

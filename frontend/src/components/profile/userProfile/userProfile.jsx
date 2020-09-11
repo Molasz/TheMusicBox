@@ -6,9 +6,8 @@ import { connect } from 'react-redux';
 import { DOMAIN } from '../../../config/auth0';
 import { saveUser, getUser } from '../../../redux/actions/authActions';
 
-import ProfileHeader from '../profileHeader/profileHeader';
-import Bio from '../bio/bio';
-import Following from './following/following';
+import UserHeader from './userHeader/userHeader';
+import UserBio from './userBio/userBio';
 
 import PuffLoader from 'react-spinners/PuffLoader';
 
@@ -38,8 +37,8 @@ const UserProfile = ({ mongoUser, edit, match, dispatch }) => {
   return isAuthenticated && mongoUser && user ? (
     <div className={'userProfile'}>
       <div className='userProfile__top'>
-        <ProfileHeader
-          logo={mongoUser.photo}
+        <UserHeader
+          photo={mongoUser.photo}
           banner={mongoUser.banner}
           match={match}
           dispatch={dispatch}
@@ -49,16 +48,13 @@ const UserProfile = ({ mongoUser, edit, match, dispatch }) => {
       </div>
       <div className='userProfile__bottom'>
         <div className='bottom__left'>
-          <Bio
+          <UserBio
             bio={mongoUser.bio}
             name={mongoUser.user}
             edit={edit}
             dispatch={dispatch}
           />
           <p className='left__new-band'>aqui tamo x2</p>
-        </div>
-        <div className='bottom__right'>
-          <Following following={mongoUser.following} />
         </div>
       </div>
     </div>
