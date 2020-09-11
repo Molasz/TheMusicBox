@@ -1,4 +1,4 @@
-import { edit } from '../../redux/actions/authActions';
+import { edit } from '../../../redux/actions/authActions';
 
 function onEdit(event, name, bio, dispatch) {
   event.preventDefault();

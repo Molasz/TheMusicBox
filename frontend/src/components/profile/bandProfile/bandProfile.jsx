@@ -5,13 +5,13 @@ import './bandProfile.scss';
 
 import PuffLoader from 'react-spinners/PuffLoader';
 
-import { getBand, follow, showDisc } from '../../redux/actions/bandActions';
+import { getBand, follow, showDisc } from '../../../redux/actions/bandActions';
 
 import ProfileHeader from '../profileHeader/profileHeader';
 import Photos from './photos/photos';
 import Discography from './discography/discography';
 import Concerts from './concerts/concerts';
-import Bio from './bio/bio';
+import Bio from '../bio/bio';
 
 function BandProfile({ match, band, followers, user, dispatch }) {
   const [calls, setCalls] = useState(false);

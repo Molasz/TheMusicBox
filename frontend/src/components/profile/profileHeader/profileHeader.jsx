@@ -29,7 +29,7 @@ function ProfileHeader({
       <Star
         className={`contanier__icon ${followIconClass}`}
         id='follow'
-        onClick={onFollow}
+        onClick={(event) => onFollow(event, 0, match.params.bandId, dispatch)}
       />
       <p className='follow__count'> {followers} Followers</p>
     </div>

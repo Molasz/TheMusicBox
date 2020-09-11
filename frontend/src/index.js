@@ -7,9 +7,9 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import Home from './components/home/home';
-import UserProfile from './components/userProfile/userProfile';
+import UserProfile from './components/profile/userProfile/userProfile';
 import Search from './components/search/search';
-import BandProfile from './components/bandProfile/bandProfile';
+import BandProfile from './components/profile/bandProfile/bandProfile';
 
 import { Provider } from 'react-redux';
 import store from './redux/store';

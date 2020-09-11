@@ -1,4 +1,4 @@
-import { showDisc } from '../../../../redux/actions/bandActions';
+import { showDisc } from '../../../../../redux/actions/bandActions';
 
 function onShow(event, index, dispatch) {
   event.preventDefault();

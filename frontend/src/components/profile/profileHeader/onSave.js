@@ -1,4 +1,4 @@
-import { sendEditInfo, edit } from '../../redux/actions/authActions';
+import { sendEditInfo, edit } from '../../../../redux/actions/authActions';
 
 function onSave(event, userId, data, dispatch) {
   event.preventDefault();

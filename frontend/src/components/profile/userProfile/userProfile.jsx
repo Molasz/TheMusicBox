@@ -3,11 +3,11 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import { connect } from 'react-redux';
 
-import { DOMAIN } from '../../config/auth0';
-import { saveUser, getUser } from '../../redux/actions/authActions';
+import { DOMAIN } from '../../../config/auth0';
+import { saveUser, getUser } from '../../../redux/actions/authActions';
 
 import ProfileHeader from '../profileHeader/profileHeader';
-import Bio from '../bandProfile/bio/bio';
+import Bio from '../bio/bio';
 import Following from './following/following';
 
 import PuffLoader from 'react-spinners/PuffLoader';
