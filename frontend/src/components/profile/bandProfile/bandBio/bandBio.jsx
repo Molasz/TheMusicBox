@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import './bio.scss';
+import './bandBio.scss';
 
 import { editBio, editName } from '../../../../redux/actions/authActions';
 

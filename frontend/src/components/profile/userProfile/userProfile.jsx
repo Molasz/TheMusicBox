@@ -50,7 +50,7 @@ const UserProfile = ({ mongoUser, match, dispatch }) => {
           name={mongoUser.user}
           dispatch={dispatch}
         />
-        <Following />
+        <Following following={mongoUser.following} />
       </div>
     </div>
   ) : (

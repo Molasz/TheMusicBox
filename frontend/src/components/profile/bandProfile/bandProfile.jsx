@@ -7,16 +7,14 @@ import PuffLoader from 'react-spinners/PuffLoader';
 
 import { getBand, follow, showDisc } from '../../../redux/actions/bandActions';
 
-import ProfileHeader from '../bandHeader/bandHeader';
+import ProfileHeader from './bandHeader/bandHeader';
 import Photos from './photos/photos';
 import Discography from './discography/discography';
 import Concerts from './concerts/concerts';
-import Bio from './bandBio/bio';
+import Bio from './bandBio/bandBio';
 
 function BandProfile({ match, band, followers, user, dispatch }) {
   const [calls, setCalls] = useState(false);
-  const [checkFollowing, setCheckFollowing] = useState(false);
-  const [isFollowing, setIsFollowing] = useState(null);
 
   useEffect(() => {
     if (!calls) {
@@ -25,31 +23,18 @@ function BandProfile({ match, band, followers, user, dispatch }) {
       dispatch(follow(match.params.bandId));
       setCalls(true);
     }
-    if (
-      !checkFollowing &&
-      !(Object.keys(user).length === 0 && user.constructor === Object) &&
-      !(Object.keys(band).length === 0 && band.constructor === Object)
-    ) {
-      setIsFollowing(
-        user.following.some((element) => element._id === band._id)
-      );
-      setCheckFollowing(true);
-    }
-  }, [band, calls, dispatch, match.params.bandId, user, checkFollowing]);
+  }, [band, calls, dispatch, match.params.bandId, user]);
 
   const result = !(
     Object.keys(band).length === 0 && band.constructor === Object
   ) ? (
     <article className='band-profile'>
-      <div className='band-profile__top'>
-        <ProfileHeader
-          logo={band.logo}
-          banner={band.banner}
-          name={band.name}
-          isBand={true}
-          match={match}
-        />
-      </div>
+      <ProfileHeader
+        logo={band.logo}
+        banner={band.banner}
+        name={band.name}
+        bandId={match.params.bandId}
+      />
       <div className='band-profile__middle'>
         <Bio
           bio={band.bio}
