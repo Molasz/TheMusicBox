@@ -8,12 +8,13 @@ import { saveUser, getUser } from '../../../redux/actions/authActions';
 
 import UserHeader from './userHeader/userHeader';
 import UserBio from './userBio/userBio';
+import Following from './following/following';
 
 import PuffLoader from 'react-spinners/PuffLoader';
 
 import './userProfile.scss';
 
-const UserProfile = ({ mongoUser, edit, match, dispatch }) => {
+const UserProfile = ({ mongoUser, match, dispatch }) => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
@@ -35,27 +36,21 @@ const UserProfile = ({ mongoUser, edit, match, dispatch }) => {
   }, [dispatch, getAccessTokenSilently, user]);
 
   return isAuthenticated && mongoUser && user ? (
-    <div className={'userProfile'}>
-      <div className='userProfile__top'>
-        <UserHeader
-          photo={mongoUser.photo}
-          banner={mongoUser.banner}
-          match={match}
+    <div className='user-profile'>
+      <UserHeader
+        photo={mongoUser.photo}
+        banner={mongoUser.banner}
+        match={match}
+        dispatch={dispatch}
+        user={mongoUser}
+      />
+      <div className='user-profile__bottom'>
+        <UserBio
+          bio={mongoUser.bio}
+          name={mongoUser.user}
           dispatch={dispatch}
-          edit={edit}
-          user={mongoUser}
         />
-      </div>
-      <div className='userProfile__bottom'>
-        <div className='bottom__left'>
-          <UserBio
-            bio={mongoUser.bio}
-            name={mongoUser.user}
-            edit={edit}
-            dispatch={dispatch}
-          />
-          <p className='left__new-band'>aqui tamo x2</p>
-        </div>
+        <Following />
       </div>
     </div>
   ) : (

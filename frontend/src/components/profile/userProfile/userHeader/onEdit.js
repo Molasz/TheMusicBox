@@ -1,9 +1,9 @@
 import { edit } from '../../../../redux/actions/authActions';
 
-function onEdit(event, name, bio, dispatch) {
+function onEdit(event, user, bio, dispatch) {
   event.preventDefault();
   event.target.style.color = 'ffffff';
-  dispatch(edit({ name, bio }));
+  dispatch(edit({ user, bio }));
 }
 
 export default onEdit;

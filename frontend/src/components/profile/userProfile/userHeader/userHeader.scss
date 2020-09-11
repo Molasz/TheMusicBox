@@ -1,74 +1,56 @@
 $color-detail: #f55110;
+$max-banner-width: 600px;
 
-.top__logo {
-  width: 50%;
-}
-.top__banner {
-  display: none;
-  width: 50%;
-
-  margin-left: 30px;
-}
-.top__info {
+.user-header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
 
-  width: 30%;
-  margin-left: 30px;
+  height: 200px;
 
-  .info__name {
-    text-transform: uppercase;
-    font-size: 80px;
-    margin: 0;
+  padding-bottom: 13px;
+  border-bottom: 4px solid $color-detail;
+  margin-bottom: 0px;
+
+  .user-header__photo {
+    width: 200px;
   }
+  .user-header__banner {
+    display: none;
 
-  .info__follow {
-    .follow__gear {
-      font-size: 30px;
+    flex: 1;
+    justify-content: center;
+
+    margin-left: 30px;
+
+    .banner__img {
+      max-width: $max-banner-width;
+    }
+  }
+  .user-header__edit {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    width: 100px;
+    margin-left: 30px;
+
+    .edit__gear {
+      font-size: 40px;
       color: $color-detail;
     }
 
-    .follow__save {
-      margin-left: 20px;
-      font-size: 30px;
+    .edit__save {
+      font-size: 40px;
       color: $color-detail;
-    }
-
-    .follow__container {
-      display: flex;
-      align-items: center;
-
-      .contanier__icon {
-        font-size: 30px;
-        margin-right: 10px;
-      }
-
-      .white {
-        color: white;
-      }
-
-      .orange {
-        color: $color-detail;
-      }
     }
   }
 }
 
-@media (min-width: 992px) {
-  .top__logo {
-    width: 20%;
-  }
-  .top__banner {
-    display: block;
-  }
-  .top__info {
-    display: flex;
-    flex-direction: column;
-
-    margin-left: 30px;
-    .info__name {
-      font-size: 80px;
+@media (min-width: 1200px) {
+  .user-header {
+    .user-header__banner {
+      display: flex;
     }
   }
 }
