@@ -12,7 +12,7 @@ import Save from '@material-ui/icons/Save';
 function ProfileHeader({ photo, banner, user, editInfo, dispatch }) {
   return (
     <section className='user-header'>
-      <img src={photo} alt='photo' className='user-header__photo' />
+      <img src={photo} alt='user' className='user-header__photo' />
       <div className='user-header__banner'>
         <img src={banner} alt='Banner' className='banner__img' />
       </div>

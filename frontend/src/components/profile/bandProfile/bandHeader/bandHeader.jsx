@@ -17,7 +17,7 @@ function BandHeader({ logo, banner, name, bandId, user, dispatch, followers }) {
     ) {
       setIsFollowing(user.following.some((element) => element._id === bandId));
     }
-  }, []);
+  }, [bandId, isFollowing, user]);
 
   const followIconClass = isFollowing ? 'orange' : 'white';
 

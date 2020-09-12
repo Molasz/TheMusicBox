@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './userBio.scss';
@@ -39,9 +38,7 @@ function UserBio({ bio, name, editInfo, dispatch }) {
       </div>
       <div className='user-bio__bottom'>
         <p className='bottom__text'> Create your own band profile </p>
-        <Link to='/newBand'>
-          <GroupAddIcon className='bottom__icon' />
-        </Link>
+        <GroupAddIcon className='bottom__icon' />
       </div>
     </section>
   );
