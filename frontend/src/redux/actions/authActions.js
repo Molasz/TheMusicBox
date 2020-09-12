@@ -6,7 +6,9 @@ import { error } from './errorAction';
 
 // Sync
 export const saveUser = createAction(types.SAVE_USER);
-export const removeUser = createAction(types.REMOVE_USER);
+export const editName = createAction(types.EDIT_NAME);
+export const editBio = createAction(types.EDIT_BIO);
+export const edit = createAction(types.EDIT);
 
 // Async
 const getUserSuccess = createAction(types.GET_USER);
@@ -17,7 +19,7 @@ export const getUser = (user) => async (dispatch) => {
     };
     const response = await axios.post(
       `/auth/${user.sub}`,
-      { nickname: user.nickname },
+      { nickname: user.nickname, photo: user.picture, email: user.email },
       { headers }
     );
     return dispatch(getUserSuccess(response.data));
@@ -57,6 +59,22 @@ export const removeFollow = (userId, bandId) => async (dispatch) => {
     );
     response.data.following.filter((item) => item !== bandId);
     return dispatch(removeFollowSuccess(response.data));
+  } catch (err) {
+    return dispatch(error(err));
+  }
+};
+
+const sendEditInfoSuccess = createAction(types.SEND_EDIT_INFO);
+export const sendEditInfo = (userId, editInfo) => async (dispatch) => {
+  try {
+    const headers = {
+      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
+    };
+    const response = await axios.patch(`/auth/${userId}`, editInfo, {
+      headers
+    });
+    const temp = { ...response.data, ...editInfo };
+    return dispatch(sendEditInfoSuccess(temp));
   } catch (err) {
     return dispatch(error(err));
   }

@@ -18,6 +18,22 @@ export default handleActions(
     },
     [types.REMOVE_FOLLOW]: (state, action) => {
       return { ...state, user: action.payload };
+    },
+    [types.SEND_EDIT_INFO]: (state, action) => {
+      return { ...state, user: action.payload };
+    },
+
+    [types.EDIT]: (state, action) => {
+      return { ...state, editInfo: action.payload };
+    },
+    [types.EDIT_NAME]: (state, action) => {
+      return {
+        ...state,
+        editInfo: { ...state.editInfo, user: action.payload }
+      };
+    },
+    [types.EDIT_BIO]: (state, action) => {
+      return { ...state, editInfo: { ...state.editInfo, bio: action.payload } };
     }
   },
   {}

@@ -1,0 +1,52 @@
+$color-detail: #f55110;
+.bio {
+  display: flex;
+  flex-direction: column;
+
+  width: 200px;
+  margin-right: 30px;
+  .bio__top {
+    display: flex;
+    flex-direction: column;
+
+    border-bottom: 2px solid $color-detail;
+    .top__name {
+      margin: 10px 0;
+      text-transform: capitalize;
+
+      text-align: center;
+      font-size: 30px;
+    }
+
+    .top__region {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      .region__city,
+      .region__country {
+        margin: 0 10px;
+        text-transform: capitalize;
+      }
+    }
+  }
+  .bio__middle {
+    .top__text {
+      line-height: 21px;
+    }
+  }
+  .bio__bottom {
+    display: flex;
+    justify-content: center;
+
+    padding-top: 20px;
+    border-top: 2px solid $color-detail;
+    a {
+      .bottom-icon {
+        font-size: 30px;
+        color: $color-detail;
+
+        margin-right: 15px;
+      }
+    }
+  }
+}

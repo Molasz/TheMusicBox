@@ -1,0 +1,78 @@
+$color-detail: #f55110;
+$max-banner-width: 600px;
+
+.band-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  height: 200px;
+
+  padding-bottom: 13px;
+  border-bottom: 4px solid $color-detail;
+  margin-bottom: 0px;
+
+  .band-header__logo {
+    width: 200px;
+  }
+  .band-header__banner {
+    display: none;
+
+    flex: 1;
+    justify-content: center;
+
+    margin-left: 30px;
+    .banner__img {
+      max-width: $max-banner-width;
+    }
+  }
+  .band-header__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    margin-left: 30px;
+    text-align: end;
+    .info__name {
+      text-transform: uppercase;
+      font-size: 60px;
+      margin: 0;
+    }
+
+    .info__follow {
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      .contanier__icon {
+        font-size: 40px;
+        margin-right: 10px;
+      }
+
+      .white {
+        color: white;
+      }
+
+      .orange {
+        color: $color-detail;
+      }
+
+      .follow__count {
+        font-size: 25px;
+        margin: 0;
+
+        .count__number {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1300px) {
+  .band-header {
+    .band-header__banner {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BandHeader snapshot Should match  1`] = `
+<section
+  className="band-header"
+>
+  <img
+    alt="Logo"
+    className="band-header__logo"
+    src="logo"
+  />
+  <div
+    className="band-header__banner"
+  >
+    <img
+      alt="Banner"
+      className="banner__img"
+      src="banner"
+    />
+  </div>
+  <div
+    className="band-header__info"
+  >
+    <strong
+      className="info__name"
+    >
+      name
+    </strong>
+    <div
+      className="info__follow"
+    >
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root contanier__icon white"
+        focusable="false"
+        id="follow"
+        onClick={[Function]}
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+        />
+      </svg>
+      <p
+        className="follow__count"
+      >
+        <span
+          className="count__number"
+        >
+          0
+        </span>
+         Followers
+      </p>
+    </div>
+  </div>
+</section>
+`;

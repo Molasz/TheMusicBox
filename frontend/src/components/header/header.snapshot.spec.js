@@ -38,13 +38,12 @@ describe('Header snapshot', () => {
     );
     expect(tree.toJSON()).toMatchSnapshot();
   });
-  /*
+
   it('Should call onSearch when click', () => {
     const document = shallow(<Header />);
     const button = document.find('.input');
-    button.simulate('onKeyUp', { keyCode: 13 });
+    button.simulate('keyUp', { keyCode: 13 });
 
     expect(onSearch.call).truthy;
   });
-*/
 });

@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bio snapshot Should match whitout edit info 1`] = `
+<section
+  className="user-bio"
+>
+  <div
+    className="user-bio__top"
+  >
+    <strong
+      className="top__name"
+    >
+      name
+    </strong>
+  </div>
+  <div
+    className="user-bio__bottom"
+  >
+    <p
+      className="bottom__bio"
+    >
+      ...
+    </p>
+  </div>
+</section>
+`;
+
+exports[`Bio snapshot Should match with edit info 1`] = `
+<section
+  className="user-bio"
+>
+  <div
+    className="user-bio__top"
+  >
+    <input
+      className="top__input"
+      onChange={[Function]}
+      value="user"
+    />
+  </div>
+  <div
+    className="user-bio__bottom"
+  >
+    <textarea
+      className="bottom__text-area"
+      onChange={[Function]}
+      value="bio"
+    />
+  </div>
+</section>
+`;

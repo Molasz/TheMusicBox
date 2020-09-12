@@ -10,5 +10,10 @@ export default {
   SAVE_USER: 'SAVE_USER', // Return userIdentifier
   REMOVE_USER: 'REMOVE_USER', // Remove userIdentifier
   ADD_FOLLOW: 'ADD_FOLLOW', // Add follow to user document
-  REMOVE_FOLLOW: 'REMOVE_FOLLOW' // Remove follow to user document
+  REMOVE_FOLLOW: 'REMOVE_FOLLOW', // Remove follow to user document
+  EDIT_NAME: 'EDIT_NAME', // Return edited name by user
+  EDIT_BIO: 'EDIT_BIO', // Return edited bio by user
+  SEND_EDIT_INFO: 'SEND_EDIT_INFO', // Return user with info updated
+
+  EDIT: 'EDIT'
 };
