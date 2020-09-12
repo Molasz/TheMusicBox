@@ -1,29 +1,50 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Bio from './bio';
+import { UserBio } from './userBio';
+
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import { shallow } from 'enzyme';
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('Bio snapshot', () => {
-  const city = 'Barcelona';
-  const country = 'Republica independiente de mi casa';
   const bio = '...';
-  const name = 'Music group';
+  const name = 'name';
 
-  const socialNetwork = {
-    twitter: 'twitter.com',
-    facebook: 'facebook.com',
-    instagram: 'instagram.com'
-  };
-  const tree = renderer.create(
-    <Bio
-      city={city}
-      country={country}
-      bio={bio}
-      name={name}
-      socialNetwork={socialNetwork}
-    />
-  );
-  it('Should match ', () => {
+  it('Should match whitout edit info', () => {
+    const editInfo = {};
+    const tree = renderer.create(
+      <UserBio bio={bio} name={name} editInfo={editInfo} />
+    );
     expect(tree.toJSON()).toMatchSnapshot();
+  });
+
+  it('Should match with edit info', () => {
+    const editInfo = { user: 'user', bio: 'bio' };
+    const tree = renderer.create(
+      <UserBio bio={bio} name={name} editInfo={editInfo} />
+    );
+    expect(tree.toJSON()).toMatchSnapshot();
+  });
+
+  const dispatch = jest.fn();
+  const editInfo = { user: 'user', bio: 'bio' };
+  const document = shallow(
+    <UserBio dispatch={dispatch} bio={bio} name={name} editInfo={editInfo} />
+  );
+
+  it('Should call dispatch when change input', () => {
+    const button = document.find('.top__input');
+    button.simulate('change', { target: { value: 1 } });
+
+    expect(dispatch.call).truthy;
+  });
+
+  it('Should call dispatch when change textArea', () => {
+    const button = document.find('.bottom__text-area');
+    button.simulate('change', { target: { value: 1 } });
+
+    expect(dispatch.call).truthy;
   });
 });

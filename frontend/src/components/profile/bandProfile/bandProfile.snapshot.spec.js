@@ -3,8 +3,11 @@ import renderer from 'react-test-renderer';
 
 import { BandProfile } from './bandProfile';
 
-jest.mock('./discography/discography');
+import BandBio from './bandBio/bandBio';
 jest.mock('./bandBio/bandBio');
+BandBio.mockReturnValue(<></>);
+
+jest.mock('./discography/discography');
 jest.mock('./bandHeader/bandHeader');
 //jest.mock('./photos/photos');
 
