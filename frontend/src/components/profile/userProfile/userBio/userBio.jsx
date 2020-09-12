@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import './userBio.scss';
 
 import {
-  editBio,
-  editName,
+  userEditBio,
+  userEditName,
   newBand
 } from '../../../../redux/actions/authActions';
 
@@ -22,7 +22,7 @@ function UserBio({ bio, name, editInfo, mongoUser, dispatch }) {
           <input
             className='top__input'
             value={editInfo.user}
-            onChange={(event) => dispatch(editName(event.target.value))}
+            onChange={(event) => dispatch(userEditName(event.target.value))}
           />
         ) : (
           <strong className='top__name'>{name}</strong>
@@ -35,7 +35,7 @@ function UserBio({ bio, name, editInfo, mongoUser, dispatch }) {
           <textarea
             className='middle__text-area'
             value={editInfo.bio}
-            onChange={(event) => dispatch(editBio(event.target.value))}
+            onChange={(event) => dispatch(userEditBio(event.target.value))}
           />
         ) : (
           <p className='middle__bio'>{bio}</p>

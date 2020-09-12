@@ -6,9 +6,9 @@ import { error } from './errorAction';
 
 // Sync
 export const saveUser = createAction(types.SAVE_USER);
-export const editName = createAction(types.EDIT_NAME);
-export const editBio = createAction(types.EDIT_BIO);
-export const edit = createAction(types.EDIT);
+export const userEditName = createAction(types.USER_EDIT_NAME);
+export const userEditBio = createAction(types.USER_EDIT_BIO);
+export const userEdit = createAction(types.USER_EDIT);
 
 // Async
 const getUserSuccess = createAction(types.GET_USER);
@@ -64,17 +64,17 @@ export const removeFollow = (userId, bandId) => async (dispatch) => {
   }
 };
 
-const sendEditInfoSuccess = createAction(types.SEND_EDIT_INFO);
-export const sendEditInfo = (userId, editInfo) => async (dispatch) => {
+const sendUserEditInfoSuccess = createAction(types.SEND_USER_EDIT_INFO);
+export const sendUserEditInfo = (userId, userEditInfo) => async (dispatch) => {
   try {
     const headers = {
       Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
     };
-    const response = await axios.patch(`/auth/${userId}`, editInfo, {
+    const response = await axios.patch(`/auth/${userId}`, userEditInfo, {
       headers
     });
-    const temp = { ...response.data, ...editInfo };
-    return dispatch(sendEditInfoSuccess(temp));
+    const temp = { ...response.data, ...userEditInfo };
+    return dispatch(sendUserEditInfoSuccess(temp));
   } catch (err) {
     return dispatch(error(err));
   }

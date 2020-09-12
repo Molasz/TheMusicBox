@@ -7,6 +7,12 @@ import axios from 'axios';
 //Sync
 export const showDisc = createAction(types.SHOW_DISC);
 
+export const bandEdit = createAction(types.BAND_EDIT);
+export const bandEditName = createAction(types.BAND_EDIT_NAME);
+export const bandEditBio = createAction(types.BAND_EDIT_BIO);
+export const bandEditCity = createAction(types.BAND_EDIT_CITY);
+export const bandEditCountry = createAction(types.BAND_EDIT_COUNTRY);
+
 //Async
 const getBandSuccess = createAction(types.GET_BAND);
 export const getBand = (id) => async (dispatch) => {

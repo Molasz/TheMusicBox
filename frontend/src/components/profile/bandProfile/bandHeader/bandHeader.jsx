@@ -6,6 +6,8 @@ import './bandHeader.scss';
 import onFollow from './onFollow';
 
 import Star from '@material-ui/icons/Grade';
+import Gear from '@material-ui/icons/Settings';
+import Save from '@material-ui/icons/Save';
 
 function BandHeader({ logo, banner, name, bandId, user, dispatch, followers }) {
   const [isFollowing, setIsFollowing] = useState(null);
@@ -29,24 +31,30 @@ function BandHeader({ logo, banner, name, bandId, user, dispatch, followers }) {
       </div>
       <div className='band-header__info'>
         <strong className='info__name'>{name}</strong>
-        <div className='info__follow'>
-          <Star
-            className={`contanier__icon ${followIconClass}`}
-            id='follow'
-            onClick={(event) =>
-              onFollow(
-                event,
-                user,
-                bandId,
-                isFollowing,
-                setIsFollowing,
-                dispatch
-              )
-            }
-          />
-          <p className='follow__count'>
-            <span className='count__number'>{followers}</span> Followers
-          </p>
+        <div className='info__bottom'>
+          <div className='bottom__follow'>
+            <Star
+              className={`contanier__icon ${followIconClass}`}
+              id='follow'
+              onClick={(event) =>
+                onFollow(
+                  event,
+                  user,
+                  bandId,
+                  isFollowing,
+                  setIsFollowing,
+                  dispatch
+                )
+              }
+            />
+            <p className='follow__count'>
+              <span className='count__number'>{followers}</span> Followers
+            </p>
+          </div>
+          <div className='bottom__edit'>
+            <Gear className='edit__gear' onClick={(event) => {}} />
+            {true && <Save className='edit__save' onClick={(event) => {}} />}
+          </div>
         </div>
       </div>
     </section>

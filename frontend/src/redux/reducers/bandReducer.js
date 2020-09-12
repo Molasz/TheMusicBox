@@ -15,6 +15,35 @@ export default handleActions(
     },
     [types.FOLLOW_BAND]: (state, action) => {
       return { ...state, bandFollowers: action.payload };
+    },
+    ///
+    [types.SEND_BAND_EDIT_INFO]: (state, action) => {
+      return { ...state, band: action.payload };
+    },
+
+    [types.BAND_EDIT]: (state, action) => {
+      return { ...state, editInfo: action.payload };
+    },
+    [types.BAND_EDIT_NAME]: (state, action) => {
+      return {
+        ...state,
+        editInfo: { ...state.editInfo, user: action.payload }
+      };
+    },
+    [types.BAND_EDIT_BIO]: (state, action) => {
+      return { ...state, editInfo: { ...state.editInfo, bio: action.payload } };
+    },
+    [types.BAND_EDIT_CITY]: (state, action) => {
+      return {
+        ...state,
+        editInfo: { ...state.editInfo, city: action.payload }
+      };
+    },
+    [types.BAND_EDIT_COUNTRY]: (state, action) => {
+      return {
+        ...state,
+        editInfo: { ...state.editInfo, country: action.payload }
+      };
     }
   },
   {}

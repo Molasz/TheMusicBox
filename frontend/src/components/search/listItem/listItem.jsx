@@ -7,30 +7,29 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 function ListItem({ data }) {
   return (
-    <>
-      <img src={data.logo} alt='logo' className='item__logo' />
-      <div className='item__info'>
+    <section className='item-list'>
+      <img src={data.logo} alt='logo' className='item-list__logo' />
+      <div className='item-list__info'>
         <div className='info__top'>
-          <p className='text__name'>{data.name}</p> |
-          <p className='text__city'>{data.city}</p>
-          <p className='text__country'>{data.country}</p>
+          <p className='top__name'>{data.name}</p> |
+          <p className='top__city'>{data.city}</p>
+          <p className='top__country'>{data.country}</p>
         </div>
         <div className='info__middle'>
           {data.tags.map((element, i) => (
             <p className='middle__item' key={i}>
               {element}
-              {i === data.tags.length - 1 ? ', ' : ''}
             </p>
           ))}
         </div>
         <div className='info__bottom'>
           <p className='bottom__bio'>{data.bio}</p>
-          <Link to={`/band/${data._id}`} className='bottom__link'>
-            <AddCircleIcon className='link__icon' />
+          <Link to={`/band/${data._id}`}>
+            <AddCircleIcon className='bottom__icon' />
           </Link>
         </div>
       </div>
-    </>
+    </section>
   );
 }
 

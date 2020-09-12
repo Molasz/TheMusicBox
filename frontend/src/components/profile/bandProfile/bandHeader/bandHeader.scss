@@ -39,30 +39,53 @@ $max-banner-width: 600px;
       margin: 0;
     }
 
-    .info__follow {
-      width: 100%;
+    .info__bottom {
       display: flex;
-      align-items: center;
+      flex-direction: column;
 
-      .contanier__icon {
-        font-size: 40px;
-        margin-right: 10px;
+      .bottom__follow {
+        display: flex;
+        align-items: center;
+
+        .contanier__icon {
+          font-size: 40px;
+          margin-right: 10px;
+        }
+
+        .white {
+          color: white;
+        }
+
+        .orange {
+          color: $color-detail;
+        }
+
+        .follow__count {
+          font-size: 25px;
+          margin: 0;
+
+          .count__number {
+            font-weight: bold;
+          }
+        }
       }
 
-      .white {
-        color: white;
-      }
+      .bottom__edit {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
 
-      .orange {
-        color: $color-detail;
-      }
+        width: 100px;
+        margin-left: 30px;
 
-      .follow__count {
-        font-size: 25px;
-        margin: 0;
+        .edit__gear {
+          font-size: 40px;
+          color: $color-detail;
+        }
 
-        .count__number {
-          font-weight: bold;
+        .edit__save {
+          font-size: 40px;
+          color: $color-detail;
         }
       }
     }
