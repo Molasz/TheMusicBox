@@ -4,6 +4,7 @@ function getUser(User) {
   return (req, res) => {
     User.findOne({ userIdentifier: req.params.id })
       .populate('following', 'name city country logo')
+      .populate('band', 'name logo')
       .exec((err, user) => {
         if (err) res.status(404);
         else if (user == null) {

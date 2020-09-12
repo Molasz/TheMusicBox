@@ -5,6 +5,7 @@ function updateUser(User) {
     const { id } = req.params;
     User.findByIdAndUpdate(id, req.body)
       .populate('following', 'name city country logo')
+      .populate('band', 'name logo')
       .exec(callback(res));
   };
 }

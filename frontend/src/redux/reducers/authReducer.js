@@ -34,6 +34,9 @@ export default handleActions(
     },
     [types.EDIT_BIO]: (state, action) => {
       return { ...state, editInfo: { ...state.editInfo, bio: action.payload } };
+    },
+    [types.NEW_BAND]: (state, action) => {
+      return { ...state, user: action.payload };
     }
   },
   {}

@@ -79,3 +79,18 @@ export const sendEditInfo = (userId, editInfo) => async (dispatch) => {
     return dispatch(error(err));
   }
 };
+
+const newBandSuccess = createAction(types.NEW_BAND);
+export const newBand = (userId) => async (dispatch) => {
+  try {
+    const headers = {
+      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
+    };
+    const response = await axios.get(`/auth/newBand/${userId}`, {
+      headers
+    });
+    return dispatch(newBandSuccess(response.data));
+  } catch (err) {
+    return dispatch(error(err));
+  }
+};
