@@ -21,7 +21,6 @@ function ProfileHeader({ photo, banner, user, editInfo, dispatch }) {
           className='edit__gear'
           onClick={(event) => onEdit(event, user.user, user.bio, dispatch)}
         />
-        )
         {!(
           Object.keys(editInfo).length === 0 && editInfo.constructor === Object
         ) && (
