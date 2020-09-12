@@ -3,13 +3,16 @@ import { connect } from 'react-redux';
 
 import './bandHeader.scss';
 
+import { bandEdit, bandEditName } from '../../../../redux/actions/bandActions';
+
 import onFollow from './onFollow';
+import onSave from './onSave';
 
 import Star from '@material-ui/icons/Grade';
 import Gear from '@material-ui/icons/Settings';
 import Save from '@material-ui/icons/Save';
 
-function BandHeader({ logo, banner, name, bandId, user, dispatch, followers }) {
+function BandHeader({ band, editInfo, user, followers, dispatch }) {
   const [isFollowing, setIsFollowing] = useState(null);
 
   useEffect(() => {
@@ -17,20 +20,33 @@ function BandHeader({ logo, banner, name, bandId, user, dispatch, followers }) {
       isFollowing === null &&
       !(Object.keys(user).length === 0 && user.constructor === Object)
     ) {
-      setIsFollowing(user.following.some((element) => element._id === bandId));
+      setIsFollowing(
+        user.following.some((element) => element._id === band._id)
+      );
     }
-  }, [bandId, isFollowing, user]);
+  }, [band._id, isFollowing, user]);
 
   const followIconClass = isFollowing ? 'orange' : 'white';
 
   return (
     <section className='band-header'>
-      <img src={logo} alt='Logo' className='band-header__logo' />
+      <img src={band.logo} alt='Logo' className='band-header__logo' />
       <div className='band-header__banner'>
-        <img src={banner} alt='Banner' className='banner__img' />
+        <img src={band.banner} alt='Banner' className='banner__img' />
       </div>
       <div className='band-header__info'>
-        <strong className='info__name'>{name}</strong>
+        {Object.keys(editInfo).length === 0 &&
+        editInfo.constructor === Object ? (
+          <strong className='info__name'>{band.name}</strong>
+        ) : (
+          <input
+            type='text'
+            value={editInfo.name}
+            onChange={(event) => dispatch(bandEditName(event.target.value))}
+            className='info__input'
+          />
+        )}
+
         <div className='info__bottom'>
           <div className='bottom__follow'>
             <Star
@@ -40,7 +56,7 @@ function BandHeader({ logo, banner, name, bandId, user, dispatch, followers }) {
                 onFollow(
                   event,
                   user,
-                  bandId,
+                  band._id,
                   isFollowing,
                   setIsFollowing,
                   dispatch
@@ -51,10 +67,32 @@ function BandHeader({ logo, banner, name, bandId, user, dispatch, followers }) {
               <span className='count__number'>{followers}</span> Followers
             </p>
           </div>
-          <div className='bottom__edit'>
-            <Gear className='edit__gear' onClick={(event) => {}} />
-            {true && <Save className='edit__save' onClick={(event) => {}} />}
-          </div>
+          {band._id === user?.band?._id && (
+            <div className='bottom__edit'>
+              <Gear
+                className='edit__gear'
+                onClick={(event) =>
+                  dispatch(
+                    bandEdit({
+                      name: band.name,
+                      bio: band.bio,
+                      city: band.city,
+                      country: band.country
+                    })
+                  )
+                }
+              />
+              {!(
+                Object.keys(editInfo).length === 0 &&
+                editInfo.constructor === Object
+              ) && (
+                <Save
+                  className='edit__save'
+                  onClick={(event) => onSave(event, band._id, editInfo)}
+                />
+              )}
+            </div>
+          )}
         </div>
       </div>
     </section>
@@ -64,7 +102,8 @@ function BandHeader({ logo, banner, name, bandId, user, dispatch, followers }) {
 function mapStateToProps(state) {
   return {
     followers: state.bandReducer.bandFollowers,
-    user: state.authReducer.user
+    user: state.authReducer.user,
+    editInfo: state.bandReducer.editInfo
   };
 }
 

@@ -43,3 +43,19 @@ export const follow = (userIdentifier) => async (dispatch) => {
     return dispatch(error(err));
   }
 };
+
+const sendBandEditInfoSuccess = createAction(types.SEND_BAND_EDIT_INFO);
+export const sendBandEditInfo = (bandId, editInfo) => async (dispatch) => {
+  try {
+    const headers = {
+      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
+    };
+    const response = await axios.patch(`/auth/band/${bandId}`, editInfo, {
+      headers
+    });
+    const temp = { ...response.data, ...editInfo };
+    return dispatch(sendBandEditInfoSuccess(temp));
+  } catch (err) {
+    return dispatch(error(err));
+  }
+};

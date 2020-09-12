@@ -6,7 +6,8 @@ const defaultState = {
   bandReducer: {
     disc: null,
     band: {},
-    bandFollowers: null
+    bandFollowers: null,
+    editInfo: {}
   },
   authReducer: {
     userIdentifier: null,

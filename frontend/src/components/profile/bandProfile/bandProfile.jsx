@@ -28,12 +28,7 @@ function BandProfile({ match, band, followers, user, dispatch }) {
     Object.keys(band).length === 0 && band.constructor === Object
   ) ? (
     <article className='band-profile'>
-      <ProfileHeader
-        logo={band.logo}
-        banner={band.banner}
-        name={band.name}
-        bandId={match.params.bandId}
-      />
+      <ProfileHeader band={band} />
       <div className='band-profile__middle'>
         <Bio
           bio={band.bio}

@@ -27,7 +27,7 @@ export default handleActions(
     [types.BAND_EDIT_NAME]: (state, action) => {
       return {
         ...state,
-        editInfo: { ...state.editInfo, user: action.payload }
+        editInfo: { ...state.editInfo, name: action.payload }
       };
     },
     [types.BAND_EDIT_BIO]: (state, action) => {
