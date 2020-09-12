@@ -48,4 +48,40 @@ describe('Auth reducer', () => {
     };
     expect(reducer({}, action)).toEqual({ user: text });
   });
+
+  it('should handle sendEditInfo', () => {
+    const text = 'we are here';
+    const action = {
+      type: types.SEND_EDIT_INFO,
+      payload: text
+    };
+    expect(reducer({}, action)).toEqual({ user: text });
+  });
+
+  it('should handle edit', () => {
+    const text = 'we are here';
+    const action = {
+      type: types.EDIT,
+      payload: text
+    };
+    expect(reducer({}, action)).toEqual({ editInfo: text });
+  });
+
+  it('should handle editName', () => {
+    const text = 'we are here';
+    const action = {
+      type: types.EDIT_NAME,
+      payload: text
+    };
+    expect(reducer({}, action)).toEqual({ editInfo: { user: text } });
+  });
+
+  it('should handle editBio', () => {
+    const text = 'we are here';
+    const action = {
+      type: types.EDIT_BIO,
+      payload: text
+    };
+    expect(reducer({}, action)).toEqual({ editInfo: { bio: text } });
+  });
 });
