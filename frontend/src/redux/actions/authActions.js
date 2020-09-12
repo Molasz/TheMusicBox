@@ -86,9 +86,13 @@ export const newBand = (userId) => async (dispatch) => {
     const headers = {
       Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
     };
-    const response = await axios.get(`/auth/newBand/${userId}`, {
-      headers
-    });
+    const response = await axios.post(
+      `/auth/newBand/${userId}`,
+      {},
+      {
+        headers
+      }
+    );
     return dispatch(newBandSuccess(response.data));
   } catch (err) {
     return dispatch(error(err));

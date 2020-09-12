@@ -7,6 +7,8 @@ const bandModel = new Schema({
   bio: { type: String },
   logo: { type: String },
   banner: { type: String },
+  city: { type: String },
+  country: { type: String },
   tags: [String],
   discography: [
     {

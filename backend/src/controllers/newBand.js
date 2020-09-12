@@ -25,9 +25,15 @@ function newBand(User, Band) {
     Band.create(defaultBandInfo, (err, band) => {
       if (err) res.send(err);
       else {
-        User.findByIdAndUpdate(id, { band: band._id })
-          .populate('following', 'name city country logo')
-          .exec(callback(res));
+        User.findByIdAndUpdate(id, { band: band._id }, (error, user) => {
+          if (error) res.send(error);
+          else {
+            User.findById(id)
+              .populate('following', 'name city country logo')
+              .populate('band', 'name logo')
+              .exec(callback(res));
+          }
+        });
       }
     });
   };

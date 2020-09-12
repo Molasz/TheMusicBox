@@ -74,18 +74,39 @@ $main-color: #1a1a1a;
 
   .user-bio__bottom {
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
 
-    padding: 0 10px;
+    padding: 10px 10px;
 
     border-top: 3px solid $color-detail;
     border-bottom: 3px solid $color-detail;
+
+    .bottom__logo {
+      display: flex;
+      justify-content: center;
+
+      img {
+        width: 80%;
+      }
+    }
+
+    .bottom__name {
+      text-transform: capitalize;
+      text-align: center;
+      font-size: 20px;
+      margin: 10px;
+    }
 
     .bottom__text {
       text-align: center;
       font-size: 20px;
       margin: 10px;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
     }
 
     .bottom__icon {

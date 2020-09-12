@@ -1,13 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import './userBio.scss';
 
-import { editBio, editName } from '../../../../redux/actions/authActions';
+import {
+  editBio,
+  editName,
+  newBand
+} from '../../../../redux/actions/authActions';
 
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 
-function UserBio({ bio, name, editInfo, dispatch }) {
+function UserBio({ bio, name, editInfo, mongoUser, dispatch }) {
   return (
     <section className='user-bio'>
       <div className='user-bio__top'>
@@ -37,15 +42,32 @@ function UserBio({ bio, name, editInfo, dispatch }) {
         )}
       </div>
       <div className='user-bio__bottom'>
-        <p className='bottom__text'> Create your own band profile </p>
-        <GroupAddIcon className='bottom__icon' />
+        {mongoUser.band ? (
+          <Link to={`band/${mongoUser.band._id}`}>
+            <div className='bottom__logo'>
+              <img src={mongoUser.band.logo} alt='logo' />
+            </div>
+            <p className='bottom__name'>{mongoUser.band.name}</p>
+          </Link>
+        ) : (
+          <>
+            <p className='bottom__text'> Create your own band profile </p>
+            <GroupAddIcon
+              className='bottom__icon'
+              onClick={() => dispatch(newBand(mongoUser._id))}
+            />
+          </>
+        )}
       </div>
     </section>
   );
 }
 
 function mapDispatchToProps(state) {
-  return { editInfo: state.authReducer.editInfo };
+  return {
+    editInfo: state.authReducer.editInfo,
+    mongoUser: state.authReducer.user
+  };
 }
 
 export default connect(mapDispatchToProps)(UserBio);

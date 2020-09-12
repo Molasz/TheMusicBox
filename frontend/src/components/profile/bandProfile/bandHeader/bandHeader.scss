@@ -17,12 +17,12 @@ $max-banner-width: 600px;
   }
   .band-header__banner {
     display: none;
-
     flex: 1;
     justify-content: center;
 
     margin-left: 30px;
     .banner__img {
+      height: 100%;
       max-width: $max-banner-width;
     }
   }

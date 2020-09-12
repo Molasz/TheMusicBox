@@ -20,8 +20,10 @@ $color-detail: #f55110;
 
     .top__region {
       display: flex;
+      justify-content: center;
       align-items: center;
       margin-bottom: 10px;
+
       .region__city,
       .region__country {
         margin: 0 10px;
