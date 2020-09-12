@@ -77,7 +77,12 @@ function BandHeader({ band, editInfo, user, followers, dispatch }) {
                       name: band.name,
                       bio: band.bio,
                       city: band.city,
-                      country: band.country
+                      country: band.country,
+                      socialNetwork: {
+                        twitter: band.socialNetwork.twitter,
+                        facebook: band.socialNetwork.facebook,
+                        instagram: band.socialNetwork.instagram
+                      }
                     })
                   )
                 }

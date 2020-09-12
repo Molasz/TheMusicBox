@@ -11,6 +11,9 @@ export const bandEdit = createAction(types.BAND_EDIT);
 export const bandEditName = createAction(types.BAND_EDIT_NAME);
 export const bandEditBio = createAction(types.BAND_EDIT_BIO);
 export const bandEditCity = createAction(types.BAND_EDIT_CITY);
+export const bandEditTwitter = createAction(types.BAND_EDIT_TWITTER);
+export const bandEditFacebook = createAction(types.BAND_EDIT_FACEBOOK);
+export const bandEditInstagram = createAction(types.BAND_EDIT_INSTAGRAM);
 export const bandEditCountry = createAction(types.BAND_EDIT_COUNTRY);
 
 //Async

@@ -11,6 +11,9 @@ export default {
   BAND_EDIT_BIO: 'BAND_EDIT_BIO', // Return edited bio by user
   BAND_EDIT_CITY: 'BAND_EDIT_CITY', // Return edited city by user
   BAND_EDIT_COUNTRY: 'BAND_EDIT_COUNTRY', // Return edited country by user
+  BAND_EDIT_TWITTER: 'BAND_EDIT_TWITTER',
+  BAND_EDIT_FACEBOOK: 'BAND_EDIT_FACEBOOK',
+  BAND_EDIT_INSTAGRAM: 'BAND_EDIT_TINSTAGRAM',
   SEND_BAND_EDIT_INFO: 'SEND_BAND_EDIT_INFO', // Return user with info updated
 
   GET_USER: 'GET_USER', // Return user object

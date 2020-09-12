@@ -44,6 +44,42 @@ export default handleActions(
         ...state,
         editInfo: { ...state.editInfo, country: action.payload }
       };
+    },
+    [types.BAND_EDIT_TWITTER]: (state, action) => {
+      return {
+        ...state,
+        editInfo: {
+          ...state.editInfo,
+          socialNetwork: {
+            ...state.editInfo.socialNetwork,
+            twitter: action.payload
+          }
+        }
+      };
+    },
+    [types.BAND_EDIT_FACEBOOK]: (state, action) => {
+      return {
+        ...state,
+        editInfo: {
+          ...state.editInfo,
+          socialNetwork: {
+            ...state.editInfo.socialNetwork,
+            facebook: action.payload
+          }
+        }
+      };
+    },
+    [types.BAND_EDIT_INSTAGRAM]: (state, action) => {
+      return {
+        ...state,
+        editInfo: {
+          ...state.editInfo,
+          socialNetwork: {
+            ...state.editInfo.socialNetwork,
+            instagram: action.payload
+          }
+        }
+      };
     }
   },
   {}
