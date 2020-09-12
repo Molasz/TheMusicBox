@@ -9,7 +9,7 @@ import onSave from './onSave';
 import Gear from '@material-ui/icons/Settings';
 import Save from '@material-ui/icons/Save';
 
-function ProfileHeader({ photo, banner, user, editInfo, match, dispatch }) {
+function ProfileHeader({ photo, banner, user, editInfo, dispatch }) {
   return (
     <section className='user-header'>
       <img src={photo} alt='photo' className='user-header__photo' />
@@ -17,12 +17,11 @@ function ProfileHeader({ photo, banner, user, editInfo, match, dispatch }) {
         <img src={banner} alt='Banner' className='banner__img' />
       </div>
       <div className='user-header__edit'>
-        {match.path === '/profile' && (
-          <Gear
-            className='edit__gear'
-            onClick={(event) => onEdit(event, user.user, user.bio, dispatch)}
-          />
-        )}
+        <Gear
+          className='edit__gear'
+          onClick={(event) => onEdit(event, user.user, user.bio, dispatch)}
+        />
+        )
         {!(
           Object.keys(editInfo).length === 0 && editInfo.constructor === Object
         ) && (
