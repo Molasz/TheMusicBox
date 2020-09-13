@@ -92,6 +92,9 @@ export default handleActions(
 
     [types.CREATE_DISC]: (state, action) => {
       return { ...state, band: action.payload };
+    },
+    [types.DELETE_DISC]: (state, action) => {
+      return { ...state, band: action.payload };
     }
   },
   {}

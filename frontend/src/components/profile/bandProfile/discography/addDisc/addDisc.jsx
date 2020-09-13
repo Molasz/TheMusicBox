@@ -108,7 +108,10 @@ function AddDisc({ newDisc, bandId, dispatch }) {
         <p
           className='bottom__create'
           onClick={() => {
-            dispatch(createDisc(bandId, disc));
+            if (disc.title && disc.date && disc.songs.length) {
+              dispatch(createDisc(bandId, disc));
+              dispatch(showDisc(undefined));
+            }
           }}
         >
           Create disc

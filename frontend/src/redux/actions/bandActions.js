@@ -71,10 +71,31 @@ export const createDisc = (bandId, discInfo) => async (dispatch) => {
     const headers = {
       Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
     };
-    const response = await axios.patch(`/auth/newDisc/${bandId}`, discInfo, {
+    const response = await axios.post(`/auth/newDisc/${bandId}`, discInfo, {
       headers
     });
+    response.data.discography.push(discInfo);
+    debugger;
     return dispatch(createDiscSuccess(response.data));
+  } catch (err) {
+    return dispatch(error(err));
+  }
+};
+
+const deleteDiscSuccess = createAction(types.DELETE_DISC);
+export const deleteDisc = (bandId, discInfo) => async (dispatch) => {
+  try {
+    const headers = {
+      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
+    };
+    const response = await axios.delete(`/auth/newDisc/${bandId}`, discInfo, {
+      headers
+    });
+    response.data.discography = response.data.discography.filter(
+      (element) => JSON.stringify(element) === JSON.stringify(discInfo)
+    );
+    debugger;
+    return dispatch(deleteDiscSuccess(response.data));
   } catch (err) {
     return dispatch(error(err));
   }

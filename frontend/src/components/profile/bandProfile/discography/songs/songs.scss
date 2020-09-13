@@ -16,7 +16,13 @@ $color-detail: #f55110;
 
       border-bottom: 2px solid $color-detail;
       .content__icon {
-        font-size: 30px;
+        display: flex;
+
+        .icon__back,
+        icon__delete {
+          margin-right: 20px;
+          font-size: 30px;
+        }
       }
 
       .content__text {

@@ -11,7 +11,7 @@ function concerts({ data }) {
         <h1 className='title__text'>Concerts</h1>
       </div>
       <div className='concerts__main'>
-        {data.map((element, i) => {
+        {data?.map((element, i) => {
           return (
             <div className='main__item' key={i}>
               <p className='item__date'>{element.date}</p>

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import onShow from './onShow';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
-function Disc({ data, index, dispatch }) {
+function Disc({ data, index, editInfo, dispatch }) {
   return (
     <div className='item'>
       {index === -1 ? (
@@ -31,5 +31,5 @@ function Disc({ data, index, dispatch }) {
   );
 }
 
-export default connect(null, null)(Disc);
+export default connect()(Disc);
 export { Disc };
