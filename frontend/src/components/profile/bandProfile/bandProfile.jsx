@@ -5,7 +5,12 @@ import './bandProfile.scss';
 
 import PuffLoader from 'react-spinners/PuffLoader';
 
-import { getBand, follow, showDisc } from '../../../redux/actions/bandActions';
+import {
+  getBand,
+  follow,
+  showDisc,
+  bandEdit
+} from '../../../redux/actions/bandActions';
 
 import ProfileHeader from './bandHeader/bandHeader';
 import Photos from './photos/photos';
@@ -17,6 +22,7 @@ function BandProfile({ match, band, followers, user, dispatch }) {
   const [calls, setCalls] = useState(false);
   useEffect(() => {
     if (!calls) {
+      dispatch(bandEdit({}));
       dispatch(showDisc());
       dispatch(getBand(match.params.bandId));
       dispatch(follow(match.params.bandId));
@@ -32,7 +38,7 @@ function BandProfile({ match, band, followers, user, dispatch }) {
       <div className='band-profile__middle'>
         <BandBio />
 
-        <Discography data={band.discography} />
+        <Discography />
       </div>
       <div className='band-profile__bottom'>
         <Concerts data={band.concerts} />

@@ -8,10 +8,9 @@ import Disc from '../disc/disc';
 import BackIcon from '@material-ui/icons/KeyboardBackspace';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
-import onShow from '../disc/onShow';
-import { deleteDisc } from '../../../../../redux/actions/bandActions';
+import { showDisc, deleteDisc } from '../../../../../redux/actions/bandActions';
 
-function Songs({ info, index, editInfo, dispatch }) {
+function Songs({ info, index, editInfo, bandId, dispatch }) {
   return (
     <section className='songs'>
       <div className='songs__top'>
@@ -20,13 +19,16 @@ function Songs({ info, index, editInfo, dispatch }) {
           <div className='content__icon'>
             <BackIcon
               className='icon__back'
-              onClick={(event) => onShow(event, undefined, dispatch)}
+              onClick={(event) => dispatch(showDisc(undefined))}
             />
 
             {editInfo.name && (
               <HighlightOffIcon
                 className='icon__delete'
-                onClick={(event) => dispatch(deleteDisc(index))}
+                onClick={(event) => {
+                  dispatch(deleteDisc(bandId, info[index]._id));
+                  dispatch(showDisc(undefined));
+                }}
               />
             )}
           </div>
@@ -59,7 +61,10 @@ function Songs({ info, index, editInfo, dispatch }) {
 }
 
 function mapStateToProps(state) {
-  return { editInfo: state.bandReducer.editInfo };
+  return {
+    editInfo: state.bandReducer.editInfo,
+    bandId: state.bandReducer.band._id
+  };
 }
 
 export default connect(mapStateToProps, null)(Songs);

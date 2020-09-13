@@ -2,7 +2,8 @@ import React from 'react';
 import './disc.scss';
 import { connect } from 'react-redux';
 
-import onShow from './onShow';
+import { showDisc } from '../../../../../redux/actions/bandActions';
+
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 function Disc({ data, index, editInfo, dispatch }) {
@@ -12,7 +13,7 @@ function Disc({ data, index, editInfo, dispatch }) {
         <div className='main__edit'>
           <AddCircleIcon
             className='edit__icon'
-            onClick={(event) => onShow(event, index, dispatch)}
+            onClick={(event) => dispatch(showDisc(index))}
           />
           <p className='edit__title'>New disc</p>
         </div>
@@ -22,7 +23,7 @@ function Disc({ data, index, editInfo, dispatch }) {
             src={data.img}
             alt='Cover'
             className='item__img'
-            onClick={(event) => onShow(event, index, dispatch)}
+            onClick={(event) => dispatch(showDisc(index))}
           />
           <p className='item__title'>{data.title}</p>
         </>

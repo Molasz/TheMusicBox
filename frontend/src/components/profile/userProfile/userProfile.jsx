@@ -4,7 +4,11 @@ import { withAuthenticationRequired } from '@auth0/auth0-react';
 import { connect } from 'react-redux';
 
 import { DOMAIN } from '../../../config/auth0';
-import { saveUser, getUser } from '../../../redux/actions/authActions';
+import {
+  saveUser,
+  getUser,
+  userEdit
+} from '../../../redux/actions/authActions';
 
 import UserHeader from './userHeader/userHeader';
 import UserBio from './userBio/userBio';
@@ -26,6 +30,7 @@ const UserProfile = ({ mongoUser, dispatch }) => {
         });
         if (accessToken) {
           sessionStorage.setItem('token', JSON.stringify(accessToken));
+          dispatch(userEdit({}));
           dispatch(saveUser(user.sub));
           dispatch(getUser(user));
         }

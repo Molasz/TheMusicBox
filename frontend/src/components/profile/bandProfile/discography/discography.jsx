@@ -38,7 +38,8 @@ function Discography({ data, disc, editInfo }) {
 function mapStateToProps(state) {
   return {
     disc: state.bandReducer.disc,
-    editInfo: state.bandReducer.editInfo
+    editInfo: state.bandReducer.editInfo,
+    data: state.bandReducer.band.discography
   };
 }
 
