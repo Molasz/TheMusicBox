@@ -1,4 +1,6 @@
 $color-detail: #f55110;
+$main-color: #1a1a1a;
+
 .bio {
   display: flex;
   flex-direction: column;
@@ -29,9 +31,15 @@ $color-detail: #f55110;
         margin: 0 10px;
         text-transform: capitalize;
       }
+
+      .input {
+        width: 50%;
+        margin: 0 5px;
+      }
     }
   }
   .bio__middle {
+    margin: 20px 5px;
     .top__text {
       line-height: 21px;
     }
@@ -42,13 +50,37 @@ $color-detail: #f55110;
 
     padding-top: 20px;
     border-top: 2px solid $color-detail;
-    a {
-      .bottom-icon {
-        font-size: 30px;
-        color: $color-detail;
+    .bottom__container {
+      display: flex;
+      align-items: center;
 
-        margin-right: 15px;
+      a {
+        .container__icon {
+          font-size: 30px;
+          color: $color-detail;
+
+          margin-right: 15px;
+        }
+      }
+
+      .container__input {
+        width: 145px;
+        transition: width 2s;
       }
     }
+  }
+
+  .edit {
+    flex-direction: column;
+  }
+
+  .input,
+  .text-area {
+    background: $main-color;
+    color: white;
+    font-family: Arial;
+
+    border: 2px solid $color-detail;
+    border-radius: 5%;
   }
 }
