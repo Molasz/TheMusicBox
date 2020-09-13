@@ -20,10 +20,7 @@ function BandHeader({ band, editInfo, user, followers, dispatch }) {
   const [isFollowing, setIsFollowing] = useState(null);
 
   useEffect(() => {
-    if (
-      isFollowing === null &&
-      !(Object.keys(user).length === 0 && user.constructor === Object)
-    ) {
+    if (isFollowing === null && user.following !== undefined) {
       setIsFollowing(
         user.following.some((element) => element._id === band._id)
       );
@@ -38,9 +35,7 @@ function BandHeader({ band, editInfo, user, followers, dispatch }) {
       <img src={band.banner} alt='Banner' className='band-header__banner' />
       <div className='band-header__info'>
         <strong className='info__name'>
-          {Object.keys(editInfo).length === 0 && editInfo.constructor === Object
-            ? band.name
-            : editInfo.name}
+          {editInfo.name !== undefined ? band.name : editInfo.name}
         </strong>
 
         <div className='info__follow'>
@@ -87,10 +82,7 @@ function BandHeader({ band, editInfo, user, followers, dispatch }) {
                 )
               }
             />
-            {!(
-              Object.keys(editInfo).length === 0 &&
-              editInfo.constructor === Object
-            ) && (
+            {editInfo.public !== undefined && (
               <>
                 <Save
                   className='edit__save'

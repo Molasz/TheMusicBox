@@ -5,7 +5,7 @@ exports[`ProfileHeader snapshot Should match without editInfo 1`] = `
   className="user-header"
 >
   <img
-    alt="photo"
+    alt="user"
     className="user-header__photo"
     src="photo"
   />
@@ -23,7 +23,7 @@ exports[`ProfileHeader snapshot Should match without editInfo 1`] = `
   >
     <svg
       aria-hidden={true}
-      className="MuiSvgIcon-root edit__gear"
+      className="MuiSvgIcon-root edit__gear white"
       focusable="false"
       onClick={[Function]}
       viewBox="0 0 24 24"
@@ -33,7 +33,6 @@ exports[`ProfileHeader snapshot Should match without editInfo 1`] = `
         transform="scale(1.2, 1.2)"
       />
     </svg>
-    )
   </div>
 </section>
 `;
@@ -43,7 +42,7 @@ exports[`ProfileHeader snapshot Should match without editInfo 2`] = `
   className="user-header"
 >
   <img
-    alt="photo"
+    alt="user"
     className="user-header__photo"
     src="photo"
   />
@@ -61,7 +60,7 @@ exports[`ProfileHeader snapshot Should match without editInfo 2`] = `
   >
     <svg
       aria-hidden={true}
-      className="MuiSvgIcon-root edit__gear"
+      className="MuiSvgIcon-root edit__gear orange"
       focusable="false"
       onClick={[Function]}
       viewBox="0 0 24 24"
@@ -71,7 +70,6 @@ exports[`ProfileHeader snapshot Should match without editInfo 2`] = `
         transform="scale(1.2, 1.2)"
       />
     </svg>
-    )
     <svg
       aria-hidden={true}
       className="MuiSvgIcon-root edit__save"

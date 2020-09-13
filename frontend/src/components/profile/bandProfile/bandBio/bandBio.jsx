@@ -84,7 +84,11 @@ function BandBio({
       <div className={`bio__bottom ${editInfo.socialNetwork && 'edit'}`}>
         <div className='bottom__container'>
           <a
-            href={`http://${socialNetwork.twitter}`}
+            href={`http://${
+              editInfo.socialNetwork
+                ? editInfo.socialNetwork.twitter
+                : socialNetwork.twitter
+            }`}
             target='_blank'
             rel='noopener noreferrer'
           >
@@ -98,12 +102,17 @@ function BandBio({
                 dispatch(bandEditTwitter(event.target.value))
               }
               className='container__input input'
+              id='twitter'
             />
           )}
         </div>
         <div className='bottom__container'>
           <a
-            href={`http://${socialNetwork.facebook}`}
+            href={`http://${
+              editInfo.socialNetwork
+                ? editInfo.socialNetwork.facebook
+                : socialNetwork.facebook
+            }`}
             target='_blank'
             rel='noopener noreferrer'
           >
@@ -117,12 +126,17 @@ function BandBio({
                 dispatch(bandEditFacebook(event.target.value))
               }
               className='container__input input'
+              id='facebook'
             />
           )}
         </div>
         <div className='bottom__container'>
           <a
-            href={`http://${socialNetwork.instagram}`}
+            href={`http://${
+              editInfo.socialNetwork
+                ? editInfo.socialNetwork.instagram
+                : socialNetwork.twitter
+            }`}
             target='_blank'
             rel='noopener noreferrer'
           >
@@ -137,6 +151,7 @@ function BandBio({
                 dispatch(bandEditInstagram(event.target.value))
               }
               className='container__input input'
+              id='instagram'
             />
           )}
         </div>

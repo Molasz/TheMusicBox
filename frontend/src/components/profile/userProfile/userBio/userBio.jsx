@@ -18,6 +18,7 @@ function UserBio({ bio, name, editInfo, mongoUser, dispatch }) {
       <div className='user-bio__top'>
         {editInfo.user !== undefined ? (
           <input
+            id='input'
             className='top__name input'
             value={editInfo.user}
             onChange={(event) => dispatch(userEditName(event.target.value))}
@@ -29,6 +30,7 @@ function UserBio({ bio, name, editInfo, mongoUser, dispatch }) {
       <div className='user-bio__middle'>
         {editInfo.bio !== undefined ? (
           <textarea
+            id='textarea'
             className='middle__bio text-area'
             value={editInfo.bio}
             onChange={(event) => dispatch(userEditBio(event.target.value))}

@@ -14,7 +14,7 @@ import PuffLoader from 'react-spinners/PuffLoader';
 
 import './userProfile.scss';
 
-const UserProfile = ({ mongoUser, match, dispatch }) => {
+const UserProfile = ({ mongoUser, dispatch }) => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
@@ -40,7 +40,6 @@ const UserProfile = ({ mongoUser, match, dispatch }) => {
       <UserHeader
         photo={mongoUser.photo}
         banner={mongoUser.banner}
-        match={match}
         dispatch={dispatch}
         user={mongoUser}
       />

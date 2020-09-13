@@ -1,5 +1,5 @@
 // Function to test
-import { getBand, searchBand, follow } from './bandActions';
+import { getBand, searchBand, follow, sendBandEditInfo } from './bandActions';
 
 //Mock dependecies
 import axios from 'axios';
@@ -78,6 +78,31 @@ describe('Band actions', () => {
         new Promise((resolve, reject) => reject(new Error()))
       );
       await follow(5)(dispatch);
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe('sendBandEditInfo test', () => {
+    afterEach(() => jest.clearAllMocks());
+    it('should call axios with /aut/band/:id', async () => {
+      axios.patch.mockReturnValue(
+        new Promise((resolve) =>
+          resolve({
+            json: () => {}
+          })
+        )
+      );
+      const id = 1;
+      await sendBandEditInfo(id)(jest.fn());
+      expect(axios.patch.mock.calls[0][0]).toEqual(`/auth/band/${id}`);
+    });
+
+    it('should call error action if axios throw error', async () => {
+      const dispatch = jest.fn();
+      axios.patch.mockReturnValue(
+        new Promise((resolve, reject) => reject(new Error()))
+      );
+      await sendBandEditInfo(5)(dispatch);
       expect(dispatch).toHaveBeenCalled();
     });
   });

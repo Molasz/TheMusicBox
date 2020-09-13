@@ -4,16 +4,8 @@ exports[`Search snapshot Should match with data 1`] = `
 <section
   className="list"
 >
-  <div
-    className="list__item"
-  >
-    0
-  </div>
-  <div
-    className="list__item"
-  >
-    0
-  </div>
+  0
+  0
 </section>
 `;
 
@@ -21,8 +13,15 @@ exports[`Search snapshot Should match without data 1`] = `
 <section
   className="list"
 >
-  <h1>
-    Loading...
-  </h1>
+  <div
+    className="css-3fvcat"
+  >
+    <div
+      className="css-hwvl8z"
+    />
+    <div
+      className="css-16hco3u"
+    />
+  </div>
 </section>
 `;

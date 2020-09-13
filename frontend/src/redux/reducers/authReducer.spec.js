@@ -2,12 +2,12 @@ import types from '../actionTypes';
 import reducer from './authReducer';
 
 describe('Auth reducer', () => {
+  const text = 'we are here';
   it('should return initial state', () => {
     expect(reducer(undefined, {})).toEqual({});
   });
 
   it('should handle saveUser', () => {
-    const text = 'we are here';
     const action = {
       type: types.SAVE_USER,
       payload: text
@@ -23,7 +23,6 @@ describe('Auth reducer', () => {
   });
 
   it('should handle getUser', () => {
-    const text = 'we are here';
     const action = {
       type: types.GET_USER,
       payload: text
@@ -32,7 +31,6 @@ describe('Auth reducer', () => {
   });
 
   it('should handle addFollower', () => {
-    const text = 'we are here';
     const action = {
       type: types.ADD_FOLLOW,
       payload: text
@@ -41,7 +39,6 @@ describe('Auth reducer', () => {
   });
 
   it('should handle removeFollow', () => {
-    const text = 'we are here';
     const action = {
       type: types.REMOVE_FOLLOW,
       payload: text
@@ -50,38 +47,42 @@ describe('Auth reducer', () => {
   });
 
   it('should handle sendEditInfo', () => {
-    const text = 'we are here';
     const action = {
-      type: types.SEND_EDIT_INFO,
+      type: types.SEND_USER_EDIT_INFO,
       payload: text
     };
     expect(reducer({}, action)).toEqual({ user: text });
   });
 
   it('should handle edit', () => {
-    const text = 'we are here';
     const action = {
-      type: types.EDIT,
+      type: types.USER_EDIT,
       payload: text
     };
     expect(reducer({}, action)).toEqual({ editInfo: text });
   });
 
   it('should handle editName', () => {
-    const text = 'we are here';
     const action = {
-      type: types.EDIT_NAME,
+      type: types.USER_EDIT_NAME,
       payload: text
     };
     expect(reducer({}, action)).toEqual({ editInfo: { user: text } });
   });
 
   it('should handle editBio', () => {
-    const text = 'we are here';
     const action = {
-      type: types.EDIT_BIO,
+      type: types.USER_EDIT_BIO,
       payload: text
     };
     expect(reducer({}, action)).toEqual({ editInfo: { bio: text } });
+  });
+
+  it('should handle newBand', () => {
+    const action = {
+      type: types.NEW_BAND,
+      payload: text
+    };
+    expect(reducer({}, action)).toEqual({ user: text });
   });
 });
