@@ -16,11 +16,9 @@ function UserBio({ bio, name, editInfo, mongoUser, dispatch }) {
   return (
     <section className='user-bio'>
       <div className='user-bio__top'>
-        {!(
-          Object.keys(editInfo).length === 0 && editInfo.constructor === Object
-        ) ? (
+        {editInfo.user !== undefined ? (
           <input
-            className='top__input'
+            className='top__name input'
             value={editInfo.user}
             onChange={(event) => dispatch(userEditName(event.target.value))}
           />
@@ -29,11 +27,9 @@ function UserBio({ bio, name, editInfo, mongoUser, dispatch }) {
         )}
       </div>
       <div className='user-bio__middle'>
-        {!(
-          Object.keys(editInfo).length === 0 && editInfo.constructor === Object
-        ) ? (
+        {editInfo.bio !== undefined ? (
           <textarea
-            className='middle__text-area'
+            className='middle__bio text-area'
             value={editInfo.bio}
             onChange={(event) => dispatch(userEditBio(event.target.value))}
           />

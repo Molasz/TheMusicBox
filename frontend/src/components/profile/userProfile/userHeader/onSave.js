@@ -3,10 +3,12 @@ import {
   userEdit
 } from '../../../../redux/actions/authActions';
 
-function onSave(event, userId, data, dispatch) {
+import store from '../../../../redux/store';
+
+function onSave(event, userId, data) {
   event.preventDefault();
-  dispatch(sendUserEditInfo(userId, data));
-  dispatch(userEdit({}));
+  store.dispatch(sendUserEditInfo(userId, data));
+  store.dispatch(userEdit({}));
 }
 
 export default onSave;

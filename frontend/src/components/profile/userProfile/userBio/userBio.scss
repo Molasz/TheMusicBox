@@ -12,31 +12,12 @@ $main-color: #1a1a1a;
 
     border-bottom: 3px solid $color-detail;
     padding: 10px 0;
-    .top__input {
-      background-color: $main-color;
-      color: white;
-      width: 100%;
-      font-family: Arial;
-      font-weight: bold;
-
-      border: 2px solid $color-detail;
-      border-radius: 5%;
-
-      text-align: center;
-      text-transform: capitalize;
-      font-size: 25px;
-
-      margin: 0;
-      padding: 0;
-      &:focus {
-        outline: none;
-      }
-    }
 
     .top__name {
       text-transform: capitalize;
       font-size: 25px;
       text-align: center;
+      width: 100%;
     }
   }
 
@@ -44,24 +25,7 @@ $main-color: #1a1a1a;
     display: flex;
     justify-content: center;
 
-    margin: 5px 10px;
-    .middle__text-area {
-      background-color: $main-color;
-      color: white;
-      font-family: Arial;
-
-      border: 2px solid $color-detail;
-      border-radius: 5%;
-
-      font-size: 15px;
-
-      padding: 15px 5px;
-      min-width: 170px;
-      height: 150px;
-      &:focus {
-        outline: none;
-      }
-    }
+    margin: 15px 10px;
 
     .middle__bio {
       font-size: 15px;
@@ -113,5 +77,18 @@ $main-color: #1a1a1a;
       font-size: 80px;
       color: $color-detail;
     }
+  }
+  .input,
+  .text-area {
+    background: $main-color;
+    color: white;
+    font-family: Arial;
+
+    border: 2px solid $color-detail;
+    border-radius: 5%;
+  }
+
+  .text-area {
+    height: 120px;
   }
 }

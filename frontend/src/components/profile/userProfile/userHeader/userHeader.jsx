@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 
 import './userHeader.scss';
 
-import onEdit from './onEdit';
 import onSave from './onSave';
+
+import { userEdit } from '../../../../redux/actions/authActions';
 
 import Gear from '@material-ui/icons/Settings';
 import Save from '@material-ui/icons/Save';
@@ -18,15 +19,23 @@ function ProfileHeader({ photo, banner, user, editInfo, dispatch }) {
       </div>
       <div className='user-header__edit'>
         <Gear
-          className='edit__gear'
-          onClick={(event) => onEdit(event, user.user, user.bio, dispatch)}
+          className={`edit__gear ${
+            editInfo.user === undefined ? 'white' : 'orange'
+          }`}
+          onClick={(event) =>
+            dispatch(
+              userEdit(
+                editInfo.user === undefined
+                  ? { user: user.user, bio: user.bio }
+                  : {}
+              )
+            )
+          }
         />
-        {!(
-          Object.keys(editInfo).length === 0 && editInfo.constructor === Object
-        ) && (
+        {editInfo.user && (
           <Save
             className='edit__save'
-            onClick={(event) => onSave(event, user._id, editInfo, dispatch)}
+            onClick={(event) => onSave(event, user._id, editInfo)}
           />
         )}
       </div>
