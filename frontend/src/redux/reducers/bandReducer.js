@@ -4,6 +4,7 @@ import { handleActions } from 'redux-actions';
 
 export default handleActions(
   {
+    //Load band data
     [types.GET_BAND]: (state, action) => {
       return { ...state, band: action.payload };
     },
@@ -16,7 +17,8 @@ export default handleActions(
     [types.FOLLOW_BAND]: (state, action) => {
       return { ...state, bandFollowers: action.payload };
     },
-    ///
+
+    //Edit band info
     [types.SEND_BAND_EDIT_INFO]: (state, action) => {
       return { ...state, band: action.payload };
     },
@@ -86,6 +88,10 @@ export default handleActions(
         ...state,
         editInfo: { ...state.editInfo, public: action.payload }
       };
+    },
+
+    [types.CREATE_DISC]: (state, action) => {
+      return { ...state, band: action.payload };
     }
   },
   {}

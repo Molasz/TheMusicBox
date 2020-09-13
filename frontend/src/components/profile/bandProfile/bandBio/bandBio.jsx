@@ -17,35 +17,27 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 
-function BandBio({
-  city,
-  country,
-  bio,
-  name,
-  socialNetwork,
-  editInfo,
-  dispatch
-}) {
+function BandBio({ band, editInfo, dispatch }) {
   return (
     <section className='bio'>
       <div className='bio__top'>
         {editInfo.name !== undefined ? (
           <input
             type='text'
-            maxlength='50'
+            maxLength='50'
             value={editInfo.name}
             onChange={(event) => dispatch(bandEditName(event.target.value))}
             className='top__name input'
           />
         ) : (
-          <strong className='top__name'>{name}</strong>
+          <strong className='top__name'>{band.name}</strong>
         )}
         <div className='top__region'>
           {editInfo.city !== undefined ? (
             <>
               <input
                 type='text'
-                maxlength='20'
+                maxLength='20'
                 value={editInfo.city}
                 onChange={(event) => dispatch(bandEditCity(event.target.value))}
                 className='region__city input'
@@ -53,7 +45,7 @@ function BandBio({
 
               <input
                 type='text'
-                maxlength='20'
+                maxLength='20'
                 value={editInfo.country}
                 onChange={(event) =>
                   dispatch(bandEditCountry(event.target.value))
@@ -63,8 +55,8 @@ function BandBio({
             </>
           ) : (
             <>
-              <p className='region__city'>{city}</p> |
-              <p className='region__country'>{country}</p>
+              <p className='region__city'>{band.city}</p> |
+              <p className='region__country'>{band.country}</p>
             </>
           )}
         </div>
@@ -78,16 +70,14 @@ function BandBio({
             className='middle__bio text-area'
           />
         ) : (
-          <p className='middle__bio'>{bio}</p>
+          <p className='middle__bio'>{band.bio}</p>
         )}
       </div>
       <div className={`bio__bottom ${editInfo.socialNetwork && 'edit'}`}>
         <div className='bottom__container'>
           <a
             href={`http://${
-              editInfo.socialNetwork
-                ? editInfo.socialNetwork.twitter
-                : socialNetwork.twitter
+              editInfo.socialNetwork?.twitter || band.socialNetwork.twitter
             }`}
             target='_blank'
             rel='noopener noreferrer'
@@ -109,9 +99,7 @@ function BandBio({
         <div className='bottom__container'>
           <a
             href={`http://${
-              editInfo.socialNetwork
-                ? editInfo.socialNetwork.facebook
-                : socialNetwork.facebook
+              editInfo.socialNetwork?.facebook || band.socialNetwork.facebook
             }`}
             target='_blank'
             rel='noopener noreferrer'
@@ -133,9 +121,7 @@ function BandBio({
         <div className='bottom__container'>
           <a
             href={`http://${
-              editInfo.socialNetwork
-                ? editInfo.socialNetwork.instagram
-                : socialNetwork.twitter
+              editInfo.socialNetwork?.instagram || band.socialNetwork.twitter
             }`}
             target='_blank'
             rel='noopener noreferrer'
@@ -162,7 +148,8 @@ function BandBio({
 
 function mapStateToProps(state) {
   return {
-    editInfo: state.bandReducer.editInfo
+    editInfo: state.bandReducer.editInfo,
+    band: state.bandReducer.band
   };
 }
 

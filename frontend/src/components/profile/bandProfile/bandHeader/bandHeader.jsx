@@ -35,7 +35,7 @@ function BandHeader({ band, editInfo, user, followers, dispatch }) {
       <img src={band.banner} alt='Banner' className='band-header__banner' />
       <div className='band-header__info'>
         <strong className='info__name'>
-          {editInfo.name !== undefined ? band.name : editInfo.name}
+          {editInfo.name === undefined ? band.name : editInfo.name}
         </strong>
 
         <div className='info__follow'>
@@ -107,7 +107,8 @@ function mapStateToProps(state) {
   return {
     followers: state.bandReducer.bandFollowers,
     user: state.authReducer.user,
-    editInfo: state.bandReducer.editInfo
+    editInfo: state.bandReducer.editInfo,
+    band: state.bandReducer.band
   };
 }
 

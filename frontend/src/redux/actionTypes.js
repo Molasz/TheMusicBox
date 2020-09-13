@@ -17,6 +17,8 @@ export default {
   BAND_EDIT_PUBLIC: 'BAND_EDIT_PUBLIC',
   SEND_BAND_EDIT_INFO: 'SEND_BAND_EDIT_INFO', // Return user with info updated
 
+  CREATE_DISC: 'CREATE_DISC',
+
   GET_USER: 'GET_USER', // Return user object
   SAVE_USER: 'SAVE_USER', // Return userIdentifier
   REMOVE_USER: 'REMOVE_USER', // Remove userIdentifier

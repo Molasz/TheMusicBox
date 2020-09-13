@@ -7,6 +7,7 @@ import axios from 'axios';
 //Sync
 export const showDisc = createAction(types.SHOW_DISC);
 
+//Edit band profile
 export const bandEdit = createAction(types.BAND_EDIT);
 export const bandEditName = createAction(types.BAND_EDIT_NAME);
 export const bandEditBio = createAction(types.BAND_EDIT_BIO);
@@ -59,6 +60,21 @@ export const sendBandEditInfo = (bandId, editInfo) => async (dispatch) => {
     });
     const temp = { ...response.data, ...editInfo };
     return dispatch(sendBandEditInfoSuccess(temp));
+  } catch (err) {
+    return dispatch(error(err));
+  }
+};
+
+const createDiscSuccess = createAction(types.CREATE_DISC);
+export const createDisc = (bandId, discInfo) => async (dispatch) => {
+  try {
+    const headers = {
+      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
+    };
+    const response = await axios.patch(`/auth/newDisc/${bandId}`, discInfo, {
+      headers
+    });
+    return dispatch(createDiscSuccess(response.data));
   } catch (err) {
     return dispatch(error(err));
   }

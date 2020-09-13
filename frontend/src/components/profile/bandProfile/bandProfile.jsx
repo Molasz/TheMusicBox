@@ -11,7 +11,7 @@ import ProfileHeader from './bandHeader/bandHeader';
 import Photos from './photos/photos';
 import Discography from './discography/discography';
 import Concerts from './concerts/concerts';
-import Bio from './bandBio/bandBio';
+import BandBio from './bandBio/bandBio';
 
 function BandProfile({ match, band, followers, user, dispatch }) {
   const [calls, setCalls] = useState(false);
@@ -28,15 +28,9 @@ function BandProfile({ match, band, followers, user, dispatch }) {
     Object.keys(band).length === 0 && band.constructor === Object
   ) ? (
     <article className='band-profile'>
-      <ProfileHeader band={band} />
+      <ProfileHeader />
       <div className='band-profile__middle'>
-        <Bio
-          bio={band.bio}
-          city={band.city}
-          country={band.country}
-          name={band.name}
-          socialNetwork={band.socialNetwork}
-        />
+        <BandBio />
 
         <Discography data={band.discography} />
       </div>
