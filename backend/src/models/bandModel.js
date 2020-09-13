@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const bandModel = new Schema({
+  public: { type: Boolean },
   name: { type: String },
   bio: { type: String },
   logo: { type: String },

@@ -80,6 +80,12 @@ export default handleActions(
           }
         }
       };
+    },
+    [types.BAND_EDIT_PUBLIC]: (state, action) => {
+      return {
+        ...state,
+        editInfo: { ...state.editInfo, public: action.payload }
+      };
     }
   },
   {}

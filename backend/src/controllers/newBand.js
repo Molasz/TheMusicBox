@@ -4,6 +4,7 @@ function newBand(User, Band) {
   return (req, res) => {
     const { id } = req.params;
     const defaultBandInfo = {
+      public: false,
       name: 'band name',
       city: 'city',
       country: 'country',

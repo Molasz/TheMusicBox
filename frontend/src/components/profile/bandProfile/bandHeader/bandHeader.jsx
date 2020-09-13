@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 
 import './bandHeader.scss';
 
-import { bandEdit, bandEditName } from '../../../../redux/actions/bandActions';
+import {
+  bandEdit,
+  bandEditPublic
+} from '../../../../redux/actions/bandActions';
 
 import onFollow from './onFollow';
 import onSave from './onSave';
@@ -11,6 +14,7 @@ import onSave from './onSave';
 import Star from '@material-ui/icons/Grade';
 import Gear from '@material-ui/icons/Settings';
 import Save from '@material-ui/icons/Save';
+import PublicIcon from '@material-ui/icons/Public';
 
 function BandHeader({ band, editInfo, user, followers, dispatch }) {
   const [isFollowing, setIsFollowing] = useState(null);
@@ -35,17 +39,11 @@ function BandHeader({ band, editInfo, user, followers, dispatch }) {
         <img src={band.banner} alt='Banner' className='banner__img' />
       </div>
       <div className='band-header__info'>
-        {Object.keys(editInfo).length === 0 &&
-        editInfo.constructor === Object ? (
-          <strong className='info__name'>{band.name}</strong>
-        ) : (
-          <input
-            type='text'
-            value={editInfo.name}
-            onChange={(event) => dispatch(bandEditName(event.target.value))}
-            className='info__input'
-          />
-        )}
+        <strong className='info__name'>
+          {Object.keys(editInfo).length === 0 && editInfo.constructor === Object
+            ? band.name
+            : editInfo.name}
+        </strong>
 
         <div className='info__bottom'>
           <div className='bottom__follow'>
@@ -70,20 +68,25 @@ function BandHeader({ band, editInfo, user, followers, dispatch }) {
           {band._id === user?.band?._id && (
             <div className='bottom__edit'>
               <Gear
-                className='edit__gear'
+                className={`edit__gear ${editInfo.name ? 'orange' : 'white'}`}
                 onClick={(event) =>
                   dispatch(
-                    bandEdit({
-                      name: band.name,
-                      bio: band.bio,
-                      city: band.city,
-                      country: band.country,
-                      socialNetwork: {
-                        twitter: band.socialNetwork.twitter,
-                        facebook: band.socialNetwork.facebook,
-                        instagram: band.socialNetwork.instagram
-                      }
-                    })
+                    bandEdit(
+                      editInfo.name
+                        ? {}
+                        : {
+                            public: band.public,
+                            name: band.name,
+                            bio: band.bio,
+                            city: band.city,
+                            country: band.country,
+                            socialNetwork: {
+                              twitter: band.socialNetwork.twitter,
+                              facebook: band.socialNetwork.facebook,
+                              instagram: band.socialNetwork.instagram
+                            }
+                          }
+                    )
                   )
                 }
               />
@@ -91,10 +94,18 @@ function BandHeader({ band, editInfo, user, followers, dispatch }) {
                 Object.keys(editInfo).length === 0 &&
                 editInfo.constructor === Object
               ) && (
-                <Save
-                  className='edit__save'
-                  onClick={(event) => onSave(event, band._id, editInfo)}
-                />
+                <>
+                  <Save
+                    className='edit__save'
+                    onClick={(event) => onSave(event, band._id, editInfo)}
+                  />
+                  <PublicIcon
+                    className={`edit__public ${
+                      editInfo.public ? 'orange' : 'white'
+                    }`}
+                    onClick={() => dispatch(bandEditPublic(!editInfo.public))}
+                  />
+                </>
               )}
             </div>
           )}
