@@ -22,12 +22,11 @@ function ListItem({ data }) {
             </p>
           ))}
         </div>
-        <div className='info__bottom'>
-          <p className='bottom__bio'>{data.bio}</p>
-          <Link to={`/band/${data._id}`}>
-            <AddCircleIcon className='bottom__icon' />
-          </Link>
-        </div>
+        <p className='info__bio'>{data.bio}</p>
+
+        <Link to={`/band/${data._id}`}>
+          <AddCircleIcon className='bottom__icon' />
+        </Link>
       </div>
     </section>
   );

@@ -2,6 +2,9 @@ $color-detail: #f55110;
 
 .item-list {
   display: flex;
+  margin-bottom: 30px;
+
+  width: 100%;
 
   .item-list__logo {
     width: 150px;
@@ -13,6 +16,7 @@ $color-detail: #f55110;
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 
     border-bottom: 3px solid $color-detail;
     .info__top {
@@ -23,58 +27,42 @@ $color-detail: #f55110;
       font-size: 20px;
       .top__name {
         text-transform: capitalize;
-        margin: 0;
-        margin-right: 10px;
-      }
-
-      .top__city {
-        margin: 0;
-        margin-left: 10px;
         margin-right: 5px;
-        text-transform: capitalize;
       }
-
+      .top__city,
       .top__country {
-        margin: 0;
         text-transform: capitalize;
+        margin: 0 5px;
       }
     }
 
     .info__middle {
       display: flex;
-
       .middle__item {
         margin-right: 5px;
         text-transform: capitalize;
       }
     }
 
-    .info__bottom {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
+    .info__bio {
+      margin: 0;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
 
-      .bottom__bio {
-        margin: 0;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
+      margin-right: 10px;
 
-        margin-right: 10px;
-
-        &::first-letter {
-          text-transform: uppercase;
-        }
+      &::first-letter {
+        text-transform: uppercase;
       }
-      a {
-        margin-top: 5px;
-        align-self: flex-end;
-        justify-self: flex-end;
+    }
+    a {
+      margin-top: 5px;
+      align-self: flex-end;
 
-        .bottom__icon {
-          color: white;
-        }
+      .bottom__icon {
+        color: white;
       }
     }
   }
