@@ -15,7 +15,7 @@ const bandModel = new Schema({
     {
       title: { type: String },
       img: { type: String },
-      date: { type: String },
+      date: { type: Date },
       songs: [
         {
           title: { type: String },
@@ -26,7 +26,7 @@ const bandModel = new Schema({
   ],
   concerts: [
     {
-      date: { type: String },
+      date: { type: Date },
       city: { type: String }
     }
   ],

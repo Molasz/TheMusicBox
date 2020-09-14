@@ -137,7 +137,7 @@ export const deleteConcert = (bandId, deleteId) => async (dispatch) => {
         headers
       }
     );
-    response.data.concerts = response.data.discography.filter(
+    response.data.concerts = response.data.concerts.filter(
       (element) => element._id !== deleteId
     );
 

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import './concerts.scss';
 
 import {
+  bandEdit,
   createConcert,
   deleteConcert
 } from '../../../../redux/actions/bandActions';
@@ -24,7 +25,7 @@ function Concerts({ data, editInfo, bandId, dispatch }) {
         {data?.map((element, i) => {
           return (
             <div className='main__item' key={i}>
-              <p className='item__date'>{element.date}</p>
+              <p className='item__date'>{element.date?.slice(0, 10)}</p>
               <div className='item__container'>
                 <p className='container__city'>{element.city}</p>
                 {editInfo.name !== undefined && (
@@ -61,7 +62,12 @@ function Concerts({ data, editInfo, bandId, dispatch }) {
           </div>
           <AddCircleOutlineIcon
             className='new-concert__create'
-            onClick={() => dispatch(createConcert(bandId, newConcert))}
+            onClick={() => {
+              if (newConcert.date && newConcert.city) {
+                dispatch(createConcert(bandId, newConcert));
+                setNewConcert({ date: '', city: '' });
+              }
+            }}
           />
         </div>
       )}
