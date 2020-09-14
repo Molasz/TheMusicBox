@@ -1,5 +1,14 @@
 // Function to test
-import { getBand, searchBand, follow, sendBandEditInfo } from './bandActions';
+import {
+  getBand,
+  searchBand,
+  follow,
+  sendBandEditInfo,
+  createDisc,
+  deleteDisc,
+  createConcert,
+  deleteConcert
+} from './bandActions';
 
 //Mock dependecies
 import axios from 'axios';
@@ -103,6 +112,128 @@ describe('Band actions', () => {
         new Promise((resolve, reject) => reject(new Error()))
       );
       await sendBandEditInfo(5)(dispatch);
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+
+  //////////////////////////////////////////////
+
+  describe('createDisc test', () => {
+    afterEach(() => jest.clearAllMocks());
+    it('should call axios with /aut/newDisc/:id', async () => {
+      axios.post.mockReturnValue(
+        new Promise((resolve) =>
+          resolve({
+            data: {
+              discography: {
+                push: () => {}
+              }
+            }
+          })
+        )
+      );
+      const id = 1;
+      const discInfo = {};
+      await createDisc(id, discInfo)(jest.fn());
+      expect(axios.post.mock.calls[0][0]).toEqual(`/auth/newDisc/${id}`);
+    });
+
+    it('should call error action if axios throw error', async () => {
+      const dispatch = jest.fn();
+      axios.post.mockReturnValue(
+        new Promise((resolve, reject) => reject(new Error()))
+      );
+      await createDisc(5)(dispatch);
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe('deleteDisc test', () => {
+    afterEach(() => jest.clearAllMocks());
+    it('should call axios with /aut/newDisc/:id', async () => {
+      axios.patch.mockReturnValue(
+        new Promise((resolve) =>
+          resolve({
+            data: {
+              discography: {
+                filter: (callback) => callback()
+              }
+            }
+          })
+        )
+      );
+      const id = 1;
+      const discInfo = {};
+      await deleteDisc(id, discInfo)(jest.fn());
+      expect(axios.patch.mock.calls[0][0]).toEqual(`/auth/newDisc/${id}`);
+    });
+
+    it('should call error action if axios throw error', async () => {
+      const dispatch = jest.fn();
+      axios.patch.mockReturnValue(
+        new Promise((resolve, reject) => reject(new Error()))
+      );
+      await deleteDisc(5)(dispatch);
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe('createConcert test', () => {
+    afterEach(() => jest.clearAllMocks());
+    it('should call axios with /aut/newConcert/:id', async () => {
+      axios.post.mockReturnValue(
+        new Promise((resolve) =>
+          resolve({
+            data: {
+              discography: {
+                push: () => {}
+              }
+            }
+          })
+        )
+      );
+      const id = 1;
+      const discInfo = {};
+      await createConcert(id, discInfo)(jest.fn());
+      expect(axios.post.mock.calls[0][0]).toEqual(`/auth/newConcert/${id}`);
+    });
+
+    it('should call error action if axios throw error', async () => {
+      const dispatch = jest.fn();
+      axios.post.mockReturnValue(
+        new Promise((resolve, reject) => reject(new Error()))
+      );
+      await createConcert(5)(dispatch);
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe('deleteConcert test', () => {
+    afterEach(() => jest.clearAllMocks());
+    it('should call axios with /aut/newConcert/:id', async () => {
+      axios.patch.mockReturnValue(
+        new Promise((resolve) =>
+          resolve({
+            data: {
+              concerts: {
+                filter: (callback) => callback()
+              }
+            }
+          })
+        )
+      );
+      const id = 1;
+      const discInfo = {};
+      await deleteConcert(id, discInfo)(jest.fn());
+      expect(axios.patch.mock.calls[0][0]).toEqual(`/auth/newConcert/${id}`);
+    });
+
+    it('should call error action if axios throw error', async () => {
+      const dispatch = jest.fn();
+      axios.patch.mockReturnValue(
+        new Promise((resolve, reject) => reject(new Error()))
+      );
+      await deleteConcert(5)(dispatch);
       expect(dispatch).toHaveBeenCalled();
     });
   });

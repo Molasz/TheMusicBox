@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import './concerts.scss';
 
 import {
-  bandEdit,
   createConcert,
   deleteConcert
 } from '../../../../redux/actions/bandActions';
@@ -43,6 +42,7 @@ function Concerts({ data, editInfo, bandId, dispatch }) {
         <div className='concerts__new-concert'>
           <div className='new-concert__input'>
             <input
+              className='input__date'
               placeholder='Date'
               type='date'
               value={newConcert.date}
@@ -52,6 +52,7 @@ function Concerts({ data, editInfo, bandId, dispatch }) {
             />
 
             <input
+              className='input__city'
               placeholder='City'
               type='text'
               value={newConcert.city}

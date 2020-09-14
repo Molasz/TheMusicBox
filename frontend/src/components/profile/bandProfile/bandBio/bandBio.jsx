@@ -1,15 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import {
-  bandEditName,
-  bandEditBio,
-  bandEditCity,
-  bandEditCountry,
-  bandEditTwitter,
-  bandEditFacebook,
-  bandEditInstagram
-} from '../../../../redux/actions/bandActions';
+import { bandEdit } from '../../../../redux/actions/bandActions';
 
 import './bandBio.scss';
 
@@ -23,10 +15,13 @@ function BandBio({ band, editInfo, dispatch }) {
       <div className='bio__top'>
         {editInfo.name !== undefined ? (
           <input
+            placeholder='Band name'
             type='text'
             maxLength='50'
             value={editInfo.name}
-            onChange={(event) => dispatch(bandEditName(event.target.value))}
+            onChange={(event) =>
+              dispatch(bandEdit({ ...editInfo, name: event.target.value }))
+            }
             className='top__name input'
           />
         ) : (
@@ -36,19 +31,25 @@ function BandBio({ band, editInfo, dispatch }) {
           {editInfo.city !== undefined ? (
             <>
               <input
+                placeholder='City'
                 type='text'
                 maxLength='20'
                 value={editInfo.city}
-                onChange={(event) => dispatch(bandEditCity(event.target.value))}
+                onChange={(event) =>
+                  dispatch(bandEdit({ ...editInfo, city: event.target.value }))
+                }
                 className='region__city input'
               />
 
               <input
+                placeholder='Country'
                 type='text'
                 maxLength='20'
                 value={editInfo.country}
                 onChange={(event) =>
-                  dispatch(bandEditCountry(event.target.value))
+                  dispatch(
+                    bandEdit({ ...editInfo, country: event.target.value })
+                  )
                 }
                 className='region__country input'
               />
@@ -64,9 +65,12 @@ function BandBio({ band, editInfo, dispatch }) {
       <div className='bio__middle'>
         {editInfo.bio !== undefined ? (
           <textarea
+            placeholder='Bio'
             type='text'
             value={editInfo.bio}
-            onChange={(event) => dispatch(bandEditBio(event.target.value))}
+            onChange={(event) =>
+              dispatch(bandEdit({ ...editInfo, bio: event.target.value }))
+            }
             className='middle__bio text-area'
           />
         ) : (
@@ -86,10 +90,19 @@ function BandBio({ band, editInfo, dispatch }) {
           </a>
           {editInfo.socialNetwork?.twitter !== undefined && (
             <input
+              placeholder='twitter.com'
               type='text'
               value={editInfo.socialNetwork.twitter}
               onChange={(event) =>
-                dispatch(bandEditTwitter(event.target.value))
+                dispatch(
+                  bandEdit({
+                    ...editInfo,
+                    socialNetwork: {
+                      ...editInfo.socialNetwork,
+                      twitter: event.target.value
+                    }
+                  })
+                )
               }
               className='container__input input'
               id='twitter'
@@ -108,10 +121,19 @@ function BandBio({ band, editInfo, dispatch }) {
           </a>
           {editInfo.socialNetwork?.facebook !== undefined && (
             <input
+              placeholder='facebook.com'
               type='text'
               value={editInfo.socialNetwork.facebook}
               onChange={(event) =>
-                dispatch(bandEditFacebook(event.target.value))
+                dispatch(
+                  bandEdit({
+                    ...editInfo,
+                    socialNetwork: {
+                      ...editInfo.socialNetwork,
+                      facebook: event.target.value
+                    }
+                  })
+                )
               }
               className='container__input input'
               id='facebook'
@@ -131,10 +153,19 @@ function BandBio({ band, editInfo, dispatch }) {
 
           {editInfo.socialNetwork?.instagram !== undefined && (
             <input
+              placeholder='instagram.com'
               type='text'
               value={editInfo.socialNetwork.instagram}
               onChange={(event) =>
-                dispatch(bandEditInstagram(event.target.value))
+                dispatch(
+                  bandEdit({
+                    ...editInfo,
+                    socialNetwork: {
+                      ...editInfo.socialNetwork,
+                      instagram: event.target.value
+                    }
+                  })
+                )
               }
               className='container__input input'
               id='instagram'

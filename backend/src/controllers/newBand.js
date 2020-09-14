@@ -5,10 +5,10 @@ function newBand(User, Band) {
     const { id } = req.params;
     const defaultBandInfo = {
       public: false,
-      name: 'band name',
-      city: 'city',
-      country: 'country',
-      bio: 'biography',
+      name: '',
+      city: '',
+      country: '',
+      bio: '',
       tags: [],
       logo: 'https://static.thenounproject.com/png/55431-200.png',
       banner:
@@ -17,9 +17,9 @@ function newBand(User, Band) {
       concerts: [],
       photos: [],
       socialNetwork: {
-        twitter: 'twitter.com',
-        facebook: 'facebook.com',
-        instagram: 'instagram.com'
+        twitter: '',
+        facebook: '',
+        instagram: ''
       }
     };
 

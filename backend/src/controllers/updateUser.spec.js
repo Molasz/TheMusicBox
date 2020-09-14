@@ -3,13 +3,11 @@ const sinon = require('sinon');
 
 const updateUser = require('./updateUser');
 
-describe('findByIdAndUpdate test', () => {
+describe('Update user test', () => {
   afterEach(() => {
     sinon.restore();
   });
-  it('should findByIdAndUpdate is called with body', () => {
-    const body = { name: 'name' };
-
+  it('should called findByIdAndUpdate', () => {
     const User = {
       findByIdAndUpdate: () => {
         return {
@@ -25,13 +23,13 @@ describe('findByIdAndUpdate test', () => {
         };
       }
     };
-    const req = { params: { id: 1 }, body };
-    const res = { status: () => {}, json: () => {} };
+    const req = { params: { id: 1 }, body: { name: 'name' } };
+    const res = {};
 
-    const findByIdAndUpdateSpy = sinon.spy(User, 'findByIdAndUpdate');
+    const findByIdAndUpdateStub = sinon.spy(User, 'findByIdAndUpdate');
 
     updateUser(User)(req, res);
 
-    expect(findByIdAndUpdateSpy.called).to.be.true;
+    expect(findByIdAndUpdateStub.called).to.be.true;
   });
 });

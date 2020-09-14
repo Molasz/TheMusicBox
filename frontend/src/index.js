@@ -6,6 +6,8 @@ import { Auth0Provider } from '@auth0/auth0-react';
 
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Home from './components/home/home';
 import UserProfile from './components/profile/userProfile/userProfile';
@@ -37,6 +39,17 @@ render(
             <Route path='/search' component={Search} />
             <Route path='/band/:bandId' component={BandProfile} />
           </Switch>
+          <ToastContainer
+            position='bottom-right'
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
           <Footer />
         </BrowserRouter>
       </Auth0Provider>

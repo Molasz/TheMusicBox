@@ -8,14 +8,6 @@ export default {
   FOLLOW_BAND: 'FOLLOW_BAND', // Return number of user follow a band
   NEW_BAND: 'NEW_BAND', // Create standard band document
   BAND_EDIT: 'BAND_EDIT',
-  BAND_EDIT_NAME: 'BAND_EDIT_NAME', // Return edited name by user
-  BAND_EDIT_BIO: 'BAND_EDIT_BIO', // Return edited bio by user
-  BAND_EDIT_CITY: 'BAND_EDIT_CITY', // Return edited city by user
-  BAND_EDIT_COUNTRY: 'BAND_EDIT_COUNTRY', // Return edited country by user
-  BAND_EDIT_TWITTER: 'BAND_EDIT_TWITTER',
-  BAND_EDIT_FACEBOOK: 'BAND_EDIT_FACEBOOK',
-  BAND_EDIT_INSTAGRAM: 'BAND_EDIT_TINSTAGRAM',
-  BAND_EDIT_PUBLIC: 'BAND_EDIT_PUBLIC',
   SEND_BAND_EDIT_INFO: 'SEND_BAND_EDIT_INFO', // Return user with info updated
 
   CREATE_DISC: 'CREATE_DISC',

@@ -13,29 +13,21 @@ describe('bandBio snapshot', () => {
     jest.clearAllMocks();
   });
 
-  const city = 'Barcelona';
-  const country = 'Republica independiente de mi casa';
-  const bio = '...';
-  const name = 'Music group';
-
-  const socialNetwork = {
-    twitter: 'twitter.com',
-    facebook: 'facebook.com',
-    instagram: 'instagram.com'
+  const band = {
+    city: 'city',
+    country: 'country',
+    bio: 'bio',
+    name: 'name',
+    socialNetwork: {
+      twitter: 'twitter',
+      facebook: 'facebook',
+      instagram: 'instagram'
+    }
   };
 
   it('Should match without editInfo', () => {
     const editInfo = {};
-    const tree = renderer.create(
-      <BandBio
-        city={city}
-        country={country}
-        bio={bio}
-        name={name}
-        socialNetwork={socialNetwork}
-        editInfo={editInfo}
-      />
-    );
+    const tree = renderer.create(<BandBio band={band} editInfo={editInfo} />);
     expect(tree.toJSON()).toMatchSnapshot();
   });
 
