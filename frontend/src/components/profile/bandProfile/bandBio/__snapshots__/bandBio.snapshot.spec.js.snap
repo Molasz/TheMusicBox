@@ -11,6 +11,7 @@ exports[`bandBio snapshot Should match with editInfo 1`] = `
       className="top__name input"
       maxLength="50"
       onChange={[Function]}
+      placeholder="Band name"
       type="text"
       value="name"
     />
@@ -21,6 +22,7 @@ exports[`bandBio snapshot Should match with editInfo 1`] = `
         className="region__city input"
         maxLength="20"
         onChange={[Function]}
+        placeholder="City"
         type="text"
         value="city"
       />
@@ -28,6 +30,7 @@ exports[`bandBio snapshot Should match with editInfo 1`] = `
         className="region__country input"
         maxLength="20"
         onChange={[Function]}
+        placeholder="Country"
         type="text"
         value="country"
       />
@@ -39,6 +42,7 @@ exports[`bandBio snapshot Should match with editInfo 1`] = `
     <textarea
       className="middle__bio text-area"
       onChange={[Function]}
+      placeholder="Bio"
       type="text"
       value="..."
     />
@@ -69,6 +73,7 @@ exports[`bandBio snapshot Should match with editInfo 1`] = `
         className="container__input input"
         id="twitter"
         onChange={[Function]}
+        placeholder="twitter.com"
         type="text"
         value="twitter"
       />
@@ -96,6 +101,7 @@ exports[`bandBio snapshot Should match with editInfo 1`] = `
         className="container__input input"
         id="facebook"
         onChange={[Function]}
+        placeholder="facebook.com"
         type="text"
         value="facebook"
       />
@@ -123,6 +129,7 @@ exports[`bandBio snapshot Should match with editInfo 1`] = `
         className="container__input input"
         id="instagram"
         onChange={[Function]}
+        placeholder="instagram.com"
         type="text"
         value="instagram"
       />
