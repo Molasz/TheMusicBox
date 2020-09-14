@@ -8,9 +8,6 @@ Enzyme.configure({ adapter: new Adapter() });
 
 import { Songs } from './songs';
 
-import onShow from '../disc/onShow';
-jest.mock('../disc/onShow');
-
 import Disc from '../disc/disc';
 jest.mock('../disc/disc');
 
@@ -30,16 +27,30 @@ describe('Search snapshot', () => {
     }
   ];
   const index = 0;
+  const editInfo = { name: 'name' };
   it('Should match without band data', () => {
-    const tree = renderer.create(<Songs info={info} index={index} />);
+    const tree = renderer.create(
+      <Songs info={info} index={index} editInfo={editInfo} />
+    );
     expect(tree.toJSON()).toMatchSnapshot();
   });
 
-  it('Should call onShow when click', () => {
-    const document = shallow(<Songs info={info} index={index} />);
-    const button = document.find('.content__icon');
+  const dispatch = jest.fn();
+  const document = shallow(
+    <Songs info={info} index={index} editInfo={editInfo} dispatch={dispatch} />
+  );
+
+  it('Should call dispatch when click back icon', () => {
+    const button = document.find('.icon__back');
     button.simulate('click', { preventDefault: () => {} });
 
-    expect(onShow.call).truthy;
+    expect(dispatch.call).truthy;
+  });
+
+  it('Should call dispatch when click delete', () => {
+    const button = document.find('.icon__delete');
+    button.simulate('click', { preventDefault: () => {} });
+
+    expect(dispatch.call).truthy;
   });
 });

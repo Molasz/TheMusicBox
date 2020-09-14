@@ -3,7 +3,7 @@ const sinon = require('sinon');
 
 const updateBand = require('./updateBand');
 
-describe('Update user test', () => {
+describe('Update band test', () => {
   afterEach(() => {
     sinon.restore();
   });
@@ -19,6 +19,6 @@ describe('Update user test', () => {
 
     updateBand(Band)(req, res);
 
-    expect(findStub.calledWith(body)).to.be.true;
+    expect(findStub.called).to.be.true;
   });
 });

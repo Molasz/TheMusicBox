@@ -9,7 +9,7 @@ exports[`bandBio snapshot Should match with editInfo 1`] = `
   >
     <input
       className="top__name input"
-      maxlength="50"
+      maxLength="50"
       onChange={[Function]}
       type="text"
       value="name"
@@ -19,14 +19,14 @@ exports[`bandBio snapshot Should match with editInfo 1`] = `
     >
       <input
         className="region__city input"
-        maxlength="20"
+        maxLength="20"
         onChange={[Function]}
         type="text"
         value="city"
       />
       <input
         className="region__country input"
-        maxlength="20"
+        maxLength="20"
         onChange={[Function]}
         type="text"
         value="country"
@@ -141,7 +141,7 @@ exports[`bandBio snapshot Should match without editInfo 1`] = `
     <strong
       className="top__name"
     >
-      Music group
+      name
     </strong>
     <div
       className="top__region"
@@ -149,13 +149,13 @@ exports[`bandBio snapshot Should match without editInfo 1`] = `
       <p
         className="region__city"
       >
-        Barcelona
+        city
       </p>
        |
       <p
         className="region__country"
       >
-        Republica independiente de mi casa
+        country
       </p>
     </div>
   </div>
@@ -165,7 +165,7 @@ exports[`bandBio snapshot Should match without editInfo 1`] = `
     <p
       className="middle__bio"
     >
-      ...
+      bio
     </p>
   </div>
   <div
@@ -175,7 +175,7 @@ exports[`bandBio snapshot Should match without editInfo 1`] = `
       className="bottom__container"
     >
       <a
-        href="http://twitter.com"
+        href="http://twitter"
         rel="noopener noreferrer"
         target="_blank"
       >
@@ -195,7 +195,7 @@ exports[`bandBio snapshot Should match without editInfo 1`] = `
       className="bottom__container"
     >
       <a
-        href="http://facebook.com"
+        href="http://facebook"
         rel="noopener noreferrer"
         target="_blank"
       >
@@ -215,7 +215,7 @@ exports[`bandBio snapshot Should match without editInfo 1`] = `
       className="bottom__container"
     >
       <a
-        href="http://twitter.com"
+        href="http://twitter"
         rel="noopener noreferrer"
         target="_blank"
       >

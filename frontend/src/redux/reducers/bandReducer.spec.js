@@ -38,7 +38,7 @@ describe('Band reducer', () => {
     };
     expect(reducer({}, action)).toEqual({ bandFollowers: text });
   });
-  ///////////////////////////////////////////////
+
   it('should handle sendBandEditInfo', () => {
     const action = {
       type: types.SEND_BAND_EDIT_INFO,
@@ -55,73 +55,43 @@ describe('Band reducer', () => {
     expect(reducer({}, action)).toEqual({ editInfo: text });
   });
 
-  it('should handle bandEditName', () => {
+  it('should handle createDisc', () => {
     const action = {
-      type: types.BAND_EDIT_NAME,
+      type: types.CREATE_DISC,
       payload: text
     };
-    expect(reducer({}, action)).toEqual({ editInfo: { name: text } });
+    expect(reducer({}, action)).toEqual({ band: text });
   });
 
-  it('should handle bandEditBio', () => {
+  it('should handle deleteDisc', () => {
     const action = {
-      type: types.BAND_EDIT_BIO,
+      type: types.DELETE_DISC,
       payload: text
     };
-    expect(reducer({}, action)).toEqual({ editInfo: { bio: text } });
+    expect(reducer({}, action)).toEqual({ band: text });
   });
 
-  it('should handle bandEditCity', () => {
+  it('should handle createConcert', () => {
     const action = {
-      type: types.BAND_EDIT_CITY,
+      type: types.CREATE_CONCERT,
       payload: text
     };
-    expect(reducer({}, action)).toEqual({ editInfo: { city: text } });
+    expect(reducer({}, action)).toEqual({ band: text });
   });
 
-  it('should handle bandEditCountry', () => {
+  it('should handle removeConcert', () => {
     const action = {
-      type: types.BAND_EDIT_COUNTRY,
+      type: types.DELETE_CONCERT,
       payload: text
     };
-    expect(reducer({}, action)).toEqual({ editInfo: { country: text } });
+    expect(reducer({}, action)).toEqual({ band: text });
   });
 
-  it('should handle bandEditTwitter', () => {
+  it('should handle showPhoto', () => {
     const action = {
-      type: types.BAND_EDIT_TWITTER,
+      type: types.SHOW_PHOTO,
       payload: text
     };
-    expect(reducer({ editInfo: { socialNetwork: {} } }, action)).toEqual({
-      editInfo: { socialNetwork: { twitter: text } }
-    });
-  });
-
-  it('should handle bandEditFacebook', () => {
-    const action = {
-      type: types.BAND_EDIT_FACEBOOK,
-      payload: text
-    };
-    expect(reducer({ editInfo: { socialNetwork: {} } }, action)).toEqual({
-      editInfo: { socialNetwork: { facebook: text } }
-    });
-  });
-
-  it('should handle bandEditInstagram', () => {
-    const action = {
-      type: types.BAND_EDIT_INSTAGRAM,
-      payload: text
-    };
-    expect(reducer({ editInfo: { socialNetwork: {} } }, action)).toEqual({
-      editInfo: { socialNetwork: { instagram: text } }
-    });
-  });
-
-  it('should handle bandEditPublic', () => {
-    const action = {
-      type: types.BAND_EDIT_PUBLIC,
-      payload: text
-    };
-    expect(reducer({}, action)).toEqual({ editInfo: { public: text } });
+    expect(reducer({}, action)).toEqual({ showPhoto: text });
   });
 });

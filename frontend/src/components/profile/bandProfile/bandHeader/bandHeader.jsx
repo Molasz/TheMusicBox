@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import './bandHeader.scss';
 
-import {
-  bandEdit,
-  bandEditPublic
-} from '../../../../redux/actions/bandActions';
+import { bandEdit } from '../../../../redux/actions/bandActions';
 
 import onFollow from './onFollow';
 import onSave from './onSave';
@@ -18,6 +16,19 @@ import PublicIcon from '@material-ui/icons/Public';
 
 function BandHeader({ band, editInfo, user, followers, dispatch }) {
   const [isFollowing, setIsFollowing] = useState(null);
+  const publicAlert = () =>
+    toast.error(
+      'You need to fill name, biography, city and country before public the band',
+      {
+        position: 'bottom-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+      }
+    );
 
   useEffect(() => {
     if (isFollowing === null && user.following !== undefined) {
@@ -25,9 +36,17 @@ function BandHeader({ band, editInfo, user, followers, dispatch }) {
         user.following.some((element) => element._id === band._id)
       );
     }
-  }, [band._id, isFollowing, user]);
-
-  const followIconClass = isFollowing ? 'orange' : 'white';
+    if (
+      !(
+        Object.keys(editInfo).length === 0 && editInfo.constructor === Object
+      ) &&
+      editInfo.public &&
+      !(editInfo.name && editInfo.bio && editInfo.city && editInfo.country)
+    ) {
+      debugger;
+      dispatch(bandEdit({ ...editInfo, public: false }));
+    }
+  }, [band._id, isFollowing, user, dispatch, editInfo]);
 
   return (
     <section className='band-header'>
@@ -40,7 +59,7 @@ function BandHeader({ band, editInfo, user, followers, dispatch }) {
 
         <div className='info__follow'>
           <Star
-            className={`contanier__icon ${followIconClass}`}
+            className={`contanier__icon ${isFollowing ? 'orange' : 'white'}`}
             id='follow'
             onClick={(event) =>
               onFollow(
@@ -64,7 +83,7 @@ function BandHeader({ band, editInfo, user, followers, dispatch }) {
               onClick={(event) =>
                 dispatch(
                   bandEdit(
-                    editInfo.name
+                    editInfo.name !== undefined
                       ? {}
                       : {
                           public: band.public,
@@ -82,7 +101,7 @@ function BandHeader({ band, editInfo, user, followers, dispatch }) {
                 )
               }
             />
-            {editInfo.public !== undefined && (
+            {editInfo.name !== undefined && (
               <>
                 <Save
                   className='edit__save'
@@ -92,7 +111,16 @@ function BandHeader({ band, editInfo, user, followers, dispatch }) {
                   className={`edit__public ${
                     editInfo.public ? 'orange' : 'white'
                   }`}
-                  onClick={() => dispatch(bandEditPublic(!editInfo.public))}
+                  onClick={() => {
+                    if (
+                      editInfo.name &&
+                      editInfo.city &&
+                      editInfo.country &&
+                      editInfo.bio
+                    )
+                      dispatch(bandEdit(!editInfo.public));
+                    else publicAlert();
+                  }}
                 />
               </>
             )}
