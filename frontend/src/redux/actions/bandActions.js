@@ -10,14 +10,6 @@ export const showPhoto = createAction(types.SHOW_PHOTO);
 
 //Edit band profile
 export const bandEdit = createAction(types.BAND_EDIT);
-export const bandEditName = createAction(types.BAND_EDIT_NAME);
-export const bandEditBio = createAction(types.BAND_EDIT_BIO);
-export const bandEditCity = createAction(types.BAND_EDIT_CITY);
-export const bandEditCountry = createAction(types.BAND_EDIT_COUNTRY);
-export const bandEditTwitter = createAction(types.BAND_EDIT_TWITTER);
-export const bandEditFacebook = createAction(types.BAND_EDIT_FACEBOOK);
-export const bandEditInstagram = createAction(types.BAND_EDIT_INSTAGRAM);
-export const bandEditPublic = createAction(types.BAND_EDIT_PUBLIC);
 
 //Async
 const getBandSuccess = createAction(types.GET_BAND);
@@ -98,7 +90,6 @@ export const deleteDisc = (bandId, deleteId) => async (dispatch) => {
     response.data.discography = response.data.discography.filter(
       (element) => element._id !== deleteId
     );
-
     return dispatch(deleteDiscSuccess(response.data));
   } catch (err) {
     return dispatch(error(err));

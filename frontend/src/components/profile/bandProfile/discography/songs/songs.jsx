@@ -35,7 +35,7 @@ function Songs({ info, index, editInfo, bandId, dispatch }) {
           <div className='content__text'>
             <h3 className='text__title'>{info[index].title}</h3>
             <p className='text__info'>
-              {info[index].date} | {info[index].songs.length} songs
+              {info[index].date.slice(0, 10)} | {info[index].songs.length} songs
             </p>
           </div>
         </div>

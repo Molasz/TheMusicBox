@@ -39,6 +39,7 @@ function Photos({ photos, bandEdit, photo, dispatch }) {
                 onClick={() => dispatch(showPhoto(null))}
               />
               <ArrowLeft
+                id='left-arrow'
                 className='arrow'
                 onClick={() =>
                   dispatch(
@@ -49,6 +50,7 @@ function Photos({ photos, bandEdit, photo, dispatch }) {
             </div>
             <img src={photos[photo]} alt='zoom' className='main__photo' />
             <ArrowRight
+              id='right-arrow'
               className='arrow'
               onClick={() =>
                 dispatch(showPhoto(photo === photos.length - 1 ? 0 : photo + 1))
@@ -62,6 +64,7 @@ function Photos({ photos, bandEdit, photo, dispatch }) {
                   src={element}
                   alt={i}
                   key={i}
+                  id={`photo$i`}
                   className={`footer__item ${i === photo ? 'color' : ''}`}
                   onClick={() => dispatch(showPhoto(i))}
                 />
@@ -82,3 +85,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(Photos);
+export { Photos };

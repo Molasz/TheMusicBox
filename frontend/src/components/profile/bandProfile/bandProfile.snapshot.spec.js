@@ -6,6 +6,9 @@ import { BandProfile } from './bandProfile';
 jest.mock('./bandBio/bandBio');
 jest.mock('./discography/discography');
 jest.mock('./bandHeader/bandHeader');
+jest.mock('./discography/disc/disc');
+jest.mock('./photos/photos');
+jest.mock('./concerts/concerts');
 
 describe('BandProfile snapshot', () => {
   const match = { params: { bandId: 1 } };
@@ -32,8 +35,8 @@ describe('BandProfile snapshot', () => {
       <BandProfile
         match={match}
         band={band}
-        user={user}
         followers={followers}
+        user={user}
         dispatch={dispatch}
       />
     );
