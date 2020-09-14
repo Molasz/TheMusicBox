@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { showDisc, createDisc } from '../../../../../redux/actions/bandActions';
+import {
+  showDisc,
+  createDisc,
+  sendCover
+} from '../../../../../redux/actions/bandActions';
 
 import './addDisc.scss';
 
@@ -10,15 +14,31 @@ import AddCircleIcon from '@material-ui/icons/AddCircleOutline';
 import CreateIcon from '@material-ui/icons/Create';
 import BackIcon from '@material-ui/icons/ArrowBack';
 
-function AddDisc({ newDisc, bandId, dispatch }) {
+function AddDisc({ newDisc, band, loading, dispatch }) {
   const [disc, setDisc] = useState({ title: '', date: '', songs: [] });
+  const [cover, setCover] = useState(null);
   const [newSong, setNewSong] = useState({ title: '', time: '' });
+  const [isSend, setIsSend] = useState(false);
+
+  useEffect(() => {
+    if (isSend) {
+      debugger;
+      const img = new FormData();
+      img.append('image', cover, cover.name);
+      dispatch(sendCover(band._id, band.discography.slice(-1)[0]._id, cover));
+      dispatch(showDisc(undefined));
+    }
+  }, [band.discography.length]);
 
   return (
     <section className='new-disc'>
       <div className='new-disc__top'>
         <div className='top__cover'>
           <CreateIcon className='cover__icon' />
+          <input
+            type='file'
+            onChange={(event) => setCover(event.target.files[0])}
+          />
         </div>
         <div className='top__content'>
           <BackIcon
@@ -106,8 +126,8 @@ function AddDisc({ newDisc, bandId, dispatch }) {
           className='bottom__create'
           onClick={() => {
             if (disc.title && disc.date && disc.songs.length) {
-              dispatch(createDisc(bandId, disc));
-              dispatch(showDisc(undefined));
+              dispatch(createDisc(band._id, disc));
+              setIsSend(true);
             }
           }}
         >
@@ -120,7 +140,8 @@ function AddDisc({ newDisc, bandId, dispatch }) {
 
 function mapStateToProps(state) {
   return {
-    bandId: state.bandReducer.band._id
+    band: state.bandReducer.band,
+    loading: state.infoReducer.loading
   };
 }
 

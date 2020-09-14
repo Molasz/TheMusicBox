@@ -41,6 +41,9 @@ export default handleActions(
     },
     [types.SHOW_PHOTO]: (state, action) => {
       return { ...state, showPhoto: action.payload };
+    },
+    [types.SEND_COVER]: (state, action) => {
+      return { ...state, band: action.payload };
     }
   },
   {}

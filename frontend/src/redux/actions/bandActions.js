@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions';
 
 import types from '../actionTypes';
-import { error } from './errorAction';
+import { error, loading } from './infoActions';
 import axios from 'axios';
 
 //Sync
@@ -67,7 +67,6 @@ export const createDisc = (bandId, discInfo) => async (dispatch) => {
     const response = await axios.post(`/auth/newDisc/${bandId}`, discInfo, {
       headers
     });
-    response.data.discography.push(discInfo);
     return dispatch(createDiscSuccess(response.data));
   } catch (err) {
     return dispatch(error(err));
@@ -134,6 +133,27 @@ export const deleteConcert = (bandId, deleteId) => async (dispatch) => {
     );
 
     return dispatch(deleteConcertSuccess(response.data));
+  } catch (err) {
+    return dispatch(error(err));
+  }
+};
+
+const sendCoverSuccess = createAction(types.SEND_COVER);
+export const sendCover = (bandId, discId, cover) => async (dispatch) => {
+  debugger;
+  try {
+    const headers = {
+      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
+    };
+    const response = await axios.post(
+      `/auth/newCover/${bandId}/${discId}`,
+      cover,
+      {
+        headers
+      }
+    );
+
+    return dispatch(sendCoverSuccess(response.data));
   } catch (err) {
     return dispatch(error(err));
   }

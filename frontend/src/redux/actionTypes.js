@@ -1,5 +1,6 @@
 export default {
   ERROR: 'ERROR',
+  LOADING: 'LOADING',
 
   GET_BAND: 'GET_BAND', // Return band object
   SEARCH_BAND: 'SEARCH_BAND', // Return array of matched bands
@@ -14,6 +15,8 @@ export default {
   DELETE_DISC: 'DELETE_DISC',
   CREATE_CONCERT: 'CREATE_CONCERT',
   DELETE_CONCERT: 'DELETE_CONCERT',
+
+  SEND_COVER: 'SEND_COVER',
 
   GET_USER: 'GET_USER', // Return user object
   SAVE_USER: 'SAVE_USER', // Return userIdentifier

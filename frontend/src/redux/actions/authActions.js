@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAction } from 'redux-actions';
 
 import types from '../actionTypes';
-import { error } from './errorAction';
+import { error } from './infoActions';
 
 // Sync
 export const saveUser = createAction(types.SAVE_USER);
