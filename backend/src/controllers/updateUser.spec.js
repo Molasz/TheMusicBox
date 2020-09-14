@@ -3,29 +3,35 @@ const sinon = require('sinon');
 
 const updateUser = require('./updateUser');
 
-describe('Update user test', () => {
+describe('findByIdAndUpdate test', () => {
   afterEach(() => {
     sinon.restore();
   });
-  it('should find is called', () => {
+  it('should findByIdAndUpdate is called with body', () => {
+    const body = { name: 'name' };
+
     const User = {
       findByIdAndUpdate: () => {
         return {
           populate: () => {
             return {
-              exec: () => {}
+              populate: () => {
+                return {
+                  exec: () => {}
+                };
+              }
             };
           }
         };
       }
     };
-    const req = { params: { id: 0 }, body: {} };
-    const res = {};
+    const req = { params: { id: 1 }, body };
+    const res = { status: () => {}, json: () => {} };
 
-    const findStub = sinon.spy(User, 'findByIdAndUpdate');
+    const findByIdAndUpdateSpy = sinon.spy(User, 'findByIdAndUpdate');
 
     updateUser(User)(req, res);
 
-    expect(findStub.called).to.be.true;
+    expect(findByIdAndUpdateSpy.called).to.be.true;
   });
 });

@@ -16,13 +16,27 @@ $color-detail: #f55110;
 
       border-bottom: 2px solid $color-detail;
       .content__icon {
-        font-size: 30px;
+        display: flex;
+
+        .icon__back,
+        icon__delete {
+          margin-right: 20px;
+          font-size: 30px;
+        }
+      }
+
+      .content__text {
+        .text__info {
+          margin: 5px 0;
+        }
       }
     }
   }
   .songs__middle {
     margin-bottom: 50px;
     .middle__item {
+      margin: 15px 0;
+
       .item__number {
         color: $color-detail;
         margin-right: 10px;

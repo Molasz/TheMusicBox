@@ -10,9 +10,7 @@ import { shallow } from 'enzyme';
 Enzyme.configure({ adapter: new Adapter() });
 
 import onSave from './onSave';
-import onEdit from './onEdit';
 jest.mock('./onSave');
-jest.mock('./onEdit');
 
 describe('ProfileHeader snapshot', () => {
   const photo = 'photo';
@@ -43,17 +41,34 @@ describe('ProfileHeader snapshot', () => {
       photo={photo}
       banner={banner}
       editInfo={editInfo}
+      dispatch={dispatch}
     />
   );
 
-  it('Should call onEdit when click', () => {
+  it('Should call dispatch when click gear', () => {
     const button = document.find('.edit__gear');
     button.simulate('click', { preventDefault: () => {} });
 
-    expect(onEdit.call).truthy;
+    expect(dispatch.call).truthy;
   });
 
-  it('Should call onSave when click', () => {
+  it('Should call dispatch when click gear', () => {
+    const document = shallow(
+      <ProfileHeader
+        user={user}
+        photo={photo}
+        banner={banner}
+        editInfo={{}}
+        dispatch={dispatch}
+      />
+    );
+    const button = document.find('.edit__gear');
+    button.simulate('click', { preventDefault: () => {} });
+
+    expect(dispatch.call).truthy;
+  });
+
+  it('Should call onSave when click save', () => {
     const button = document.find('.edit__save');
     button.simulate('click', { preventDefault: () => {} });
 

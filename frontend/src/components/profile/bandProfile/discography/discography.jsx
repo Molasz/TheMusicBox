@@ -5,10 +5,11 @@ import './discography.scss';
 
 import Disc from './disc/disc';
 import Songs from './songs/songs';
+import AddDisc from './addDisc/addDisc';
 
 import DiscIcon from '@material-ui/icons/Album';
 
-function Discography({ data, disc }) {
+function Discography({ data, disc, editInfo }) {
   return (
     <section className='discography'>
       <div className='discography__title'>
@@ -16,12 +17,18 @@ function Discography({ data, disc }) {
         <h1>Discography</h1>
       </div>
       {disc !== undefined ? (
-        <Songs info={data} index={disc} />
+        disc === -1 ? (
+          <AddDisc />
+        ) : (
+          <Songs info={data} index={disc} />
+        )
       ) : (
         <div className='discography__main'>
           {data.map((element, i) => {
             return <Disc data={element} index={i} key={i} />;
           })}
+
+          {editInfo.name !== undefined && <Disc index={-1} />}
         </div>
       )}
     </section>
@@ -29,7 +36,11 @@ function Discography({ data, disc }) {
 }
 
 function mapStateToProps(state) {
-  return state.bandReducer;
+  return {
+    disc: state.bandReducer.disc,
+    editInfo: state.bandReducer.editInfo,
+    data: state.bandReducer.band.discography
+  };
 }
 
 export default connect(mapStateToProps)(Discography);

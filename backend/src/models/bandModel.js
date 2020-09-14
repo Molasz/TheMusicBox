@@ -3,15 +3,19 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const bandModel = new Schema({
+  public: { type: Boolean },
   name: { type: String },
   bio: { type: String },
   logo: { type: String },
   banner: { type: String },
+  city: { type: String },
+  country: { type: String },
+  tags: [String],
   discography: [
     {
       title: { type: String },
       img: { type: String },
-      date: { type: String },
+      date: { type: Date },
       songs: [
         {
           title: { type: String },
@@ -22,7 +26,7 @@ const bandModel = new Schema({
   ],
   concerts: [
     {
-      date: { type: String },
+      date: { type: Date },
       city: { type: String }
     }
   ],

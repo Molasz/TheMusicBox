@@ -21,8 +21,12 @@ describe('GetUser test', () => {
         return {
           populate: () => {
             return {
-              exec: (callback) => {
-                callback(null, '');
+              populate: () => {
+                return {
+                  exec: (callback) => {
+                    callback(null, '');
+                  }
+                };
               }
             };
           }
@@ -52,8 +56,12 @@ describe('GetUser test', () => {
         return {
           populate: () => {
             return {
-              exec: (callback) => {
-                callback(null, null);
+              populate: () => {
+                return {
+                  exec: (callback) => {
+                    callback(null, null);
+                  }
+                };
               }
             };
           }
@@ -81,8 +89,12 @@ describe('GetUser test', () => {
         return {
           populate: () => {
             return {
-              exec: (callback) => {
-                callback('err', null);
+              populate: () => {
+                return {
+                  exec: (callback) => {
+                    callback('err', null);
+                  }
+                };
               }
             };
           }

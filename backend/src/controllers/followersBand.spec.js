@@ -8,17 +8,20 @@ describe('Followers Band test', () => {
     sinon.restore();
   });
   it('should respond with status 200', () => {
-    const User = { find: (id, callback) => callback() };
+    const num = [1, 2, 3];
+
+    const User = {
+      find: (id, callback) => {
+        callback(null, num);
+        return num;
+      }
+    };
     const req = { params: { id: 13 } };
     const res = { send: () => {}, status: () => {} };
 
     const statusStub = sinon.stub(res, 'status');
 
-    try {
-      followersBand(User)(req, res);
-    } catch (err) {
-      console.log(err);
-    }
+    followersBand(User)(req, res);
 
     expect(statusStub.calledWith(200)).to.be.true;
   });

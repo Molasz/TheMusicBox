@@ -4,7 +4,11 @@ import { withAuthenticationRequired } from '@auth0/auth0-react';
 import { connect } from 'react-redux';
 
 import { DOMAIN } from '../../../config/auth0';
-import { saveUser, getUser } from '../../../redux/actions/authActions';
+import {
+  saveUser,
+  getUser,
+  userEdit
+} from '../../../redux/actions/authActions';
 
 import UserHeader from './userHeader/userHeader';
 import UserBio from './userBio/userBio';
@@ -14,7 +18,7 @@ import PuffLoader from 'react-spinners/PuffLoader';
 
 import './userProfile.scss';
 
-const UserProfile = ({ mongoUser, match, dispatch }) => {
+const UserProfile = ({ mongoUser, dispatch }) => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
@@ -26,6 +30,7 @@ const UserProfile = ({ mongoUser, match, dispatch }) => {
         });
         if (accessToken) {
           sessionStorage.setItem('token', JSON.stringify(accessToken));
+          dispatch(userEdit({}));
           dispatch(saveUser(user.sub));
           dispatch(getUser(user));
         }
@@ -40,7 +45,6 @@ const UserProfile = ({ mongoUser, match, dispatch }) => {
       <UserHeader
         photo={mongoUser.photo}
         banner={mongoUser.banner}
-        match={match}
         dispatch={dispatch}
         user={mongoUser}
       />

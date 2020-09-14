@@ -19,12 +19,7 @@ $color-detail: #f55110;
   }
 }
 
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
+@media (min-width: 550px) {
   .band-profile {
     .band-profile__middle {
       flex-direction: row;

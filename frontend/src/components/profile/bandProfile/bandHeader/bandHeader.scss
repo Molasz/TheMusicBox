@@ -17,14 +17,9 @@ $max-banner-width: 600px;
   }
   .band-header__banner {
     display: none;
-
+    height: 100%;
     flex: 1;
-    justify-content: center;
-
-    margin-left: 30px;
-    .banner__img {
-      max-width: $max-banner-width;
-    }
+    max-width: $max-banner-width;
   }
   .band-header__info {
     display: flex;
@@ -32,16 +27,16 @@ $max-banner-width: 600px;
     justify-content: space-between;
 
     margin-left: 30px;
-    text-align: end;
     .info__name {
       text-transform: uppercase;
-      font-size: 60px;
+      font-size: 50px;
       margin: 0;
+      text-align: end;
     }
 
     .info__follow {
-      width: 100%;
       display: flex;
+      justify-content: flex-end;
       align-items: center;
 
       .contanier__icon {
@@ -64,6 +59,35 @@ $max-banner-width: 600px;
         .count__number {
           font-weight: bold;
         }
+      }
+    }
+
+    .info__edit {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+
+      margin-left: 30px;
+
+      .edit__gear {
+        font-size: 40px;
+        color: $color-detail;
+      }
+
+      .edit__save {
+        font-size: 40px;
+        color: white;
+      }
+      .edit__public {
+        font-size: 40px;
+        color: $color-detail;
+      }
+      .white {
+        color: white;
+      }
+
+      .orange {
+        color: $color-detail;
       }
     }
   }

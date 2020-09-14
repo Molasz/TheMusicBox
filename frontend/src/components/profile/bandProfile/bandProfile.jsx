@@ -5,18 +5,24 @@ import './bandProfile.scss';
 
 import PuffLoader from 'react-spinners/PuffLoader';
 
-import { getBand, follow, showDisc } from '../../../redux/actions/bandActions';
+import {
+  getBand,
+  follow,
+  showDisc,
+  bandEdit
+} from '../../../redux/actions/bandActions';
 
 import ProfileHeader from './bandHeader/bandHeader';
 import Photos from './photos/photos';
 import Discography from './discography/discography';
 import Concerts from './concerts/concerts';
-import Bio from './bandBio/bandBio';
+import BandBio from './bandBio/bandBio';
 
 function BandProfile({ match, band, followers, user, dispatch }) {
   const [calls, setCalls] = useState(false);
   useEffect(() => {
     if (!calls) {
+      dispatch(bandEdit({}));
       dispatch(showDisc());
       dispatch(getBand(match.params.bandId));
       dispatch(follow(match.params.bandId));
@@ -28,22 +34,11 @@ function BandProfile({ match, band, followers, user, dispatch }) {
     Object.keys(band).length === 0 && band.constructor === Object
   ) ? (
     <article className='band-profile'>
-      <ProfileHeader
-        logo={band.logo}
-        banner={band.banner}
-        name={band.name}
-        bandId={match.params.bandId}
-      />
+      <ProfileHeader />
       <div className='band-profile__middle'>
-        <Bio
-          bio={band.bio}
-          city={band.city}
-          country={band.country}
-          name={band.name}
-          socialNetwork={band.socialNetwork}
-        />
+        <BandBio />
 
-        <Discography data={band.discography} />
+        <Discography />
       </div>
       <div className='band-profile__bottom'>
         <Concerts data={band.concerts} />

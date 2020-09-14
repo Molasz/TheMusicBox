@@ -3,19 +3,15 @@ import { connect } from 'react-redux';
 
 import './search.scss';
 
+import PuffLoader from 'react-spinners/PuffLoader';
+
 import ListItem from './listItem/listItem';
 
 function Search({ band }) {
   const list = band ? (
-    band.map((element, i) => {
-      return (
-        <div className='list__item' key={i}>
-          <ListItem data={element} />
-        </div>
-      );
-    })
+    band.map((element, i) => <ListItem data={element} key={i} />)
   ) : (
-    <h1>Loading...</h1>
+    <PuffLoader color='#f55110' />
   );
 
   return <section className='list'>{list}</section>;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 
 import { UserBio } from './userBio';
@@ -8,43 +9,81 @@ import Adapter from 'enzyme-adapter-react-16';
 import { shallow } from 'enzyme';
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('Bio snapshot', () => {
-  const bio = '...';
-  const name = 'name';
+describe('Bio test', () => {
+  describe('Bio snapshot', () => {
+    const bio = '...';
+    const name = 'name';
+    const mongoUser = {
+      band: {
+        logo: 'logo',
+        name: 'name',
+        _id: 1
+      },
+      _id: 1
+    };
 
-  it('Should match whitout edit info', () => {
-    const editInfo = {};
-    const tree = renderer.create(
-      <UserBio bio={bio} name={name} editInfo={editInfo} />
-    );
-    expect(tree.toJSON()).toMatchSnapshot();
+    it('Should match whitout edit info', () => {
+      const editInfo = {};
+      const tree = renderer.create(
+        <BrowserRouter>
+          <UserBio
+            bio={bio}
+            name={name}
+            editInfo={editInfo}
+            mongoUser={mongoUser}
+          />
+        </BrowserRouter>
+      );
+      expect(tree.toJSON()).toMatchSnapshot();
+    });
+
+    it('Should match with edit info', () => {
+      const editInfo = { user: 'user', bio: 'bio' };
+      mongoUser.band = null;
+      const tree = renderer.create(
+        <BrowserRouter>
+          <UserBio
+            bio={bio}
+            name={name}
+            editInfo={editInfo}
+            mongoUser={mongoUser}
+          />
+        </BrowserRouter>
+      );
+      expect(tree.toJSON()).toMatchSnapshot();
+    });
   });
 
-  it('Should match with edit info', () => {
+  xdescribe('Simulate clicks', () => {
+    const dispatch = jest.fn();
     const editInfo = { user: 'user', bio: 'bio' };
-    const tree = renderer.create(
-      <UserBio bio={bio} name={name} editInfo={editInfo} />
+    const mongoUser = {
+      band: {
+        logo: 'logo',
+        name: 'name',
+        _id: 1
+      },
+      _id: 1
+    };
+
+    const document = shallow(
+      <BrowserRouter>
+        <UserBio dispatch={dispatch} mongoUser={mongoUser} />
+      </BrowserRouter>
     );
-    expect(tree.toJSON()).toMatchSnapshot();
-  });
 
-  const dispatch = jest.fn();
-  const editInfo = { user: 'user', bio: 'bio' };
-  const document = shallow(
-    <UserBio dispatch={dispatch} bio={bio} name={name} editInfo={editInfo} />
-  );
+    it('Should call dispatch when change input', () => {
+      const button = document.find('#input');
+      button.simulate('change', { target: { value: 1 } });
 
-  it('Should call dispatch when change input', () => {
-    const button = document.find('.top__input');
-    button.simulate('change', { target: { value: 1 } });
+      expect(dispatch.call).truthy;
+    });
 
-    expect(dispatch.call).truthy;
-  });
+    it('Should call dispatch when change textArea', () => {
+      const button = document.find('#textarea');
+      button.simulate('change', { target: { value: 1 } });
 
-  it('Should call dispatch when change textArea', () => {
-    const button = document.find('.bottom__text-area');
-    button.simulate('change', { target: { value: 1 } });
-
-    expect(dispatch.call).truthy;
+      expect(dispatch.call).truthy;
+    });
   });
 });
