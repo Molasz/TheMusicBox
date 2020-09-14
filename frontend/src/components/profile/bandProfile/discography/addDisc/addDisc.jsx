@@ -79,17 +79,14 @@ function AddDisc({ newDisc, bandId, dispatch }) {
             placeholder='Song title'
             type='text'
             value={newSong.title}
-            name='title'
             onChange={(event) =>
               setNewSong({ ...newSong, title: event.target.value })
             }
           />
 
           <input
-            placeholder='Song duration'
-            type='text'
+            type='time'
             value={newSong.time}
-            name='time'
             onChange={(event) =>
               setNewSong({ ...newSong, time: event.target.value })
             }

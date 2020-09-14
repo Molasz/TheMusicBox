@@ -19,6 +19,8 @@ export default {
 
   CREATE_DISC: 'CREATE_DISC',
   DELETE_DISC: 'DELETE_DISC',
+  CREATE_CONCERT: 'CREATE_CONCERT',
+  DELETE_CONCERT: 'DELETE_CONCERT',
 
   GET_USER: 'GET_USER', // Return user object
   SAVE_USER: 'SAVE_USER', // Return userIdentifier

@@ -95,6 +95,12 @@ export default handleActions(
     },
     [types.DELETE_DISC]: (state, action) => {
       return { ...state, band: action.payload };
+    },
+    [types.CREATE_CONCERT]: (state, action) => {
+      return { ...state, band: action.payload };
+    },
+    [types.DELETE_CONCERT]: (state, action) => {
+      return { ...state, band: action.payload };
     }
   },
   {}

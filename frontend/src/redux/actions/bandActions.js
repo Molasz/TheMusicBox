@@ -103,3 +103,46 @@ export const deleteDisc = (bandId, deleteId) => async (dispatch) => {
     return dispatch(error(err));
   }
 };
+
+const createConcertSuccess = createAction(types.CREATE_CONCERT);
+export const createConcert = (bandId, concertInfo) => async (dispatch) => {
+  try {
+    const headers = {
+      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
+    };
+    const response = await axios.post(
+      `/auth/newConcert/${bandId}`,
+      concertInfo,
+      {
+        headers
+      }
+    );
+    response.data.concerts.push(concertInfo);
+    return dispatch(createConcertSuccess(response.data));
+  } catch (err) {
+    return dispatch(error(err));
+  }
+};
+
+const deleteConcertSuccess = createAction(types.DELETE_CONCERT);
+export const deleteConcert = (bandId, deleteId) => async (dispatch) => {
+  try {
+    const headers = {
+      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
+    };
+    const response = await axios.patch(
+      `/auth/newConcert/${bandId}`,
+      { deleteId },
+      {
+        headers
+      }
+    );
+    response.data.concerts = response.data.discography.filter(
+      (element) => element._id !== deleteId
+    );
+
+    return dispatch(deleteConcertSuccess(response.data));
+  } catch (err) {
+    return dispatch(error(err));
+  }
+};

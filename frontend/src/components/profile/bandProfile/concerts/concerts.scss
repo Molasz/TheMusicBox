@@ -1,4 +1,5 @@
 $color-detail: #f55110;
+$main-color: #1a1a1a;
 
 .concerts {
   width: 200px;
@@ -23,10 +24,44 @@ $color-detail: #f55110;
       .item__date {
         margin: 5px;
       }
-      .item__city {
-        margin: 5px;
-        color: #f6544c;
+
+      .item__container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .container__city {
+          margin: 5px;
+          color: #f6544c;
+        }
+        .container__icon:hover {
+          color: $color-detail;
+        }
       }
     }
+  }
+
+  .concerts__new-concert {
+    display: flex;
+
+    .new-concert__create:hover {
+      color: $color-detail;
+    }
+  }
+
+  input {
+    background: $main-color;
+    color: white;
+    font-family: Arial;
+
+    border: 2px solid $color-detail;
+    border-radius: 5%;
+
+    font-size: 15px;
+
+    width: 90%;
+
+    margin-top: 10px;
   }
 }
