@@ -6,6 +6,7 @@ import axios from 'axios';
 
 //Sync
 export const showDisc = createAction(types.SHOW_DISC);
+export const showPhoto = createAction(types.SHOW_PHOTO);
 
 //Edit band profile
 export const bandEdit = createAction(types.BAND_EDIT);

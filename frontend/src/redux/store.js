@@ -5,6 +5,7 @@ import reducer from './reducers/mainReducer';
 const defaultState = {
   bandReducer: {
     disc: null,
+    photo: null,
     band: {},
     bandFollowers: null,
     editInfo: {}

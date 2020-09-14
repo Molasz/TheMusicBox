@@ -4,6 +4,7 @@ export default {
   GET_BAND: 'GET_BAND', // Return band object
   SEARCH_BAND: 'SEARCH_BAND', // Return array of matched bands
   SHOW_DISC: 'SHOW_DISC', // Return number of disc you click
+  SHOW_PHOTO: 'SHOW_PHOTO',
   FOLLOW_BAND: 'FOLLOW_BAND', // Return number of user follow a band
   NEW_BAND: 'NEW_BAND', // Create standard band document
   BAND_EDIT: 'BAND_EDIT',
