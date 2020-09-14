@@ -15,6 +15,7 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 function Header({ auth, dispatch }) {
   const [redirect, setRedirect] = useState(null);
+  const [filter, setFilter] = useState(false);
 
   return (
     <header className='header'>
@@ -27,7 +28,16 @@ function Header({ auth, dispatch }) {
           onKeyUp={(event) => onSearch(event, dispatch, setRedirect)}
         ></input>
         <SearchIcon className='icon__search' />
-        <ArrowBackIosIcon className='icon__arrow' />
+        <ArrowBackIosIcon
+          className='icon__arrow'
+          onClick={() => setFilter(!filter)}
+        />
+        {filter && (
+          <div className='search__filter'>
+            <input type='checkbox' /> Bands
+            <input type='checkbox' /> Users
+          </div>
+        )}
       </div>
 
       {auth ? (
@@ -43,7 +53,7 @@ function Header({ auth, dispatch }) {
           </div>
         </div>
       ) : (
-        <LoginButton className='login__icon' />
+        <LoginButton />
       )}
     </header>
   );
