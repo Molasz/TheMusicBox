@@ -16,7 +16,7 @@ const defaultState = {
     editInfo: {}
   },
   infoReducer: {
-    image: null,
+    image: {},
     error: null,
     loading: null
   }

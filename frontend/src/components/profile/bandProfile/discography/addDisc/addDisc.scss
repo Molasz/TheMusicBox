@@ -23,6 +23,10 @@ $main-color: #1a1a1a;
 
       .cover__icon {
         font-size: 50px;
+
+        &:hover {
+          color: $color-detail;
+        }
       }
     }
 

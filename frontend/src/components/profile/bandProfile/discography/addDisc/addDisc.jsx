@@ -16,6 +16,8 @@ function AddDisc({ newDisc, band, image, dispatch }) {
   const [cover, setCover] = useState(null);
   const [newSong, setNewSong] = useState({ title: '', time: '' });
 
+  const [fileInput, setFileInput] = useState(null);
+
   useEffect(() => {
     if (image) {
       dispatch(createDisc(band._id, disc, image));
@@ -27,10 +29,15 @@ function AddDisc({ newDisc, band, image, dispatch }) {
     <section className='new-disc'>
       <div className='new-disc__top'>
         <div className='top__cover'>
-          <CreateIcon className='cover__icon' />
+          <CreateIcon
+            className='cover__icon'
+            onClick={() => fileInput.click()}
+          />
           <input
             type='file'
             name='file'
+            style={{ display: 'none' }}
+            ref={(fileInput) => setFileInput(fileInput)}
             onChange={(event) => setCover(event.target.files[0])}
           />
         </div>

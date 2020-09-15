@@ -73,8 +73,7 @@ export const sendUserEditInfo = (userId, userEditInfo) => async (dispatch) => {
     const response = await axios.patch(`/auth/${userId}`, userEditInfo, {
       headers
     });
-    const temp = { ...response.data, ...userEditInfo };
-    return dispatch(sendUserEditInfoSuccess(temp));
+    return dispatch(sendUserEditInfoSuccess(response.data));
   } catch (err) {
     return dispatch(error(err));
   }
