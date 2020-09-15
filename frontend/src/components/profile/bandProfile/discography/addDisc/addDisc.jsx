@@ -23,7 +23,7 @@ function AddDisc({ newDisc, band, image, dispatch }) {
 
   useEffect(() => {
     if (image.identifier === 'cover') {
-      dispatch(createDisc(band._id, disc, image));
+      dispatch(createDisc(band._id, disc, image.path));
       dispatch(showDisc(undefined));
       dispatch(clearImage());
     }

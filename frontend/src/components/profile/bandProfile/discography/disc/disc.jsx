@@ -17,12 +17,11 @@ function Disc({ data, index, editInfo, dispatch }) {
             className='edit__icon'
             onClick={(event) => dispatch(showDisc(index))}
           />
-          <p className='edit__title'>New disc</p>
         </div>
       ) : (
         <>
           <img
-            src={data.img.path}
+            src={data.img}
             alt='Cover'
             className='item__img'
             onClick={(event) => dispatch(showDisc(index))}

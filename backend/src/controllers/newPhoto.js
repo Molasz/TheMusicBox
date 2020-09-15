@@ -1,15 +1,16 @@
 const callback = require('./callback');
 
-function newDisc(Band) {
+function newPhoto(Band) {
   return (req, res) => {
-    console.log(req.body);
     const { id } = req.params;
+
     Band.findByIdAndUpdate(
       id,
-      { $addToSet: { discography: req.body } },
+      { $addToSet: { photos: req.body.PhotoId } },
       { new: true }
-    ).exec(callback(res));
+    )
+    .exec(callback(res));
   };
 }
 
-module.exports = newDisc;
+module.exports = newPhoto;

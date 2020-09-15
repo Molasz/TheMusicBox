@@ -141,3 +141,41 @@ export const deleteConcert = (bandId, deleteId) => async (dispatch) => {
     return dispatch(error(err));
   }
 };
+
+const createPhotoSuccess = createAction(types.CREATE_PHOTO);
+export const createPhoto = (bandId, PhotoId) => async (dispatch) => {
+  try {
+    const headers = {
+      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
+    };
+    const response = await axios.post(
+      `/auth/newPhoto/${bandId}`,
+      { PhotoId },
+      {
+        headers
+      }
+    );
+    return dispatch(createPhotoSuccess(response.data));
+  } catch (err) {
+    return dispatch(error(err));
+  }
+};
+
+const deletePhotoSuccess = createAction(types.DELETE_PHOTO);
+export const deletePhoto = (bandId, deleteId) => async (dispatch) => {
+  try {
+    const headers = {
+      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
+    };
+    const response = await axios.patch(
+      `/auth/newPhoto/${bandId}`,
+      { deleteId },
+      {
+        headers
+      }
+    );
+    return dispatch(deletePhotoSuccess(response.data));
+  } catch (err) {
+    return dispatch(error(err));
+  }
+};

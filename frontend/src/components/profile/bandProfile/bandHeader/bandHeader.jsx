@@ -46,16 +46,6 @@ function BandHeader({ band, editInfo, user, followers, image, dispatch }) {
         user.following.some((element) => element._id === band._id)
       );
     }
-    if (
-      !(
-        Object.keys(editInfo).length === 0 && editInfo.constructor === Object
-      ) &&
-      editInfo.public &&
-      !(editInfo.name && editInfo.bio && editInfo.city && editInfo.country)
-    ) {
-      debugger;
-      dispatch(bandEdit({ ...editInfo, public: false }));
-    }
   }, [band._id, isFollowing, user, dispatch, editInfo]);
 
   useEffect(() => {
@@ -67,7 +57,6 @@ function BandHeader({ band, editInfo, user, followers, image, dispatch }) {
   }, [image]);
 
   useEffect(() => {
-    debugger;
     if (
       (logo === null || typeof logo === 'string') &&
       (banner === null || typeof banner === 'string')
@@ -152,11 +141,7 @@ function BandHeader({ band, editInfo, user, followers, image, dispatch }) {
                           bio: band.bio,
                           city: band.city,
                           country: band.country,
-                          socialNetwork: {
-                            twitter: band.socialNetwork.twitter,
-                            facebook: band.socialNetwork.facebook,
-                            instagram: band.socialNetwork.instagram
-                          }
+                          socialNetwork: { ...band.socialNetwork }
                         }
                   )
                 )
@@ -191,7 +176,9 @@ function BandHeader({ band, editInfo, user, followers, image, dispatch }) {
                       editInfo.country &&
                       editInfo.bio
                     )
-                      dispatch(bandEdit(!editInfo.public));
+                      dispatch(
+                        bandEdit({ ...editInfo, public: !editInfo.public })
+                      );
                     else publicAlert();
                   }}
                 />

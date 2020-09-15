@@ -10,6 +10,8 @@ const newDisc = require('../controllers/newDisc');
 const removeDisc = require('../controllers/removeDisc');
 const newConcert = require('../controllers/newConcert');
 const removeConcert = require('../controllers/removeConcert');
+const newPhoto = require('../controllers/newPhoto');
+const removePhoto = require('../controllers/removePhoto');
 
 const authRouter = express.Router();
 const Band = require('../models/bandModel');
@@ -23,6 +25,11 @@ function routes(User) {
     .route('/newConcert/:id')
     .post(newConcert(Band))
     .patch(removeConcert(Band));
+
+  authRouter
+    .route('/newPhoto/:id')
+    .post(newPhoto(Band))
+    .patch(removePhoto(Band));
   authRouter.route('/band/:id').patch(updateBand(Band));
   authRouter.route('/:id').post(getUser(User)).patch(updateUser(User));
 

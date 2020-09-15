@@ -14,11 +14,7 @@ function Songs({ info, index, editInfo, bandId, dispatch }) {
   return (
     <section className='songs'>
       <div className='songs__top'>
-        <img
-          src={info[index].img.path}
-          alt='Album cover'
-          className='top__img'
-        />
+        <img src={info[index].img} alt='Album cover' className='top__img' />
         <div className='top__content'>
           <div className='content__icon'>
             <BackIcon
