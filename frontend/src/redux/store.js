@@ -14,6 +14,11 @@ const defaultState = {
     userIdentifier: null,
     user: {},
     editInfo: {}
+  },
+  infoReducer: {
+    image: null,
+    error: null,
+    loading: null
   }
 };
 

@@ -10,6 +10,9 @@ export default handleActions(
 
     [types.ERROR]: (state, action) => {
       return { ...state, error: action.payload };
+    },
+    [types.UPLOAD_IMAGE]: (state, action) => {
+      return { ...state, image: action.payload };
     }
   },
   {}

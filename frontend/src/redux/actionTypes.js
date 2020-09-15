@@ -16,7 +16,7 @@ export default {
   CREATE_CONCERT: 'CREATE_CONCERT',
   DELETE_CONCERT: 'DELETE_CONCERT',
 
-  SEND_COVER: 'SEND_COVER',
+  UPLOAD_IMAGE: 'UPLOAD_IMAGE',
 
   GET_USER: 'GET_USER', // Return user object
   SAVE_USER: 'SAVE_USER', // Return userIdentifier

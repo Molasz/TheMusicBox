@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import {
-  showDisc,
-  createDisc,
-  sendCover
-} from '../../../../../redux/actions/bandActions';
+import { showDisc, createDisc } from '../../../../../redux/actions/bandActions';
+import { uploadImage } from '../../../../../redux/actions/infoActions';
 
 import './addDisc.scss';
 
@@ -14,21 +11,17 @@ import AddCircleIcon from '@material-ui/icons/AddCircleOutline';
 import CreateIcon from '@material-ui/icons/Create';
 import BackIcon from '@material-ui/icons/ArrowBack';
 
-function AddDisc({ newDisc, band, loading, dispatch }) {
+function AddDisc({ newDisc, band, image, dispatch }) {
   const [disc, setDisc] = useState({ title: '', date: '', songs: [] });
   const [cover, setCover] = useState(null);
   const [newSong, setNewSong] = useState({ title: '', time: '' });
-  const [isSend, setIsSend] = useState(false);
 
   useEffect(() => {
-    if (isSend) {
-      debugger;
-      const img = new FormData();
-      img.append('image', cover, cover.name);
-      dispatch(sendCover(band._id, band.discography.slice(-1)[0]._id, cover));
+    if (image) {
+      dispatch(createDisc(band._id, disc, image));
       dispatch(showDisc(undefined));
     }
-  }, [band.discography.length]);
+  }, [image]);
 
   return (
     <section className='new-disc'>
@@ -37,6 +30,7 @@ function AddDisc({ newDisc, band, loading, dispatch }) {
           <CreateIcon className='cover__icon' />
           <input
             type='file'
+            name='file'
             onChange={(event) => setCover(event.target.files[0])}
           />
         </div>
@@ -125,9 +119,10 @@ function AddDisc({ newDisc, band, loading, dispatch }) {
         <p
           className='bottom__create'
           onClick={() => {
-            if (disc.title && disc.date && disc.songs.length) {
-              dispatch(createDisc(band._id, disc));
-              setIsSend(true);
+            if (disc.title && disc.date && disc.songs.length && cover) {
+              const img = new FormData();
+              img.append('file', cover);
+              dispatch(uploadImage(band._id, img));
             }
           }}
         >
@@ -141,7 +136,7 @@ function AddDisc({ newDisc, band, loading, dispatch }) {
 function mapStateToProps(state) {
   return {
     band: state.bandReducer.band,
-    loading: state.infoReducer.loading
+    image: state.infoReducer.image
   };
 }
 
