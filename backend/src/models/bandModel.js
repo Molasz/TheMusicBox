@@ -14,7 +14,7 @@ const bandModel = new Schema({
   discography: [
     {
       title: { type: String },
-      img: { type: mongoose.Schema.ObjectId },
+      img: { type: mongoose.SchemaTypes.ObjectId, ref: 'images' },
       date: { type: Date },
       songs: [
         {

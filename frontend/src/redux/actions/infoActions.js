@@ -16,3 +16,14 @@ export const uploadImage = (bandId, cover) => async (dispatch) => {
     return dispatch(error(err));
   }
 };
+
+const getImageSuccess = createAction(types.GET_IMAGE);
+export const getImage = (bandId, imageId) => async (dispatch) => {
+  try {
+    const response = await axios.get(`/log-entries/${bandId}/${imageId}`);
+
+    return dispatch(getImageSuccess(response.data));
+  } catch (err) {
+    return dispatch(error(err));
+  }
+};
