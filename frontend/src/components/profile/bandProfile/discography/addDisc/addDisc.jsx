@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { showDisc, createDisc } from '../../../../../redux/actions/bandActions';
-import { uploadImage } from '../../../../../redux/actions/infoActions';
+import {
+  uploadImage,
+  clearImage
+} from '../../../../../redux/actions/infoActions';
 
 import './addDisc.scss';
 
@@ -19,9 +22,10 @@ function AddDisc({ newDisc, band, image, dispatch }) {
   const [fileInput, setFileInput] = useState(null);
 
   useEffect(() => {
-    if (image) {
+    if (image.identifier === 'cover') {
       dispatch(createDisc(band._id, disc, image));
       dispatch(showDisc(undefined));
+      dispatch(clearImage());
     }
   }, [image]);
 
@@ -129,7 +133,7 @@ function AddDisc({ newDisc, band, image, dispatch }) {
             if (disc.title && disc.date && disc.songs.length && cover) {
               const img = new FormData();
               img.append('file', cover);
-              dispatch(uploadImage(band._id, img));
+              dispatch(uploadImage(band._id, img, 'cover'));
             }
           }}
         >

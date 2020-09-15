@@ -6,9 +6,13 @@ function newDisc(Band) {
     Band.findByIdAndUpdate(
       id,
       { $addToSet: { discography: req.body } },
-      { new: true },
-      callback(res)
-    );
+      { new: true }
+    )
+      .populate({
+        path: 'discography',
+        populate: { path: 'img', model: 'image' }
+      })
+      .exec(callback(res));
   };
 }
 

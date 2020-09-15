@@ -13,6 +13,9 @@ export default handleActions(
     },
     [types.UPLOAD_IMAGE]: (state, action) => {
       return { ...state, image: action.payload };
+    },
+    [types.CLEAR_IMAGE]: (state, action) => {
+      return { ...state, image: {} };
     }
   },
   {}

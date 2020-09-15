@@ -7,7 +7,7 @@ import {
   userEdit,
   sendUserEditInfo
 } from '../../../../redux/actions/authActions';
-import { uploadImage } from '../../../../redux/actions/infoActions';
+import { uploadImage, clearImage } from '../../../../redux/actions/infoActions';
 
 import Gear from '@material-ui/icons/Settings';
 import Save from '@material-ui/icons/Save';
@@ -20,9 +20,9 @@ function ProfileHeader({ user, editInfo, image, dispatch }) {
   const [bannerInput, setBannerInput] = useState(null);
 
   useEffect(() => {
-    if (image.indentifier === 'profile-photo') {
+    if (image.identifier === 'profile-photo') {
       setPhoto(image.path);
-    } else if (image.indentifier === 'banner') {
+    } else if (image.identifier === 'banner') {
       setBanner(image.path);
     }
   }, [image]);
@@ -37,6 +37,7 @@ function ProfileHeader({ user, editInfo, image, dispatch }) {
       if (banner) data.banner = banner;
       dispatch(sendUserEditInfo(user._id, data));
       dispatch(userEdit({}));
+      dispatch(clearImage());
     }
   }, [photo, banner]);
 
