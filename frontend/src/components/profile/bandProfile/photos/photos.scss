@@ -21,9 +21,28 @@ $color-detail: #f55110;
       margin-left: 0;
       width: 180px;
       filter: grayscale(100%);
+      &:hover {
+        filter: grayscale(0);
+      }
     }
-    .main__item:hover {
-      filter: grayscale(0);
+
+    .main__new-photo {
+      width: 180px;
+      height: 180px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border: 2px solid $color-detail;
+
+      .new-photo__icon {
+        font-size: 80px;
+
+        &:hover {
+          color: $color-detail;
+        }
+      }
     }
   }
 
@@ -31,8 +50,25 @@ $color-detail: #f55110;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    .show__top {
+      width: 80%;
+      display: flex;
+      justify-content: space-between;
+
+      .top__icon {
+        justify-self: start;
+        font-size: 30px;
+
+        &:hover {
+          color: $color-detail;
+        }
+      }
+    }
+
     .show__main {
       display: flex;
+      justify-content: center;
       align-items: center;
 
       padding: 20px 50px;
@@ -40,17 +76,6 @@ $color-detail: #f55110;
       .main__left {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        .left__back {
-          justify-self: start;
-          font-size: 30px;
-
-          &:hover {
-            color: $color-detail;
-          }
-        }
       }
 
       .main__photo {

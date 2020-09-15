@@ -39,6 +39,12 @@ export default handleActions(
     [types.DELETE_CONCERT]: (state, action) => {
       return { ...state, band: action.payload };
     },
+    [types.CREATE_PHOTO]: (state, action) => {
+      return { ...state, band: action.payload };
+    },
+    [types.DELETE_PHOTO]: (state, action) => {
+      return { ...state, band: action.payload };
+    },
     [types.SHOW_PHOTO]: (state, action) => {
       return { ...state, showPhoto: action.payload };
     }

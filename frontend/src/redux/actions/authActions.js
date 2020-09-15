@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAction } from 'redux-actions';
 
 import types from '../actionTypes';
-import { error } from './errorAction';
+import { error } from './infoActions';
 
 // Sync
 export const saveUser = createAction(types.SAVE_USER);
@@ -73,8 +73,7 @@ export const sendUserEditInfo = (userId, userEditInfo) => async (dispatch) => {
     const response = await axios.patch(`/auth/${userId}`, userEditInfo, {
       headers
     });
-    const temp = { ...response.data, ...userEditInfo };
-    return dispatch(sendUserEditInfoSuccess(temp));
+    return dispatch(sendUserEditInfoSuccess(response.data));
   } catch (err) {
     return dispatch(error(err));
   }

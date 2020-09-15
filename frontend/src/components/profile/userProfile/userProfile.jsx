@@ -42,12 +42,7 @@ const UserProfile = ({ mongoUser, dispatch }) => {
 
   return isAuthenticated && mongoUser && user ? (
     <div className='user-profile'>
-      <UserHeader
-        photo={mongoUser.photo}
-        banner={mongoUser.banner}
-        dispatch={dispatch}
-        user={mongoUser}
-      />
+      <UserHeader />
       <div className='user-profile__bottom'>
         <UserBio
           bio={mongoUser.bio}
@@ -70,7 +65,7 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps)(
   withAuthenticationRequired(UserProfile, {
-    onRedirecting: () => <div>Redirecting you to the login page...</div>
+    onRedirecting: () => <PuffLoader color='#f55110' />
   })
 );
 export { UserProfile };

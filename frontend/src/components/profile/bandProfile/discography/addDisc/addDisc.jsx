@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { showDisc, createDisc } from '../../../../../redux/actions/bandActions';
+import {
+  uploadImage,
+  clearImage
+} from '../../../../../redux/actions/infoActions';
 
 import './addDisc.scss';
 
@@ -10,15 +14,36 @@ import AddCircleIcon from '@material-ui/icons/AddCircleOutline';
 import CreateIcon from '@material-ui/icons/Create';
 import BackIcon from '@material-ui/icons/ArrowBack';
 
-function AddDisc({ newDisc, bandId, dispatch }) {
+function AddDisc({ newDisc, band, image, dispatch }) {
   const [disc, setDisc] = useState({ title: '', date: '', songs: [] });
+  const [cover, setCover] = useState(null);
   const [newSong, setNewSong] = useState({ title: '', time: '' });
+
+  const [fileInput, setFileInput] = useState(null);
+
+  useEffect(() => {
+    if (image.identifier === 'cover') {
+      dispatch(createDisc(band._id, disc, image.path));
+      dispatch(showDisc(undefined));
+      dispatch(clearImage());
+    }
+  }, [image]);
 
   return (
     <section className='new-disc'>
       <div className='new-disc__top'>
         <div className='top__cover'>
-          <CreateIcon className='cover__icon' />
+          <CreateIcon
+            className='cover__icon'
+            onClick={() => fileInput.click()}
+          />
+          <input
+            type='file'
+            name='file'
+            style={{ display: 'none' }}
+            ref={(fileInput) => setFileInput(fileInput)}
+            onChange={(event) => setCover(event.target.files[0])}
+          />
         </div>
         <div className='top__content'>
           <BackIcon
@@ -105,9 +130,10 @@ function AddDisc({ newDisc, bandId, dispatch }) {
         <p
           className='bottom__create'
           onClick={() => {
-            if (disc.title && disc.date && disc.songs.length) {
-              dispatch(createDisc(bandId, disc));
-              dispatch(showDisc(undefined));
+            if (disc.title && disc.date && disc.songs.length && cover) {
+              const img = new FormData();
+              img.append('file', cover);
+              dispatch(uploadImage(band._id, img, 'cover'));
             }
           }}
         >
@@ -120,7 +146,8 @@ function AddDisc({ newDisc, bandId, dispatch }) {
 
 function mapStateToProps(state) {
   return {
-    bandId: state.bandReducer.band._id
+    band: state.bandReducer.band,
+    image: state.infoReducer.image
   };
 }
 

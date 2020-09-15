@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions';
 
 import types from '../actionTypes';
-import { error } from './errorAction';
+import { error } from './infoActions';
 import axios from 'axios';
 
 //Sync
@@ -59,15 +59,18 @@ export const sendBandEditInfo = (bandId, editInfo) => async (dispatch) => {
 };
 
 const createDiscSuccess = createAction(types.CREATE_DISC);
-export const createDisc = (bandId, discInfo) => async (dispatch) => {
+export const createDisc = (bandId, discInfo, imageId) => async (dispatch) => {
   try {
     const headers = {
       Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
     };
-    const response = await axios.post(`/auth/newDisc/${bandId}`, discInfo, {
-      headers
-    });
-    response.data.discography.push(discInfo);
+    const response = await axios.post(
+      `/auth/newDisc/${bandId}`,
+      { ...discInfo, img: imageId },
+      {
+        headers
+      }
+    );
     return dispatch(createDiscSuccess(response.data));
   } catch (err) {
     return dispatch(error(err));
@@ -134,6 +137,44 @@ export const deleteConcert = (bandId, deleteId) => async (dispatch) => {
     );
 
     return dispatch(deleteConcertSuccess(response.data));
+  } catch (err) {
+    return dispatch(error(err));
+  }
+};
+
+const createPhotoSuccess = createAction(types.CREATE_PHOTO);
+export const createPhoto = (bandId, PhotoId) => async (dispatch) => {
+  try {
+    const headers = {
+      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
+    };
+    const response = await axios.post(
+      `/auth/newPhoto/${bandId}`,
+      { PhotoId },
+      {
+        headers
+      }
+    );
+    return dispatch(createPhotoSuccess(response.data));
+  } catch (err) {
+    return dispatch(error(err));
+  }
+};
+
+const deletePhotoSuccess = createAction(types.DELETE_PHOTO);
+export const deletePhoto = (bandId, deleteId) => async (dispatch) => {
+  try {
+    const headers = {
+      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
+    };
+    const response = await axios.patch(
+      `/auth/newPhoto/${bandId}`,
+      { deleteId },
+      {
+        headers
+      }
+    );
+    return dispatch(deletePhotoSuccess(response.data));
   } catch (err) {
     return dispatch(error(err));
   }
