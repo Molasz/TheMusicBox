@@ -22,7 +22,6 @@ describe('Concerts snapshot', () => {
     expect(tree.toJSON()).toMatchSnapshot();
   });
 
-  const text = 'aqui';
   const editInfo = { name: 'name' };
   const dispatch = jest.fn();
   const document = shallow(

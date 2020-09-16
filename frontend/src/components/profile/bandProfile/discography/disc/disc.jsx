@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './disc.scss';
 import { connect } from 'react-redux';
 
@@ -7,8 +7,6 @@ import { showDisc } from '../../../../../redux/actions/bandActions';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 function Disc({ data, index, editInfo, dispatch }) {
-  const [isLoadedImage, setIsLoadedImage] = useState(false);
-
   return (
     <div className='item'>
       {index === -1 ? (

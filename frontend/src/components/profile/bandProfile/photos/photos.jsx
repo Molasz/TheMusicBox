@@ -24,7 +24,7 @@ function Photos({ photos, editInfo, photo, image, band, dispatch }) {
       dispatch(createPhoto(band._id, image.path));
       dispatch(clearImage());
     }
-  }, [image]);
+  }, [image, band._id, dispatch]);
 
   return (
     <section className='photo'>

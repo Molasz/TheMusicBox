@@ -39,7 +39,7 @@ function ProfileHeader({ user, editInfo, image, dispatch }) {
       dispatch(userEdit({}));
       dispatch(clearImage());
     }
-  }, [photo, banner]);
+  }, [photo, banner, dispatch, editInfo, user._id]);
 
   return (
     <section className='user-header'>

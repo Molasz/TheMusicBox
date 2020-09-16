@@ -30,7 +30,7 @@ function AddDisc({ band, image, dispatch }) {
       setDisc({ ...disc, songs: [...disc.songs, image.dispatch] });
       setNewSong();
     }
-  }, [image]);
+  }, [image, band._id, disc, dispatch]);
 
   return (
     <section className='new-disc'>
