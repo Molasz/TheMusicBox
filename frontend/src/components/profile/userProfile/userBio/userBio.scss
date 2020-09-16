@@ -84,11 +84,16 @@ $main-color: #1a1a1a;
     color: white;
     font-family: Arial;
 
-    border: 2px solid $color-detail;
-    border-radius: 5%;
+    border: 0 solid transparent;
+    border-bottom: 2px solid $color-detail;
   }
 
   .text-area {
     height: 120px;
+  }
+
+  .input.top__name {
+    border: 2px solid $color-detail;
+    border-radius: 5%;
   }
 }

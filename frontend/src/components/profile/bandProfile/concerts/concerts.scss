@@ -44,9 +44,14 @@ $main-color: #1a1a1a;
 
   .concerts__new-concert {
     display: flex;
+    align-items: flex-end;
 
-    .new-concert__create:hover {
-      color: $color-detail;
+    .new-concert__create {
+      .create__icon {
+        &:hover {
+          color: $color-detail;
+        }
+      }
     }
   }
 
@@ -55,9 +60,10 @@ $main-color: #1a1a1a;
     color: white;
     font-family: Arial;
 
-    border: 2px solid $color-detail;
-    border-radius: 5%;
+    border: 0 solid transparent;
+    border-bottom: 2px solid $color-detail;
 
+    padding: 5px 0;
     font-size: 15px;
 
     width: 90%;

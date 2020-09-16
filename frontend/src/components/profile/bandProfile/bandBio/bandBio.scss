@@ -80,7 +80,15 @@ $main-color: #1a1a1a;
     color: white;
     font-family: Arial;
 
-    border: 2px solid $color-detail;
-    border-radius: 5%;
+    border: 0 solid transparent;
+    padding: 5px 0;
+    border-bottom: 2px solid $color-detail;
+  }
+  .input {
+    text-align: center;
+  }
+
+  .text-area {
+    height: 250px;
   }
 }

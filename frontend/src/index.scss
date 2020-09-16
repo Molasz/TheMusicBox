@@ -3,10 +3,9 @@ body {
   font-family: Arial;
   margin: 0;
   padding: 0;
-  height: 100%;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+
+  position: relative;
+  min-height: 100vh;
 
   .css-3fvcat {
     margin: 50px auto;

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { toast } from 'react-toastify';
 
 import './bandHeader.scss';
+import newToast from '../../../../toasts/newToasts';
 
 import {
   bandEdit,
@@ -25,20 +25,6 @@ function BandHeader({ band, editInfo, user, followers, image, dispatch }) {
 
   const [logoInput, setLogoInput] = useState(null);
   const [bannerInput, setBannerInput] = useState(null);
-
-  const publicAlert = () =>
-    toast.error(
-      'You need to fill name, biography, city and country before public the band',
-      {
-        position: 'bottom-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined
-      }
-    );
 
   useEffect(() => {
     if (isFollowing === null && user.following !== undefined) {
@@ -67,8 +53,9 @@ function BandHeader({ band, editInfo, user, followers, image, dispatch }) {
       dispatch(sendBandEditInfo(band._id, data));
       dispatch(bandEdit({}));
       dispatch(clearImage());
+      newToast('Information saved correctly');
     }
-  }, [logo, banner, band._id, dispatch, editInfo]);
+  }, [logo, banner]);
 
   return (
     <section className='band-header'>
@@ -179,11 +166,20 @@ function BandHeader({ band, editInfo, user, followers, image, dispatch }) {
                       editInfo.city &&
                       editInfo.country &&
                       editInfo.bio
-                    )
+                    ) {
                       dispatch(
                         bandEdit({ ...editInfo, public: !editInfo.public })
                       );
-                    else publicAlert();
+                      newToast(
+                        `Your band page is now ${
+                          editInfo.public ? 'private' : 'public'
+                        }`
+                      );
+                    } else {
+                      newToast(
+                        'To make the page public you have to fill the fields: name, biography, city, and country'
+                      );
+                    }
                   }}
                 />
               </>

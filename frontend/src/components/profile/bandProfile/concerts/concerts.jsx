@@ -61,15 +61,17 @@ function Concerts({ data, editInfo, bandId, dispatch }) {
               }
             />
           </div>
-          <AddCircleOutlineIcon
-            className='new-concert__create'
-            onClick={() => {
-              if (newConcert.date && newConcert.city) {
-                dispatch(createConcert(bandId, newConcert));
-                setNewConcert({ date: '', city: '' });
-              }
-            }}
-          />
+          <div className='new-concert__create'>
+            <AddCircleOutlineIcon
+              className='create__icon'
+              onClick={() => {
+                if (newConcert.date && newConcert.city) {
+                  dispatch(createConcert(bandId, newConcert));
+                  setNewConcert({ date: '', city: '' });
+                }
+              }}
+            />
+          </div>
         </div>
       )}
     </section>

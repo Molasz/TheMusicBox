@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import './userHeader.scss';
+import newToast from '../../../../toasts/newToasts';
 
 import {
   userEdit,
@@ -38,8 +39,9 @@ function ProfileHeader({ user, editInfo, image, dispatch }) {
       dispatch(sendUserEditInfo(user._id, data));
       dispatch(userEdit({}));
       dispatch(clearImage());
+      newToast('Information saved correctly');
     }
-  }, [photo, banner, dispatch, editInfo, user._id]);
+  }, [photo, banner]);
 
   return (
     <section className='user-header'>
