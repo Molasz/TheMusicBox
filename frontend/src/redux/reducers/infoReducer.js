@@ -16,6 +16,9 @@ export default handleActions(
     },
     [types.CLEAR_IMAGE]: (state, action) => {
       return { ...state, image: {} };
+    },
+    [types.UPLOAD_SOUND]: (state, action) => {
+      return { ...state, sound: action.payload };
     }
   },
   {}

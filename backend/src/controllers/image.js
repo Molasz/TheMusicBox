@@ -6,6 +6,8 @@ exports.create = (req, res) => {
   res.json({ path: relPath });
 };
 
+/*
 exports.destroy = (req, res) => {
   // delete
 };
+*/

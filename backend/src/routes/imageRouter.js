@@ -34,8 +34,8 @@ const controller = require('../controllers/image');
 function routes() {
   imageRouter
     .route('/:type/:id/:name')
-    .post(upload.single('file'), controller.create)
-    .delete(controller.destroy);
+    .post(upload.single('file'), controller.create);
+  // .delete(controller.destroy);
 
   return imageRouter;
 }

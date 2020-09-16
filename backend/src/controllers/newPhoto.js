@@ -7,9 +7,9 @@ function newPhoto(Band) {
     Band.findByIdAndUpdate(
       id,
       { $addToSet: { photos: req.body.PhotoId } },
-      { new: true }
-    )
-    .exec(callback(res));
+      { new: true },
+      callback(res)
+    );
   };
 }
 
