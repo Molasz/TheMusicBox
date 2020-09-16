@@ -63,7 +63,9 @@ function Photos({ photos, editInfo, photo, image, band, dispatch }) {
                 onChange={(event) => {
                   const img = new FormData();
                   img.append('file', event.target.files[0]);
-                  dispatch(uploadImage(band._id, img, 'new-photo'));
+                  dispatch(
+                    uploadImage(`band/${band._id}/photo`, img, 'new-photo')
+                  );
                 }}
               />
             </div>
@@ -115,7 +117,6 @@ function Photos({ photos, editInfo, photo, image, band, dispatch }) {
                   src={element}
                   alt={i}
                   key={i}
-                  id={`photo$i`}
                   className={`footer__item ${i === photo ? 'color' : ''}`}
                   onClick={() => dispatch(showPhoto(i))}
                 />

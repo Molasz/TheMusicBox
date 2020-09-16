@@ -133,7 +133,7 @@ function AddDisc({ newDisc, band, image, dispatch }) {
             if (disc.title && disc.date && disc.songs.length && cover) {
               const img = new FormData();
               img.append('file', cover);
-              dispatch(uploadImage(band._id, img, 'cover'));
+              dispatch(uploadImage(`band/${band._id}/cover`, img, 'cover'));
             }
           }}
         >

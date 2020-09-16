@@ -11,13 +11,17 @@ const storage = multer.diskStorage({
       '..',
       'public',
       'upload',
-      `${Date.now()}`
+      req.params.type,
+      req.params.id
     );
-    fs.mkdirSync(uploadsDir);
+    fs.mkdirSync(uploadsDir, { recursive: true });
     cb(null, uploadsDir);
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+    cb(
+      null,
+      `${req.params.name}${Date.now()}${path.extname(file.originalname)}`
+    );
   }
 });
 
@@ -29,13 +33,8 @@ const controller = require('../controllers/image');
 
 function routes() {
   imageRouter
-    .route('/log-entries/:log_entry_id')
-    .get(controller.index)
-    .post(upload.single('file'), controller.create);
-
-  imageRouter
-    .route('/log-entries/:log_entry_id/:id')
-    .get(controller.show)
+    .route('/:type/:id/:name')
+    .post(upload.single('file'), controller.create)
     .delete(controller.destroy);
 
   return imageRouter;

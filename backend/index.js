@@ -49,6 +49,6 @@ app.use('/auth', jwtCheck, authRouter);
 
 const imageRouter = require('./src/routes/imageRouter')();
 
-app.use('/image', imageRouter);
+app.use('/images', imageRouter);
 
 app.listen(port, debug(`Server is running at port ${port}`));
