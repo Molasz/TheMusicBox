@@ -27,10 +27,10 @@
       width: 93%;
       height: 35px;
       margin-top: -15px;
-      padding-right: 35px;
 
       font-size: 20px;
       position: absolute;
+      padding-left: 35px;
     }
 
     .icon__search {
@@ -38,23 +38,6 @@
       font-size: 40px;
       position: absolute;
       top: -13px;
-    }
-    .icon__arrow {
-      color: black;
-
-      transform: rotate(-90deg);
-      font-size: 40px;
-      position: absolute;
-      top: -20px;
-      right: -5px;
-    }
-
-    .search__filter {
-      margin-top: 30px;
-      position: absolute;
-      background-color: white;
-      width: 102.5%;
-      height: 100px;
     }
   }
   .MuiSvgIcon-root {
