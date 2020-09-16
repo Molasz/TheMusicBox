@@ -68,7 +68,7 @@ function BandHeader({ band, editInfo, user, followers, image, dispatch }) {
       dispatch(bandEdit({}));
       dispatch(clearImage());
     }
-  }, [logo, banner]);
+  }, [logo, banner, band._id, dispatch, editInfo]);
 
   return (
     <section className='band-header'>
