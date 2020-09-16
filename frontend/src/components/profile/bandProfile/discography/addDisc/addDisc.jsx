@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import { showDisc, createDisc } from '../../../../../redux/actions/bandActions';
 import {
   uploadImage,
-  clearImage,
-  uploadSound
+  clearImage
 } from '../../../../../redux/actions/infoActions';
 
 import './addDisc.scss';
@@ -15,7 +14,7 @@ import AddCircleIcon from '@material-ui/icons/AddCircleOutline';
 import CreateIcon from '@material-ui/icons/Create';
 import BackIcon from '@material-ui/icons/ArrowBack';
 
-function AddDisc({ newDisc, band, image, song, dispatch }) {
+function AddDisc({ band, image, dispatch }) {
   const [disc, setDisc] = useState({ title: '', date: '', songs: [] });
   const [cover, setCover] = useState(null);
   const [newSong, setNewSong] = useState();
@@ -31,7 +30,7 @@ function AddDisc({ newDisc, band, image, song, dispatch }) {
       setDisc({ ...disc, songs: [...disc.songs, image.dispatch] });
       setNewSong();
     }
-  }, [image, song]);
+  }, [image]);
 
   return (
     <section className='new-disc'>
@@ -112,7 +111,7 @@ function AddDisc({ newDisc, band, image, song, dispatch }) {
               if (newSong) {
                 const song = new FormData();
                 song.append('sound', newSong);
-                dispatch(uploadSound(`band/${band._id}/song`, song, 'song'));
+                //dispatch(uploadSound(`band/${band._id}/song`, song, 'song'));
               }
             }}
           />
@@ -138,8 +137,7 @@ function AddDisc({ newDisc, band, image, song, dispatch }) {
 function mapStateToProps(state) {
   return {
     band: state.bandReducer.band,
-    image: state.infoReducer.image,
-    song: state.infoReducer.sound
+    image: state.infoReducer.image
   };
 }
 

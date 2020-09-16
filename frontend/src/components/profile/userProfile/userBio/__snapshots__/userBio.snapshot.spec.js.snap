@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Bio test Bio snapshot Should match whitout edit info 1`] = `
+exports[`Bio test Should match whitout edit info 1`] = `
 <section
   className="user-bio"
 >
@@ -47,7 +47,7 @@ exports[`Bio test Bio snapshot Should match whitout edit info 1`] = `
 </section>
 `;
 
-exports[`Bio test Bio snapshot Should match with edit info 1`] = `
+exports[`Bio test Should match with edit info 1`] = `
 <section
   className="user-bio"
 >

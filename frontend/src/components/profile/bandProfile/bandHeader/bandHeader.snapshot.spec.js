@@ -16,6 +16,9 @@ describe('BandHeader snapshot', () => {
     logo: 'logo',
     banner: 'banner',
     name: 'name',
+    country: 'country',
+    city: 'city',
+    bio: 'bio',
     socialNetwork: {
       twitter: 'twitter',
       facebook: 'facebook',
@@ -27,19 +30,28 @@ describe('BandHeader snapshot', () => {
   const user = { following: ['1'], band: { _id: 1 } };
   const followers = 0;
   it('Should match without editInfo ', () => {
+    const image = { identifier: 'logo' };
     const tree = renderer.create(
-      <BandHeader band={band} user={user} followers={followers} editInfo={{}} />
+      <BandHeader
+        band={band}
+        user={user}
+        followers={followers}
+        editInfo={{}}
+        image={image}
+      />
     );
     expect(tree.toJSON()).toMatchSnapshot();
   });
 
   it('Should match with editInfo', () => {
+    const image = { identifier: 'banner' };
     const tree = renderer.create(
       <BandHeader
         band={band}
         user={user}
         followers={followers}
         editInfo={{ ...band }}
+        image={image}
       />
     );
     expect(tree.toJSON()).toMatchSnapshot();
@@ -47,12 +59,14 @@ describe('BandHeader snapshot', () => {
 
   it('Should match with editInfo (public false)', () => {
     band.public = false;
+    const image = { identifier: 'identifier' };
     const tree = renderer.create(
       <BandHeader
         band={band}
         user={user}
         followers={followers}
         editInfo={{ ...band }}
+        image={image}
       />
     );
     expect(tree.toJSON()).toMatchSnapshot();
@@ -101,6 +115,13 @@ describe('BandHeader snapshot', () => {
 
   it('Should call onFollow when click .edit__save', () => {
     const input = document.find('.edit__save');
+    input.simulate('click', { preventDefault: () => {} });
+
+    expect(onFollow.call).truthy;
+  });
+
+  it('Should call onFollow when click .edit__public', () => {
+    const input = document.find('.edit__public');
     input.simulate('click', { preventDefault: () => {} });
 
     expect(onFollow.call).truthy;

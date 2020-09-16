@@ -51,8 +51,7 @@ export const sendBandEditInfo = (bandId, editInfo) => async (dispatch) => {
     const response = await axios.patch(`/auth/band/${bandId}`, editInfo, {
       headers
     });
-    const temp = { ...response.data, ...editInfo };
-    return dispatch(sendBandEditInfoSuccess(temp));
+    return dispatch(sendBandEditInfoSuccess(response.data));
   } catch (err) {
     return dispatch(error(err));
   }
@@ -90,9 +89,6 @@ export const deleteDisc = (bandId, deleteId) => async (dispatch) => {
         headers
       }
     );
-    response.data.discography = response.data.discography.filter(
-      (element) => element._id !== deleteId
-    );
     return dispatch(deleteDiscSuccess(response.data));
   } catch (err) {
     return dispatch(error(err));
@@ -112,7 +108,6 @@ export const createConcert = (bandId, concertInfo) => async (dispatch) => {
         headers
       }
     );
-    response.data.concerts.push(concertInfo);
     return dispatch(createConcertSuccess(response.data));
   } catch (err) {
     return dispatch(error(err));
@@ -132,10 +127,6 @@ export const deleteConcert = (bandId, deleteId) => async (dispatch) => {
         headers
       }
     );
-    response.data.concerts = response.data.concerts.filter(
-      (element) => element._id !== deleteId
-    );
-
     return dispatch(deleteConcertSuccess(response.data));
   } catch (err) {
     return dispatch(error(err));

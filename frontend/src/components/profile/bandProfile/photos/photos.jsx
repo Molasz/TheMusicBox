@@ -40,6 +40,7 @@ function Photos({ photos, editInfo, photo, image, band, dispatch }) {
                 src={element}
                 alt={i}
                 key={i}
+                id={`item${i}`}
                 className='main__item'
                 onClick={() => dispatch(showPhoto(i))}
               />
@@ -76,12 +77,14 @@ function Photos({ photos, editInfo, photo, image, band, dispatch }) {
           <div className='show__top'>
             <ArrowBackIcon
               className='top__icon'
+              id='back'
               onClick={() => dispatch(showPhoto(null))}
             />
 
             {editInfo.name && (
               <HighlightOffIcon
                 className='top__icon'
+                id='delete'
                 onClick={() => {
                   dispatch(deletePhoto(band._id, band.photos[photo]));
                   dispatch(showPhoto(null));

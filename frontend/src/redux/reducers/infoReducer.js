@@ -5,7 +5,7 @@ import { handleActions } from 'redux-actions';
 export default handleActions(
   {
     [types.LOADING]: (state, action) => {
-      return { ...state, loding: action.payload };
+      return { ...state, loading: action.payload };
     },
 
     [types.ERROR]: (state, action) => {
@@ -16,9 +16,6 @@ export default handleActions(
     },
     [types.CLEAR_IMAGE]: (state, action) => {
       return { ...state, image: {} };
-    },
-    [types.UPLOAD_SOUND]: (state, action) => {
-      return { ...state, sound: action.payload };
     }
   },
   {}

@@ -6,6 +6,7 @@ function removeConcert(Band) {
     Band.findByIdAndUpdate(
       id,
       { $pull: { concerts: { _id: req.body.deleteId } } },
+      { new: true },
       callback(res)
     );
   };

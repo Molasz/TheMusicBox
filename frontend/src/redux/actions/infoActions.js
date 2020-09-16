@@ -18,15 +18,3 @@ export const uploadImage = (url, img, identifier) => async (dispatch) => {
     return dispatch(error(err));
   }
 };
-
-const uploadSoundSuccess = createAction(types.UPLOAD_SOUND);
-export const uploadSound = (url, audio, identifier) => async (dispatch) => {
-  try {
-    const header = { 'Content-Type': 'multipart/form-data' };
-    const response = await axios.post(`/sounds/${url}`, audio, { header });
-    response.data.identifier = identifier;
-    return dispatch(uploadSoundSuccess(response.data));
-  } catch (err) {
-    return dispatch(error(err));
-  }
-};
