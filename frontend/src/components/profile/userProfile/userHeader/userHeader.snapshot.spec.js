@@ -9,69 +9,60 @@ import Adapter from 'enzyme-adapter-react-16';
 import { shallow } from 'enzyme';
 Enzyme.configure({ adapter: new Adapter() });
 
-import onSave from './onSave';
-jest.mock('./onSave');
-
 describe('ProfileHeader snapshot', () => {
-  const photo = 'photo';
-  const banner = 'banner';
+  const user = {
+    _id: 1,
+    photo: 'photo',
+    banner: 'banner'
+  };
 
   it('Should match without editInfo', () => {
     const editInfo = {};
+    const image = {
+      identifier: 'banner',
+      path: 'path/'
+    };
+
     const tree = renderer.create(
-      <ProfileHeader photo={photo} banner={banner} editInfo={editInfo} />
+      <ProfileHeader user={user} editInfo={editInfo} image={image} />
     );
     expect(tree.toJSON()).toMatchSnapshot();
   });
 
-  it('Should match without editInfo', () => {
+  it('Should match with editInfo', () => {
     const editInfo = { user: 'user', bio: 'bio' };
+    const image = {
+      identifier: 'profile-photo',
+      path: 'path/'
+    };
+
     const tree = renderer.create(
-      <ProfileHeader photo={photo} banner={banner} editInfo={editInfo} />
+      <ProfileHeader user={user} editInfo={editInfo} image={image} />
     );
     expect(tree.toJSON()).toMatchSnapshot();
   });
 
-  const user = { user: 'user', bio: 'bio' };
   const editInfo = { user: 'user', bio: 'bio' };
   const dispatch = jest.fn();
-  const document = shallow(
-    <ProfileHeader
-      user={user}
-      photo={photo}
-      banner={banner}
-      editInfo={editInfo}
-      dispatch={dispatch}
-    />
-  );
-
-  it('Should call dispatch when click gear', () => {
-    const button = document.find('.edit__gear');
-    button.simulate('click', { preventDefault: () => {} });
-
-    expect(dispatch.call).truthy;
-  });
 
   it('Should call dispatch when click gear', () => {
     const document = shallow(
-      <ProfileHeader
-        user={user}
-        photo={photo}
-        banner={banner}
-        editInfo={{}}
-        dispatch={dispatch}
-      />
+      <ProfileHeader user={user} editInfo={editInfo} dispatch={dispatch} />
     );
     const button = document.find('.edit__gear');
-    button.simulate('click', { preventDefault: () => {} });
+    button.simulate('click', {});
 
     expect(dispatch.call).truthy;
   });
 
-  it('Should call onSave when click save', () => {
-    const button = document.find('.edit__save');
-    button.simulate('click', { preventDefault: () => {} });
+  it("Should don't call dispatch when click gear", () => {
+    const editInfo = {};
+    const document = shallow(
+      <ProfileHeader user={user} editInfo={editInfo} dispatch={dispatch} />
+    );
+    const button = document.find('.edit__gear');
+    button.simulate('click', {});
 
-    expect(onSave.call).truthy;
+    expect(dispatch.call).truthy;
   });
 });

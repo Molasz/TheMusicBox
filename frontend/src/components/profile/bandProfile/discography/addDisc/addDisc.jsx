@@ -14,10 +14,10 @@ import AddCircleIcon from '@material-ui/icons/AddCircleOutline';
 import CreateIcon from '@material-ui/icons/Create';
 import BackIcon from '@material-ui/icons/ArrowBack';
 
-function AddDisc({ newDisc, band, image, dispatch }) {
+function AddDisc({ band, image, dispatch }) {
   const [disc, setDisc] = useState({ title: '', date: '', songs: [] });
   const [cover, setCover] = useState(null);
-  const [newSong, setNewSong] = useState({ title: '', time: '' });
+  const [newSong, setNewSong] = useState();
 
   const [fileInput, setFileInput] = useState(null);
 
@@ -26,6 +26,9 @@ function AddDisc({ newDisc, band, image, dispatch }) {
       dispatch(createDisc(band._id, disc, image.path));
       dispatch(showDisc(undefined));
       dispatch(clearImage());
+    } else if (image.identifier === 'song') {
+      setDisc({ ...disc, songs: [...disc.songs, image.dispatch] });
+      setNewSong();
     }
   }, [image]);
 
@@ -79,10 +82,7 @@ function AddDisc({ newDisc, band, image, dispatch }) {
         {disc.songs.map((element, i) => {
           return (
             <div className='middle__item' key={i}>
-              <p className='item__text'>
-                <span className='text__number'>{i + 1}.</span>
-                {`${element.title} | ${element.time}`}
-              </p>
+              <audio ref='audio_tag' src={element} controls autoPlay />
               <RemoveCircleIcon
                 className='item__icon'
                 onClick={() =>
@@ -101,27 +101,17 @@ function AddDisc({ newDisc, band, image, dispatch }) {
       <div className='new-disc__bottom'>
         <div className='bottom__new-song'>
           <input
-            placeholder='Song title'
-            type='text'
-            value={newSong.title}
-            onChange={(event) =>
-              setNewSong({ ...newSong, title: event.target.value })
-            }
-          />
-
-          <input
-            type='time'
-            value={newSong.time}
-            onChange={(event) =>
-              setNewSong({ ...newSong, time: event.target.value })
-            }
+            placeholder='Song'
+            type='file'
+            onChange={(event) => setNewSong(event.target.value)}
           />
 
           <AddCircleIcon
             onClick={() => {
-              if (newSong.title && newSong.time) {
-                setDisc({ ...disc, songs: [...disc.songs, newSong] });
-                setNewSong({ title: '', time: '' });
+              if (newSong) {
+                const song = new FormData();
+                song.append('sound', newSong);
+                //dispatch(uploadSound(`band/${band._id}/song`, song, 'song'));
               }
             }}
           />
@@ -133,7 +123,7 @@ function AddDisc({ newDisc, band, image, dispatch }) {
             if (disc.title && disc.date && disc.songs.length && cover) {
               const img = new FormData();
               img.append('file', cover);
-              dispatch(uploadImage(band._id, img, 'cover'));
+              dispatch(uploadImage(`band/${band._id}/cover`, img, 'cover'));
             }
           }}
         >

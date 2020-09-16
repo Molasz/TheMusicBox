@@ -6,6 +6,7 @@ function removeDisc(Band) {
     Band.findByIdAndUpdate(
       id,
       { $pull: { discography: { _id: req.body.deleteId } } },
+      { new: true },
       callback(res)
     );
   };

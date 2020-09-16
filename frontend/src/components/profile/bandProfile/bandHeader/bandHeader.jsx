@@ -155,13 +155,17 @@ function BandHeader({ band, editInfo, user, followers, image, dispatch }) {
                     if (logo) {
                       const img = new FormData();
                       img.append('file', logo);
-                      dispatch(uploadImage(band._id, img, 'logo'));
+                      dispatch(
+                        uploadImage(`user/${band._id}/logo`, img, 'logo')
+                      );
                     } else setLogo(null);
 
                     if (banner) {
                       const img = new FormData();
                       img.append('file', banner);
-                      dispatch(uploadImage(band._id, img, 'banner'));
+                      dispatch(
+                        uploadImage(`user/${band._id}/banner`, img, 'banner')
+                      );
                     } else setBanner(null);
                   }}
                 />

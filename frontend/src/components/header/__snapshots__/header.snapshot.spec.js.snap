@@ -30,6 +30,7 @@ exports[`Header snapshot Should match with auth 1`] = `
       aria-hidden={true}
       className="MuiSvgIcon-root icon__arrow"
       focusable="false"
+      onClick={[Function]}
       viewBox="0 0 24 24"
     >
       <path
@@ -100,6 +101,7 @@ exports[`Header snapshot Should match without auth 1`] = `
       aria-hidden={true}
       className="MuiSvgIcon-root icon__arrow"
       focusable="false"
+      onClick={[Function]}
       viewBox="0 0 24 24"
     >
       <path

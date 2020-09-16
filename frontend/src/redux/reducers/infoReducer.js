@@ -5,7 +5,7 @@ import { handleActions } from 'redux-actions';
 export default handleActions(
   {
     [types.LOADING]: (state, action) => {
-      return { ...state, loding: action.payload };
+      return { ...state, loading: action.payload };
     },
 
     [types.ERROR]: (state, action) => {

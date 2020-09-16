@@ -8,10 +8,11 @@ export const loading = createAction(types.LOADING);
 export const clearImage = createAction(types.CLEAR_IMAGE);
 
 const uploadImageSuccess = createAction(types.UPLOAD_IMAGE);
-export const uploadImage = (id, img, indentifier) => async (dispatch) => {
+export const uploadImage = (url, img, identifier) => async (dispatch) => {
   try {
-    const response = await axios.post(`/image/log-entries/${id}/`, img);
-    response.data.identifier = indentifier;
+    const header = { 'Content-Type': 'multipart/form-data' };
+    const response = await axios.post(`/images/${url}`, img, { header });
+    response.data.identifier = identifier;
     return dispatch(uploadImageSuccess(response.data));
   } catch (err) {
     return dispatch(error(err));

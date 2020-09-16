@@ -7,12 +7,34 @@ exports[`BandHeader snapshot Should match with editInfo (public false) 1`] = `
   <img
     alt="Logo"
     className="band-header__logo"
+    onClick={[Function]}
     src="logo"
+  />
+  <input
+    name="file"
+    onChange={[Function]}
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+    type="file"
   />
   <img
     alt="Banner"
     className="band-header__banner"
+    onClick={[Function]}
     src="banner"
+  />
+  <input
+    name="file"
+    onChange={[Function]}
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+    type="file"
   />
   <div
     className="band-header__info"
@@ -97,12 +119,34 @@ exports[`BandHeader snapshot Should match with editInfo 1`] = `
   <img
     alt="Logo"
     className="band-header__logo"
+    onClick={[Function]}
     src="logo"
+  />
+  <input
+    name="file"
+    onChange={[Function]}
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+    type="file"
   />
   <img
     alt="Banner"
     className="band-header__banner"
+    onClick={[Function]}
     src="banner"
+  />
+  <input
+    name="file"
+    onChange={[Function]}
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+    type="file"
   />
   <div
     className="band-header__info"
@@ -187,12 +231,34 @@ exports[`BandHeader snapshot Should match without editInfo  1`] = `
   <img
     alt="Logo"
     className="band-header__logo"
+    onClick={[Function]}
     src="logo"
+  />
+  <input
+    name="file"
+    onChange={[Function]}
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+    type="file"
   />
   <img
     alt="Banner"
     className="band-header__banner"
+    onClick={[Function]}
     src="banner"
+  />
+  <input
+    name="file"
+    onChange={[Function]}
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+    type="file"
   />
   <div
     className="band-header__info"

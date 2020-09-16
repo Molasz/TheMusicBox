@@ -7,7 +7,9 @@ import {
   createDisc,
   deleteDisc,
   createConcert,
-  deleteConcert
+  deleteConcert,
+  createPhoto,
+  deletePhoto
 } from './bandActions';
 
 //Mock dependecies
@@ -116,8 +118,6 @@ describe('Band actions', () => {
     });
   });
 
-  //////////////////////////////////////////////
-
   describe('createDisc test', () => {
     afterEach(() => jest.clearAllMocks());
     it('should call axios with /aut/newDisc/:id', async () => {
@@ -151,6 +151,7 @@ describe('Band actions', () => {
   describe('deleteDisc test', () => {
     afterEach(() => jest.clearAllMocks());
     it('should call axios with /aut/newDisc/:id', async () => {
+      const dispatch = jest.fn();
       axios.patch.mockReturnValue(
         new Promise((resolve) =>
           resolve({
@@ -164,8 +165,8 @@ describe('Band actions', () => {
       );
       const id = 1;
       const discInfo = {};
-      await deleteDisc(id, discInfo)(jest.fn());
-      expect(axios.patch.mock.calls[0][0]).toEqual(`/auth/newDisc/${id}`);
+      await deleteDisc(id, discInfo)(dispatch);
+      expect(dispatch.mock.calls.length).toEqual(1);
     });
 
     it('should call error action if axios throw error', async () => {
@@ -234,6 +235,60 @@ describe('Band actions', () => {
         new Promise((resolve, reject) => reject(new Error()))
       );
       await deleteConcert(5)(dispatch);
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe('createPhoto test', () => {
+    afterEach(() => jest.clearAllMocks());
+    it('should call dispatch', async () => {
+      const dispatch = jest.fn();
+      axios.post.mockReturnValue(
+        new Promise((resolve) =>
+          resolve({
+            data: {}
+          })
+        )
+      );
+      const id = 1;
+      const discInfo = {};
+      await createPhoto(id, discInfo)(dispatch);
+      expect(dispatch.mock.calls.length).toEqual(1);
+    });
+
+    it('should call error action if axios throw error', async () => {
+      const dispatch = jest.fn();
+      axios.post.mockReturnValue(
+        new Promise((resolve, reject) => reject(new Error()))
+      );
+      await createPhoto(5)(dispatch);
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe('deletePhoto test', () => {
+    afterEach(() => jest.clearAllMocks());
+    it('should call dispatch', async () => {
+      const dispatch = jest.fn();
+      axios.patch.mockReturnValue(
+        new Promise((resolve) =>
+          resolve({
+            data: {}
+          })
+        )
+      );
+      const id = 1;
+      const discInfo = {};
+      await deletePhoto(id, discInfo)(dispatch);
+      expect(dispatch.mock.calls.length).toEqual(1);
+    });
+
+    it('should call error action if axios throw error', async () => {
+      const dispatch = jest.fn();
+      axios.patch.mockReturnValue(
+        new Promise((resolve, reject) => reject(new Error()))
+      );
+      await deletePhoto(5)(dispatch);
       expect(dispatch).toHaveBeenCalled();
     });
   });

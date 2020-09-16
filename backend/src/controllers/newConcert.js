@@ -7,6 +7,7 @@ function newConcert(Band) {
     Band.findByIdAndUpdate(
       id,
       { $addToSet: { concerts: req.body } },
+      { new: true },
       callback(res)
     );
   };

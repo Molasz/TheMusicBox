@@ -11,12 +11,9 @@ describe('GetBand test', () => {
     const req = {
       params: { id: 1 }
     };
-    const res = {
-      status: () => {},
-      send: () => {}
-    };
+    const res = {};
     const Band = {
-      findById: (id, callback) => {}
+      findById: () => {}
     };
 
     const findByIdStub = sinon.stub(Band, 'findById');

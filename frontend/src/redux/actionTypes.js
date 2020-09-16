@@ -4,6 +4,7 @@ export default {
 
   UPLOAD_IMAGE: 'UPLOAD_IMAGE',
   CLEAR_IMAGE: 'CLEAR_IMAGE',
+  UPLOAD_SOUND: 'UPLOAD_SOUND',
 
   GET_BAND: 'GET_BAND', // Return band object
   SEARCH_BAND: 'SEARCH_BAND', // Return array of matched bands

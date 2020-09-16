@@ -94,4 +94,20 @@ describe('Band reducer', () => {
     };
     expect(reducer({}, action)).toEqual({ showPhoto: text });
   });
+
+  it('should handle createPhoto', () => {
+    const action = {
+      type: types.CREATE_PHOTO,
+      payload: text
+    };
+    expect(reducer({}, action)).toEqual({ band: text });
+  });
+
+  it('should handle createPhoto', () => {
+    const action = {
+      type: types.DELETE_PHOTO,
+      payload: text
+    };
+    expect(reducer({}, action)).toEqual({ band: text });
+  });
 });

@@ -6,6 +6,7 @@ function removeFollow(User) {
     User.findByIdAndUpdate(
       id,
       { $pull: { following: req.body.band } },
+      { new: true },
       callback(res)
     );
   };

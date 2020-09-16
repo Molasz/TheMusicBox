@@ -98,13 +98,19 @@ function ProfileHeader({ user, editInfo, image, dispatch }) {
               if (photo) {
                 const img = new FormData();
                 img.append('file', photo);
-                dispatch(uploadImage(user._id, img, 'profile-photo'));
+                dispatch(
+                  uploadImage(
+                    `user/${user._id}/profile-photo`,
+                    img,
+                    'profile-photo'
+                  )
+                );
               } else setPhoto(null);
 
               if (banner) {
                 const img = new FormData();
                 img.append('file', banner);
-                dispatch(uploadImage(user._id, img, 'banner'));
+                dispatch(uploadImage(`user/${user._id}/banner`, img, 'banner'));
               } else setBanner(null);
             }}
           />

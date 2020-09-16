@@ -6,6 +6,7 @@ function addFollow(User) {
     User.findByIdAndUpdate(
       id,
       { $addToSet: { following: req.body.band } },
+      { new: true },
       callback(res)
     );
   };
