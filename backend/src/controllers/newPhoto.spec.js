@@ -8,7 +8,6 @@ describe('New photo test', () => {
     sinon.restore();
   });
   it('should findByIdAndUpdate is called', () => {
-    const callback = () => {};
     const req = {
       params: { id: 1 },
       body: {
