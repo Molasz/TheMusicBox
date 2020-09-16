@@ -37,125 +37,38 @@ describe('Photos snapshot', () => {
         editInfo={editInfo}
         image={image}
         band={band}
-        disptach={dispatch}
+        dispatch={dispatch}
       />
     );
     expect(tree.toJSON()).toMatchSnapshot();
   });
 
-  it('Should call dispatch when click', () => {
+  describe('Event tests', () => {
     const document = shallow(
       <Photos
         photos={photos}
         photo={photo}
         editInfo={editInfo}
-        dispatch={dispatch}
-      />
-    );
-    const button = document.find('#back');
-    button.simulate('click', {});
-
-    expect(dispatch.call).truthy;
-  });
-
-  it('Should call dispatch when click', () => {
-    const document = shallow(
-      <Photos
-        photos={photos}
-        photo={photo}
-        editInfo={editInfo}
-        dispatch={dispatch}
+        image={image}
         band={band}
-      />
-    );
-    const button = document.find('#delete');
-    button.simulate('click', {});
-
-    expect(dispatch.call).truthy;
-  });
-
-  it('Should call dispatch when click', () => {
-    const document = shallow(
-      <Photos
-        photos={photos}
-        photo={photo}
-        editInfo={editInfo}
         dispatch={dispatch}
       />
     );
-    const button = document.find('#left-arrow');
-    button.simulate('click', {});
 
-    expect(dispatch.call).truthy;
-  });
+    ['#back', '#delete', '#left-arrow', '#right-arrow'].forEach((element) => {
+      it(`Should call dispatch when click ${element}`, () => {
+        const button = document.find(element);
+        button.simulate('click', {});
 
-  it('Should call dispatch when click', () => {
-    const document = shallow(
-      <Photos
-        photos={photos}
-        photo={0}
-        editInfo={editInfo}
-        dispatch={dispatch}
-      />
-    );
-    const button = document.find('#right-arrow');
-    button.simulate('click', {});
+        expect(dispatch.call).truthy;
+      });
+    });
 
-    expect(dispatch.call).truthy;
-  });
+    it('Should call dispatch when click .color', () => {
+      const button = document.find('.color');
+      button.simulate('click', {});
 
-  it('Should call dispatch when click', () => {
-    const document = shallow(
-      <Photos
-        photos={photos}
-        photo={0}
-        editInfo={editInfo}
-        dispatch={dispatch}
-      />
-    );
-    const button = document.find('#left-arrow');
-    button.simulate('click', {});
-
-    expect(dispatch.call).truthy;
-  });
-
-  it('Should call dispatch when click', () => {
-    const document = shallow(
-      <Photos
-        photos={photos}
-        photo={1}
-        editInfo={editInfo}
-        dispatch={dispatch}
-      />
-    );
-    const button = document.find('#right-arrow');
-    button.simulate('click', {});
-
-    expect(dispatch.call).truthy;
-  });
-
-  it('Should call dispatch when click', () => {
-    const document = shallow(
-      <Photos
-        photos={photos}
-        photo={0}
-        editInfo={editInfo}
-        dispatch={dispatch}
-      />
-    );
-    const button = document.find('.color');
-    button.simulate('click', {});
-
-    expect(dispatch.call).truthy;
-  });
-
-  it('Should call dispatch when click', () => {
-    const document = shallow(
-      <Photos photos={photos} editInfo={editInfo} dispatch={dispatch} />
-    );
-    const button = document.find('#item0');
-    button.simulate('click', {});
-
-    expect(dispatch.call).truthy;
+      expect(dispatch.call).truthy;
+    });
   });
 });
