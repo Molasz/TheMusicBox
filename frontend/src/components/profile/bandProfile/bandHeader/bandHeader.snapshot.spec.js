@@ -83,20 +83,6 @@ describe('BandHeader snapshot', () => {
     />
   );
 
-  it('Should call onFollow when click #follow', () => {
-    const input = document.find('#follow');
-    input.simulate('click', { preventDefault: () => {} });
-
-    expect(onFollow.call).truthy;
-  });
-
-  it('Should call onFollow when click .edit__gear', () => {
-    const input = document.find('.edit__gear');
-    input.simulate('click', { preventDefault: () => {} });
-
-    expect(onFollow.call).truthy;
-  });
-
   it('Should call onFollow when click .edit__gear (without editInfo)', () => {
     const document = shallow(
       <BandHeader
@@ -113,24 +99,18 @@ describe('BandHeader snapshot', () => {
     expect(onFollow.call).truthy;
   });
 
-  it('Should call onFollow when click .edit__save', () => {
-    const input = document.find('.edit__save');
-    input.simulate('click', { preventDefault: () => {} });
+  [
+    '#follow',
+    '.edit__gear',
+    '.edit__save',
+    '.edit__public',
+    '.edit__public'
+  ].forEach((element) => {
+    it(`Should call dispatch when click ${element}`, () => {
+      const input = document.find(element);
+      input.simulate('click', { preventDefault: () => {} });
 
-    expect(onFollow.call).truthy;
-  });
-
-  it('Should call onFollow when click .edit__public', () => {
-    const input = document.find('.edit__public');
-    input.simulate('click', { preventDefault: () => {} });
-
-    expect(onFollow.call).truthy;
-  });
-
-  it('Should call onFollow when click .edit__public', () => {
-    const input = document.find('.edit__public');
-    input.simulate('click', { preventDefault: () => {} });
-
-    expect(onFollow.call).truthy;
+      expect(onFollow.call).truthy;
+    });
   });
 });

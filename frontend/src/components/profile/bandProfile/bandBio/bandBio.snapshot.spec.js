@@ -62,52 +62,20 @@ describe('bandBio snapshot', () => {
 
   const document = shallow(<BandBio dispatch={dispatch} editInfo={editInfo} />);
 
-  it('Should call dispatch when change name input', () => {
-    const button = document.find('.top__name');
-    button.simulate('change', { target: { value: 1 } });
+  [
+    '.top__name',
+    '.region__city',
+    '.region__country',
+    '.middle__bio',
+    '#twitter',
+    '#facebook',
+    '#instagram'
+  ].forEach((element) => {
+    it(`Should call dispatch when click ${element}`, () => {
+      const button = document.find(element);
+      button.simulate('click', {});
 
-    expect(dispatch.call).truthy;
-  });
-
-  it('Should call dispatch when change city input', () => {
-    const button = document.find('.region__city');
-    button.simulate('change', { target: { value: 1 } });
-
-    expect(dispatch.call).truthy;
-  });
-
-  it('Should call dispatch when change country input', () => {
-    const button = document.find('.region__country');
-    button.simulate('change', { target: { value: 1 } });
-
-    expect(dispatch.call).truthy;
-  });
-
-  it('Should call dispatch when change bio input', () => {
-    const button = document.find('.middle__bio');
-    button.simulate('change', { target: { value: 1 } });
-
-    expect(dispatch.call).truthy;
-  });
-
-  it('Should call dispatch when change bio input', () => {
-    const button = document.find('#twitter');
-    button.simulate('change', { target: { value: 1 } });
-
-    expect(dispatch.call).truthy;
-  });
-
-  it('Should call dispatch when change bio input', () => {
-    const button = document.find('#facebook');
-    button.simulate('change', { target: { value: 1 } });
-
-    expect(dispatch.call).truthy;
-  });
-
-  it('Should call dispatch when change bio input', () => {
-    const button = document.find('#instagram');
-    button.simulate('change', { target: { value: 1 } });
-
-    expect(dispatch.call).truthy;
+      expect(dispatch.call).truthy;
+    });
   });
 });
