@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import './bandHeader.scss';
 import newToast from '../../../../toasts/newToasts';
+import isAnEmptyObject from '../../../../config/isAnEmptyObject';
 
 import {
   bandEdit,
@@ -64,7 +65,7 @@ function BandHeader({ band, editInfo, user, followers, image, dispatch }) {
         alt='Logo'
         className='band-header__logo'
         onClick={() => {
-          if (editInfo.name) logoInput.click();
+          if (!isAnEmptyObject(editInfo)) logoInput.click();
         }}
       />
       <input
@@ -79,7 +80,7 @@ function BandHeader({ band, editInfo, user, followers, image, dispatch }) {
         alt='Banner'
         className='band-header__banner'
         onClick={() => {
-          if (editInfo.name) bannerInput.click();
+          if (!isAnEmptyObject(editInfo)) bannerInput.click();
         }}
       />
       <input
@@ -91,7 +92,9 @@ function BandHeader({ band, editInfo, user, followers, image, dispatch }) {
       />
       <div className='band-header__info'>
         <strong className='info__name'>
-          {editInfo.name === undefined ? band.name : editInfo.name}
+          {(typeof editInfo.name === 'String') === undefined
+            ? band.name
+            : typeof editInfo.name === 'String'}
         </strong>
 
         <div className='info__follow'>
@@ -116,11 +119,13 @@ function BandHeader({ band, editInfo, user, followers, image, dispatch }) {
         {band._id === user?.band?._id && (
           <div className='info__edit'>
             <Gear
-              className={`edit__gear ${editInfo.name ? 'orange' : 'white'}`}
+              className={`edit__gear ${
+                !isAnEmptyObject(editInfo) ? 'orange' : 'white'
+              }`}
               onClick={(event) =>
                 dispatch(
                   bandEdit(
-                    editInfo.name !== undefined
+                    !isAnEmptyObject(editInfo)
                       ? {}
                       : {
                           public: band.public,
@@ -134,7 +139,7 @@ function BandHeader({ band, editInfo, user, followers, image, dispatch }) {
                 )
               }
             />
-            {editInfo.name !== undefined && (
+            {!isAnEmptyObject(editInfo) && (
               <>
                 <Save
                   className='edit__save'

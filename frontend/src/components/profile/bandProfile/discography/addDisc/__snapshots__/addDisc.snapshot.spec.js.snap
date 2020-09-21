@@ -83,8 +83,14 @@ exports[`Search snapshot Should match without band data 1`] = `
     >
       <input
         onChange={[Function]}
-        placeholder="Song"
-        type="file"
+        placeholder="Song title"
+        type="text"
+        value=""
+      />
+      <input
+        onChange={[Function]}
+        type="time"
+        value=""
       />
       <svg
         aria-hidden={true}

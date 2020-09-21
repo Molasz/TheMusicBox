@@ -41,9 +41,7 @@ exports[`BandHeader snapshot Should match with editInfo (public false) 1`] = `
   >
     <strong
       className="info__name"
-    >
-      name
-    </strong>
+    />
     <div
       className="info__follow"
     >
@@ -153,9 +151,7 @@ exports[`BandHeader snapshot Should match with editInfo 1`] = `
   >
     <strong
       className="info__name"
-    >
-      name
-    </strong>
+    />
     <div
       className="info__follow"
     >
@@ -265,9 +261,7 @@ exports[`BandHeader snapshot Should match without editInfo  1`] = `
   >
     <strong
       className="info__name"
-    >
-      name
-    </strong>
+    />
     <div
       className="info__follow"
     >

@@ -36,8 +36,7 @@
     ],
     "coveragePathIgnorePatterns": [
       "src/config",
-      "src/serviceWorker",
-      "**/*.spec.js"
+      "src/serviceWorker"
     ],
     "coverageThreshold": {
       "global": {

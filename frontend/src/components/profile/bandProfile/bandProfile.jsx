@@ -9,7 +9,8 @@ import {
   getBand,
   follow,
   showDisc,
-  bandEdit
+  bandEdit,
+  showPhoto
 } from '../../../redux/actions/bandActions';
 
 import ProfileHeader from './bandHeader/bandHeader';
@@ -24,6 +25,7 @@ function BandProfile({ match, band, followers, user, dispatch }) {
     if (!calls) {
       dispatch(bandEdit({}));
       dispatch(showDisc());
+      dispatch(showPhoto());
       dispatch(getBand(match.params.bandId));
       dispatch(follow(match.params.bandId));
       setCalls(true);

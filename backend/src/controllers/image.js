@@ -5,9 +5,3 @@ exports.create = (req, res) => {
   const relPath = req.file.path.replace(remove, '');
   res.json({ path: relPath });
 };
-
-/*
-exports.destroy = (req, res) => {
-  // delete
-};
-*/
