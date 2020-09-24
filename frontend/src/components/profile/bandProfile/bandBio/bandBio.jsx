@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { bandEdit } from '../../../../redux/actions/bandActions';
 
+import isAnEmptyObject from '../../../../isAnEmptyObject';
+
 import './bandBio.scss';
 
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -13,7 +15,7 @@ function BandBio({ band, editInfo, dispatch }) {
   return (
     <section className='bio'>
       <div className='bio__top'>
-        {editInfo.name !== undefined ? (
+        {!isAnEmptyObject(editInfo) ? (
           <input
             placeholder='Band name'
             type='text'
@@ -28,7 +30,7 @@ function BandBio({ band, editInfo, dispatch }) {
           <strong className='top__name'>{band.name}</strong>
         )}
         <div className='top__region'>
-          {editInfo.city !== undefined ? (
+          {!isAnEmptyObject(editInfo) ? (
             <>
               <input
                 placeholder='City'
@@ -63,7 +65,7 @@ function BandBio({ band, editInfo, dispatch }) {
         </div>
       </div>
       <div className='bio__middle'>
-        {editInfo.bio !== undefined ? (
+        {!isAnEmptyObject(editInfo) ? (
           <textarea
             placeholder='Bio'
             type='text'
@@ -88,7 +90,7 @@ function BandBio({ band, editInfo, dispatch }) {
           >
             <TwitterIcon className='container__icon' />
           </a>
-          {editInfo.socialNetwork?.twitter !== undefined && (
+          {!isAnEmptyObject(editInfo) && (
             <input
               placeholder='twitter.com'
               type='text'
@@ -119,7 +121,7 @@ function BandBio({ band, editInfo, dispatch }) {
           >
             <FacebookIcon className='container__icon' />
           </a>
-          {editInfo.socialNetwork?.facebook !== undefined && (
+          {!isAnEmptyObject(editInfo) && (
             <input
               placeholder='facebook.com'
               type='text'
@@ -151,7 +153,7 @@ function BandBio({ band, editInfo, dispatch }) {
             <InstagramIcon className='container__icon' />
           </a>
 
-          {editInfo.socialNetwork?.instagram !== undefined && (
+          {!isAnEmptyObject(editInfo) && (
             <input
               placeholder='instagram.com'
               type='text'
