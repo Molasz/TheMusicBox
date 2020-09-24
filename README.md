@@ -71,3 +71,5 @@ Para el proyecto he usado las siguientes tecnologias
 - [Multer](https://github.com/expressjs/multer#readme) - Middleware utilizado para guardar imagenes
 - [Auth0](https://auth0.com/) - Autentifiacion y autorizazion
 - [Mongoose](https://mongoosejs.com) - Comunicacion con la base de datos
+- [Sinon](https://sinonjs.org/) - Unit testing testing
+
