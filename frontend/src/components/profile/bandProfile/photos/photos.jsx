@@ -9,6 +9,8 @@ import {
 } from '../../../../redux/actions/bandActions';
 import { clearImage, uploadImage } from '../../../../redux/actions/infoActions';
 
+import isAnEmptyObject from '../../../../isAnEmptyObject';
+
 import PhotoIcon from '@material-ui/icons/PhotoLibrary';
 import ArrowRight from '@material-ui/icons/ArrowForwardIos';
 import ArrowLeft from '@material-ui/icons/ArrowBackIos';
@@ -47,7 +49,7 @@ function Photos({ photos, editInfo, photo, image, band, dispatch }) {
             );
           })}
 
-          {editInfo.name && (
+          {!isAnEmptyObject(editInfo) && (
             <div className='main__new-photo'>
               <AddPhotoAlternateIcon
                 className='new-photo__icon'
@@ -81,7 +83,7 @@ function Photos({ photos, editInfo, photo, image, band, dispatch }) {
               onClick={() => dispatch(showPhoto(null))}
             />
 
-            {editInfo.name && (
+            {!isAnEmptyObject(editInfo) && (
               <HighlightOffIcon
                 className='top__icon'
                 id='delete'

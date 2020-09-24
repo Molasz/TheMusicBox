@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import './userHeader.scss';
 import newToast from '../../../../toasts/newToasts';
 
+import isAnEmptyObject from '../../../../isAnEmptyObject';
+
 import {
   userEdit,
   sendUserEditInfo
@@ -50,7 +52,7 @@ function ProfileHeader({ user, editInfo, image, dispatch }) {
         alt='user'
         className='user-header__photo'
         onClick={() => {
-          if (editInfo.user) photoInput.click();
+          if (!isAnEmptyObject(editInfo)) photoInput.click();
         }}
       />
       <input
@@ -66,7 +68,7 @@ function ProfileHeader({ user, editInfo, image, dispatch }) {
           alt='Banner'
           className='banner__img'
           onClick={() => {
-            if (editInfo.user) bannerInput.click();
+            if (!isAnEmptyObject(editInfo)) bannerInput.click();
           }}
         />
 
@@ -93,7 +95,7 @@ function ProfileHeader({ user, editInfo, image, dispatch }) {
             )
           }
         />
-        {editInfo.user && (
+        {!isAnEmptyObject(editInfo) && (
           <Save
             className='edit__save'
             onClick={(event) => {

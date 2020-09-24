@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import './userBio.scss';
 
+import isAnEmptyObject from '../../../../isAnEmptyObject';
+
 import {
   userEditBio,
   userEditName,
@@ -16,7 +18,7 @@ function UserBio({ bio, name, editInfo, mongoUser, dispatch }) {
   return (
     <section className='user-bio'>
       <div className='user-bio__top'>
-        {editInfo.user !== undefined ? (
+        {!isAnEmptyObject(editInfo) ? (
           <input
             id='input'
             className='top__name input'
@@ -28,7 +30,7 @@ function UserBio({ bio, name, editInfo, mongoUser, dispatch }) {
         )}
       </div>
       <div className='user-bio__middle'>
-        {editInfo.bio !== undefined ? (
+        {!isAnEmptyObject(editInfo) ? (
           <textarea
             id='textarea'
             className='middle__bio text-area'

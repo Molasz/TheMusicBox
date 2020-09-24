@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import './bandHeader.scss';
 import newToast from '../../../../toasts/newToasts';
-import isAnEmptyObject from '../../../../config/isAnEmptyObject';
+import isAnEmptyObject from '../../../../isAnEmptyObject';
 
 import {
   bandEdit,
@@ -92,9 +92,7 @@ function BandHeader({ band, editInfo, user, followers, image, dispatch }) {
       />
       <div className='band-header__info'>
         <strong className='info__name'>
-          {(typeof editInfo.name === 'String') === undefined
-            ? band.name
-            : typeof editInfo.name === 'String'}
+          {isAnEmptyObject(editInfo) ? band.name : editInfo.name}
         </strong>
 
         <div className='info__follow'>

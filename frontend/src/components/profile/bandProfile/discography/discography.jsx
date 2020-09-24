@@ -7,6 +7,8 @@ import Disc from './disc/disc';
 import Songs from './songs/songs';
 import AddDisc from './addDisc/addDisc';
 
+import isAnEmptyObject from '../../../../isAnEmptyObject';
+
 import DiscIcon from '@material-ui/icons/Album';
 
 function Discography({ data, disc, editInfo }) {
@@ -28,7 +30,7 @@ function Discography({ data, disc, editInfo }) {
             return <Disc data={element} index={i} key={i} />;
           })}
 
-          {editInfo.name !== undefined && <Disc index={-1} />}
+          {!isAnEmptyObject(editInfo) && <Disc index={-1} />}
         </div>
       )}
     </section>

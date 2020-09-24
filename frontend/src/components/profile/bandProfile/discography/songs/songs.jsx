@@ -5,6 +5,8 @@ import './songs.scss';
 
 import Disc from '../disc/disc';
 
+import isAnEmptyObject from '../../../../../isAnEmptyObject';
+
 import BackIcon from '@material-ui/icons/KeyboardBackspace';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
@@ -22,7 +24,7 @@ function Songs({ info, index, editInfo, bandId, dispatch }) {
               onClick={(event) => dispatch(showDisc(undefined))}
             />
 
-            {editInfo.name && (
+            {!isAnEmptyObject(editInfo) && (
               <HighlightOffIcon
                 className='icon__delete'
                 onClick={(event) => {

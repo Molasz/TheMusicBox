@@ -7,6 +7,8 @@ import {
   deleteConcert
 } from '../../../../redux/actions/bandActions';
 
+import isAnEmptyObject from '../../../../isAnEmptyObject';
+
 import MusicIcon from '@material-ui/icons/MusicNote';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
@@ -27,7 +29,7 @@ function Concerts({ data, editInfo, bandId, dispatch }) {
               <p className='item__date'>{element.date?.slice(0, 10)}</p>
               <div className='item__container'>
                 <p className='container__city'>{element.city}</p>
-                {editInfo.name !== undefined && (
+                {!isAnEmptyObject(editInfo) && (
                   <HighlightOffIcon
                     className='container__icon'
                     onClick={() => dispatch(deleteConcert(bandId, element._id))}
@@ -38,7 +40,7 @@ function Concerts({ data, editInfo, bandId, dispatch }) {
           );
         })}
       </div>
-      {editInfo.name !== undefined && (
+      {!isAnEmptyObject(editInfo) && (
         <div className='concerts__new-concert'>
           <div className='new-concert__input'>
             <input
