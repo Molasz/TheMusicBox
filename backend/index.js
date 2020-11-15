@@ -10,13 +10,15 @@ const jwksRsa = require('jwks-rsa');
 
 const { audience, issuer, jwksUri } = require('./config/auth0');
 
+const mongoAtlas = require('./config/mongoAtlas')
+
 const Band = require('./src/models/bandModel');
 const User = require('./src/models/userModel');
 
 const app = express();
 const { PORT: port } = process.env;
 
-mongoose.connect('mongodb://localhost/TheMusicBox', { useNewUrlParser: true });
+mongoose.connect(mongoAtlas, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useFindAndModify', false);
 
 app.use(bodyParser.urlencoded({ extended: false }));
