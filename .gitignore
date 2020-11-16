@@ -104,6 +104,6 @@ dist
 .tern-port
 
 #assets
-auth0.js
+config/
 .scannerwork/
 upload/
